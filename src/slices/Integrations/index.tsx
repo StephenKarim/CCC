@@ -1,4 +1,4 @@
-import Bounded from "@/app/components/Bounded";
+import Bounded from "@/components/Bounded";
 import { Content } from "@prismicio/client";
 import {
   PrismicRichText,

@@ -1,8 +1,8 @@
-import Bounded from "@/app/components/Bounded";
+import Bounded from "@/components/Bounded";
 import { Content } from "@prismicio/client";
 import { PrismicText, SliceComponentProps } from "@prismicio/react";
 import PlainLogo from "./PlainLogo";
-import ButtonLink from "@/app/components/ButtonLink";
+import ButtonLink from "@/components/ButtonLink";
 
 /**
  * Props for `CallToAction`.

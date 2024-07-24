@@ -1,6 +1,6 @@
-import Bounded from "@/app/components/Bounded";
-import ButtonLink from "@/app/components/ButtonLink";
-import StarGrid from "@/app/components/StarGrid";
+import Bounded from "@/components/Bounded";
+import ButtonLink from "@/components/ButtonLink";
+import StarGrid from "@/components/StarGrid";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import {

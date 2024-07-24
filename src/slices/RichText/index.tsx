@@ -1,4 +1,4 @@
-import Bounded from "@/app/components/Bounded";
+import Bounded from "@/components/Bounded";
 import type { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import {

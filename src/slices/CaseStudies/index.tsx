@@ -1,4 +1,4 @@
-import Bounded from "@/app/components/Bounded";
+import Bounded from "@/components/Bounded";
 import { createClient } from "@/prismicio";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";

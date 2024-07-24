@@ -1,4 +1,4 @@
-import Bounded from "@/app/components/Bounded";
+import Bounded from "@/components/Bounded";
 import { asText, Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
