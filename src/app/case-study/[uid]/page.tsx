@@ -4,8 +4,8 @@ import { PrismicText, SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import Bounded from "@/app/components/Bounded";
-import StarGrid from "@/app/components/StarGrid";
+import Bounded from "@/components/Bounded";
+import StarGrid from "@/components/StarGrid";
 import { PrismicNextImage } from "@prismicio/next";
 
 type Params = { uid: string };

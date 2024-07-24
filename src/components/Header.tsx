@@ -1,5 +1,5 @@
-import WordMark from "@/app/components/WordMark";
-import NavBar from "@/app/components/NavBar";
+
+import NavBar from "@/components/NavBar";
 import { createClient } from "@/prismicio";
 
 export default async function Header() {

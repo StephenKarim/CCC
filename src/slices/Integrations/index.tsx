@@ -78,7 +78,7 @@ const Integrations = ({ slice }: IntegrationsProps): JSX.Element => {
                     "signal-line",
                     index >= Math.floor(slice.items.length / 2)
                       ? "rotate-180"
-                      : "rotate-0",
+                      : "rotate-0"
                   )}
                 ></div>
               )}

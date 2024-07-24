@@ -26,10 +26,10 @@ const CaseStudies = async ({
     slice.primary.case_study.map(async (item) => {
       if (isFilled.contentRelationship(item.case_study)) {
         return await client.getByID<Content.CaseStudyDocument>(
-          item.case_study.id,
+          item.case_study.id
         );
       }
-    }),
+    })
   );
   return (
     <Bounded
@@ -71,11 +71,11 @@ const CaseStudies = async ({
                   quality={100}
                   className={clsx(
                     "rounded-xl lg:col-span-2",
-                    index % 2 && "md:-order-1",
+                    index % 2 && "md:-order-1"
                   )}
                 ></PrismicNextImage>
               </div>
-            ),
+            )
         )}
       </div>
     </Bounded>
