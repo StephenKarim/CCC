@@ -13,6 +13,20 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
+import { DM_Sans, Poppins } from "next/font/google";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dm-sans",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-poppins",
+  weight: "100",
+});
 
 export default function AnimatedContent({
   slice,
@@ -25,7 +39,7 @@ export default function AnimatedContent({
 
   useGSAP(
     () => {
-      if(prefersReducedMotion) {
+      if (prefersReducedMotion) {
         gsap.set(
           ".hero__heading,.hero__body, .hero__button, .hero__image, .hero__glow",
           { opacity: 1 },
@@ -39,12 +53,12 @@ export default function AnimatedContent({
         { scale: 0.5 },
         { scale: 1, opacity: 1, duration: 1.4 },
       );
-      // tl.fromTo(
-      //   ".hero__body",
-      //   { y: 20 },
-      //   { y: 0, opacity: 1, duration: 1.2 },
-      //   "-=0.6",
-      // );
+      tl.fromTo(
+        ".hero__body",
+        { y: 20 },
+        { y: 0, opacity: 1, duration: 1.2 },
+        "-=0.6",
+      );
       tl.fromTo(
         ".hero__button",
         { scale: 1.5 },
@@ -71,7 +85,7 @@ export default function AnimatedContent({
     <div className="relative" ref={container}>
       <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
-        <h1 className="hero__heading text-balance text-center text-5xl font-medium opacity-0 md:text-7xl">
+        <h1 className="hero__heading text-balance text-center text-4xl font-medium opacity-0 md:text-6xl">
           <PrismicText field={slice.primary.heading} />
         </h1>
       )}
@@ -83,7 +97,7 @@ export default function AnimatedContent({
       )}
       {isFilled.link(slice.primary.button_link) && (
         <ButtonLink
-          className="hero__button mt-8 opacity-0"
+          className='hero__button mt-8 opacity-0'
           field={slice.primary.button_link}
         >
           {slice.primary.button_label}

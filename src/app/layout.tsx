@@ -1,5 +1,5 @@
 import "./globals.css";
-import { DM_Sans } from "next/font/google";
+import { DM_Sans,Poppins } from "next/font/google";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
 import Header from "@/components/Header";
@@ -9,6 +9,13 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-dm-sans",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-poppins",
+  weight: "100"
 });
 
 export default function RootLayout({
