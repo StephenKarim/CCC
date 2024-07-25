@@ -58,13 +58,13 @@ const CaseStudies = async ({
                   </h3>
                   <div className="max-w-md"></div>
                   <PrismicRichText field={caseStudy.data.description} />
-                  <PrismicNextLink
+                  {/* <PrismicNextLink
                     document={caseStudy}
                     className="after:absolute after:inset-0 hover:underline"
                   >
                     Read <PrismicText field={caseStudy.data.company} /> Case
                     Study
-                  </PrismicNextLink>
+                  </PrismicNextLink> */}
                 </div>
                 <PrismicNextImage
                   field={caseStudy.data.logo_image}
