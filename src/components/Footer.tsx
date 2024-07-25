@@ -14,16 +14,21 @@ export default async function Footer() {
       </Link>
       <nav aria-label="Footer">
         <ul className="flex gap-6">
-          {settings.data.navigation.map((item) => (
-            <li key={item.label}>
-              <PrismicNextLink
-                className="inline-flex min-h-11 items-center"
-                field={item.link}
-              >
-                {item.label}
-              </PrismicNextLink>
-            </li>
-          ))}
+          {settings.data.navigation
+            .filter(
+              (_, index) =>
+                index === 0 || index === settings.data.navigation.length - 1,
+            )
+            .map((item) => (
+              <li key={item.label}>
+                <PrismicNextLink
+                  className="inline-flex min-h-11 items-center"
+                  field={item.link}
+                >
+                  {item.label}
+                </PrismicNextLink>
+              </li>
+            ))}
         </ul>
       </nav>
     </footer>
