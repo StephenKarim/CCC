@@ -39,12 +39,12 @@ export default function AnimatedContent({
         { scale: 0.5 },
         { scale: 1, opacity: 1, duration: 1.4 },
       );
-      tl.fromTo(
-        ".hero__body",
-        { y: 20 },
-        { y: 0, opacity: 1, duration: 1.2 },
-        "-=0.6",
-      );
+      // tl.fromTo(
+      //   ".hero__body",
+      //   { y: 20 },
+      //   { y: 0, opacity: 1, duration: 1.2 },
+      //   "-=0.6",
+      // );
       tl.fromTo(
         ".hero__button",
         { scale: 1.5 },
