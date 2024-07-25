@@ -85,7 +85,7 @@ export default function AnimatedContent({
     <div className="relative" ref={container}>
       <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
-        <h1 className="hero__heading text-balance text-center text-4xl font-medium opacity-0 md:text-6xl">
+        <h1 className="hero__heading mt-2 text-balance text-center text-4xl font-medium opacity-0 md:text-6xl">
           <PrismicText field={slice.primary.heading} />
         </h1>
       )}
