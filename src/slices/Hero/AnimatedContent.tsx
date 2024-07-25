@@ -91,7 +91,7 @@ export default function AnimatedContent({
       )}
 
       {isFilled.richText(slice.primary.body) && (
-        <div className="hero__body mx-auto mt-2 max-w-md text-balance text-slate-300 opacity-0">
+        <div className="hero__body text-xs md:text-lg mx-auto mt-2 max-w-md text-balance text-slate-300 opacity-0">
           <PrismicRichText field={slice.primary.body} />
         </div>
       )}
