@@ -107,22 +107,11 @@ export default function AnimatedContent({
       )}
       {isFilled.image(slice.primary.image) && (
         <div className="glass-container hero__image mt-20 w-fit opacity-0">
-          <div className=" hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
+          <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
           <video width="1200" autoPlay loop muted>
-            <source src="/videos/video.mp4" type="video/mp4"/>
+            <source src="/videos/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          {/* <Video src={getStarted} /> */}
-          {/* <iframe
-        src="https://www.youtube.com/embed/yX28S-MQY2I"
-        frameBorder="0"
-        allow="autoplay; encrypted-media"
-        allowFullScreen
-      ></iframe> */}
-          {/* <PrismicNextImage
-            className="rounded-lg"
-            field={slice.primary.image}
-          /> */}
         </div>
       )}
     </div>
