@@ -108,7 +108,7 @@ export default function AnimatedContent({
       {isFilled.image(slice.primary.image) && (
         <div className="glass-container hero__image mt-20 w-fit opacity-0">
           <div className=" hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
-          <video width="900" autoPlay loop muted>
+          <video width="1200" autoPlay loop muted>
             <source src="/videos/video.mp4" type="video/mp4"/>
             Your browser does not support the video tag.
           </video>
