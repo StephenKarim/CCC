@@ -14,6 +14,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
 import { DM_Sans, Poppins } from "next/font/google";
+import Video from "next-video";
+import getStarted from "/videos/get-started.mp4";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -91,13 +93,13 @@ export default function AnimatedContent({
       )}
 
       {isFilled.richText(slice.primary.body) && (
-        <div className="hero__body text-xs md:text-lg mx-auto mt-2 max-w-md text-balance text-slate-300 opacity-0">
+        <div className="hero__body mx-auto mt-2 max-w-md text-balance text-xs text-slate-300 opacity-0 md:text-lg">
           <PrismicRichText field={slice.primary.body} />
         </div>
       )}
       {isFilled.link(slice.primary.button_link) && (
         <ButtonLink
-          className='hero__button mt-[3.5rem] opacity-0'
+          className="hero__button mt-[3.5rem] opacity-0"
           field={slice.primary.button_link}
         >
           {slice.primary.button_label}
@@ -105,12 +107,22 @@ export default function AnimatedContent({
       )}
       {isFilled.image(slice.primary.image) && (
         <div className="glass-container hero__image mt-20 w-fit opacity-0">
-          <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
-
-          <PrismicNextImage
+          <div className=" hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
+          <video width="900" autoPlay loop muted>
+            <source src="/videos/video.mp4" type="video/mp4"/>
+            Your browser does not support the video tag.
+          </video>
+          {/* <Video src={getStarted} /> */}
+          {/* <iframe
+        src="https://www.youtube.com/embed/yX28S-MQY2I"
+        frameBorder="0"
+        allow="autoplay; encrypted-media"
+        allowFullScreen
+      ></iframe> */}
+          {/* <PrismicNextImage
             className="rounded-lg"
             field={slice.primary.image}
-          />
+          /> */}
         </div>
       )}
     </div>
