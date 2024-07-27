@@ -8,9 +8,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        
+        // roboto: ["Roboto", "sans-serif"],
+        // openSans: ["Open Sans", "sans-serif"],
+        // dancingScript: ["Dancing Script", "cursive"],
+        // merriweather: ["Merriweather", "serif"],
+        // playfairDisplay: ['Playfair Display', 'serif'],
+        lora: ['Lora', 'serif'],
       },
     },
   },
-  plugins: [require('@tailwindcss/typography'),],
+  plugins: [require("@tailwindcss/typography")],
 };

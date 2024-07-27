@@ -13,9 +13,10 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
-import { DM_Sans, Poppins } from "next/font/google";
+
 import Video from "next-video";
 import getStarted from "/videos/get-started.mp4";
+import { DM_Sans, Poppins, Inter, Roboto } from "next/font/google";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -24,10 +25,23 @@ const dmSans = DM_Sans({
 });
 
 const poppins = Poppins({
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-poppins",
-  weight: "100",
+});
+
+const roboto = Roboto({
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dm-sans",
 });
 
 export default function AnimatedContent({
@@ -87,13 +101,15 @@ export default function AnimatedContent({
     <div className="relative" ref={container}>
       <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
-        <h1 className="hero__heading mt-2 text-balance text-center text-4xl font-medium opacity-0 md:text-6xl">
+        <h1 className="hero__heading  mt-2 text-balance text-center text-5xl font-medium opacity-0 md:text-7xl">
           <PrismicText field={slice.primary.heading} />
         </h1>
       )}
 
       {isFilled.richText(slice.primary.body) && (
-        <div className="hero__body mx-auto mt-2 max-w-md text-balance text-xs text-slate-300 opacity-0 md:text-lg">
+        <div
+          className="hero__body mx-auto mt-2 max-w-md text-balance text-[0.85rem] text-slate-300 opacity-0 md:text-[1rem]"
+        >
           <PrismicRichText field={slice.primary.body} />
         </div>
       )}
