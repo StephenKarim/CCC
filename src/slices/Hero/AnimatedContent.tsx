@@ -16,6 +16,8 @@ import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
 
 import Video from "next-video";
 import getStarted from "/videos/get-started.mp4";
+import heroVid from "/videos/video.mp4";
+
 import { DM_Sans, Poppins, Inter, Roboto } from "next/font/google";
 
 const dmSans = DM_Sans({
@@ -101,15 +103,13 @@ export default function AnimatedContent({
     <div className="relative" ref={container}>
       <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
-        <h1 className="hero__heading  mt-2 text-balance text-center text-5xl font-medium opacity-0 md:text-7xl">
+        <h1 className="hero__heading mt-2 text-balance text-center text-5xl font-medium opacity-0 md:text-7xl">
           <PrismicText field={slice.primary.heading} />
         </h1>
       )}
 
       {isFilled.richText(slice.primary.body) && (
-        <div
-          className="hero__body mx-auto mt-2 max-w-md text-balance text-[0.85rem] text-slate-300 opacity-0 md:text-[1rem]"
-        >
+        <div className="hero__body mx-auto mt-2 max-w-md text-balance text-[0.85rem] text-slate-300 opacity-0 md:text-[1rem]">
           <PrismicRichText field={slice.primary.body} />
         </div>
       )}
@@ -124,10 +124,14 @@ export default function AnimatedContent({
       {isFilled.image(slice.primary.image) && (
         <div className="glass-container hero__image mt-20 w-fit opacity-0">
           <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
-          <video width="1200" autoPlay loop muted>
-            <source src="/videos/video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <Video
+            className="h-auto w-[1200px]"
+            autoPlay
+            loop
+            muted
+            src={heroVid}
+            controls={false}
+          />
         </div>
       )}
     </div>
