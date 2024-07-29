@@ -108,7 +108,7 @@ export default function StarGrid() {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 900 250"
-      className="absolute -top-14 -z-10"
+      className="absolute -top-14 -z-10 border-amber-300 rounded-full"
       id="star-grid"
       ref={container}
       style={{

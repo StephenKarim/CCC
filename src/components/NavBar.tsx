@@ -9,6 +9,7 @@ import WordMark from "@/components/WordMark";
 import { MdMenu, MdClose } from "react-icons/md";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
+import Image from 'next/image';
 
 type NavBarProps = {
   settings: Content.SettingsDocument;
@@ -19,16 +20,18 @@ export default function NavBar({ settings }: NavBarProps) {
   const pathname = usePathname();
 
   return (
-    <nav className="md-:py-6 px-4 py-4 md:px-6" aria-label="Main">
-      <div className="mx-auto flex max-w-6xl flex-col justify-between py-2 font-medium text-white md:flex-row md:items-center">
+    <nav className="lg-:py-6 px-4 py-4 lg:px-6 " aria-label="Main">
+      <div className="mx-auto flex max-w-6xl flex-col justify-between py-2 font-medium text-white lg:flex-row lg:items-center">
         <div className="flex items-center justify-between">
           <Link href="/" className="z-50" onClick={() => setOpen(false)}>
-            <WordMark />
+          <Image src="/images/logo.png" alt="Logo" width={60} height={60} />
+         
             <span className="sr-only">Glisten.ai Home Page</span>
           </Link>
+          <Image src="/images/text2.png" alt="Logo" width={150} height={100} />
           <button
             type="button"
-            className="block p-2 text-3xl text-white md:hidden"
+            className="block p-2 text-3xl text-white lg:hidden"
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
@@ -39,13 +42,13 @@ export default function NavBar({ settings }: NavBarProps) {
         {/* Mobile Nav */}
         <div
           className={clsx(
-            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#070815] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none md:hidden",
+            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#070815] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
           <button
             type="button"
-            className="fixed right-4 top-4 mb-4 block p-2 text-3xl text-white md:hidden"
+            className="fixed right-4 top-4 mb-4 block p-2 text-3xl text-white lg:hidden"
             aria-expanded={open}
             onClick={() => setOpen(false)}
           >
@@ -91,7 +94,7 @@ export default function NavBar({ settings }: NavBarProps) {
         </div>
 
         {/* Desktop Nav */}
-        <ul className=" hidden gap-6 md:flex">
+        <ul className=" hidden gap-6 lg:flex">
           {settings.data.navigation.map((item) => {
             if (item.cta_button) {
               return (

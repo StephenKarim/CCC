@@ -13,7 +13,7 @@ module.exports = {
         // dancingScript: ["Dancing Script", "cursive"],
         // merriweather: ["Merriweather", "serif"],
         // playfairDisplay: ['Playfair Display', 'serif'],
-        lora: ['Lora', 'serif'],
+        lora: ["Lora", "serif"],
       },
     },
   },
