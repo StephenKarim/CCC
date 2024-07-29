@@ -14,6 +14,7 @@ module.exports = {
         // merriweather: ["Merriweather", "serif"],
         // playfairDisplay: ['Playfair Display', 'serif'],
         lora: ["Lora", "serif"],
+        russo: ["Russo One", "sans-serif"],
       },
     },
   },

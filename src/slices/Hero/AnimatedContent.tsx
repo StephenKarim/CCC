@@ -101,7 +101,7 @@ export default function AnimatedContent({
 
   return (
     <div className="relative" ref={container}>
-      <StarGrid />
+      {/* <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
         <h1 className="hero__heading mt-2 text-balance text-center text-5xl font-medium opacity-0 md:text-7xl">
           <PrismicText field={slice.primary.heading} />
@@ -112,17 +112,12 @@ export default function AnimatedContent({
         <div className="hero__body mx-auto mt-2 max-w-md text-balance text-[0.85rem] text-slate-300 opacity-0 md:text-[1rem]">
           <PrismicRichText field={slice.primary.body} />
         </div>
-      )}
-      {isFilled.link(slice.primary.button_link) && (
-        <ButtonLink
-          className="hero__button mt-[3.5rem] opacity-0"
-          field={slice.primary.button_link}
-        >
-          {slice.primary.button_label}
-        </ButtonLink>
-      )}
-      {isFilled.image(slice.primary.image) && (
-        <div className="glass-container hero__image mt-20 w-fit opacity-0">
+      )} */}
+      <div className="h-4 w-full bg-white mt-14">
+
+      </div>
+       {isFilled.image(slice.primary.image) && (
+        <div className="glass-container hero__image mt-4 w-fit opacity-0">
           <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
           <video
             className="h-auto w-[1200px]"
@@ -135,6 +130,15 @@ export default function AnimatedContent({
           </video>
         </div>
       )}
+      {isFilled.link(slice.primary.button_link) && (
+        <ButtonLink
+          className="hero__button mt-[3.5rem] opacity-0"
+          field={slice.primary.button_link}
+        >
+          {slice.primary.button_label}
+        </ButtonLink>
+      )}
+     
     </div>
   );
 }

@@ -9,7 +9,7 @@ import WordMark from "@/components/WordMark";
 import { MdMenu, MdClose } from "react-icons/md";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
-import Image from 'next/image';
+import Image from "next/image";
 
 type NavBarProps = {
   settings: Content.SettingsDocument;
@@ -20,15 +20,16 @@ export default function NavBar({ settings }: NavBarProps) {
   const pathname = usePathname();
 
   return (
-    <nav className="lg-:py-6 px-4 py-4 lg:px-6 " aria-label="Main">
+    <nav className="lg-:py-6 px-4 py-4 lg:px-6 fixed w-full z-50" aria-label="Main">
       <div className="mx-auto flex max-w-6xl flex-col justify-between py-2 font-medium text-white lg:flex-row lg:items-center">
         <div className="flex items-center justify-between">
           <Link href="/" className="z-50" onClick={() => setOpen(false)}>
-          <Image src="/images/logo.png" alt="Logo" width={60} height={60} />
-         
+            <Image src="/images/logo.png" alt="Logo" width={60} height={60} />
+
             <span className="sr-only">Glisten.ai Home Page</span>
           </Link>
           <Image src="/images/text2.png" alt="Logo" width={150} height={100} />
+          
           <button
             type="button"
             className="block p-2 text-3xl text-white lg:hidden"
@@ -94,7 +95,7 @@ export default function NavBar({ settings }: NavBarProps) {
         </div>
 
         {/* Desktop Nav */}
-        <ul className=" hidden gap-6 lg:flex">
+        <ul className="hidden gap-6 lg:flex">
           {settings.data.navigation.map((item) => {
             if (item.cta_button) {
               return (
