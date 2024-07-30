@@ -59,19 +59,14 @@ export default function AnimatedContent() {
         { x: -1000 },
         { x: 0, opacity: 1, duration: 1.4 },
       );
-      
-      // tl.fromTo(      
+
+      // tl.fromTo(
       //   ".hero__body",
       //   { y: 20 },
       //   { y: 0, opacity: 1, duration: 1.2 },
       //   "-=0.6",
       // );
-      // tl.fromTo(
-      //   ".hero__button",
-      //   { scale: 1.5 },
-      //   { scale: 1, opacity: 1, duration: 1.3 },
-      //   "-=0.8",
-      // );
+     
 
       // tl.fromTo(
       //   ".hero__imagee",
@@ -84,6 +79,12 @@ export default function AnimatedContent() {
         { scale: 0.5 },
         { scale: 1, opacity: 1, duration: 1.8 },
         "-=1",
+      );
+      tl.fromTo(
+        ".hero__button",
+        { scale: 1.5 },
+        { scale: 1, opacity: 1, duration: 1.3 },
+        "-=0.8",
       );
     },
     { scope: container },
@@ -125,10 +126,11 @@ export default function AnimatedContent() {
         {/* <button className=" bg-black">text</button> */}
       </div>
       <div
-        className={`font-lora lg:hidden absolute ml-auto mr-auto inset-0 z-10 mt-[80vh] flex h-fit w-fit flex-col items-end rounded-full bg-transparent bg-opacity-70 p-4 text-right text-xl font-bold shadow-lg md:flex-row md:justify-end md:text-2xl`}
+        className={`hero__button opacity-0 absolute inset-0 z-10 ml-auto mr-auto mt-[80vh] flex h-fit w-fit flex-col items-end rounded-full bg-transparent bg-opacity-70 p-4 text-right font-lora text-xl font-bold shadow-lg md:flex-row md:justify-end md:text-2xl lg:hidden`}
       >
-       
-      <button className="animate-pulse hover:animate-none text-white relative inline-flex h-fit w-fit rounded-full border border-white bg-black bg-opacity-60 px-4 py-2 outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10 after:animate-pulse after:rounded-full after:bg-yellow-100 after:bg-opacity-0 after:blur-md after:transition-all after:duration-500 hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15 focus:ring-2">Live Streams!</button>
+        <button className=" relative inline-flex h-fit w-fit animate-pulse rounded-full border border-white bg-black bg-opacity-60 px-4 py-2 text-white outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10 after:animate-pulse after:rounded-full after:bg-yellow-100 after:bg-opacity-0 after:blur-md after:transition-all after:duration-500 hover:animate-none hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15 focus:ring-2">
+          Live Streams!
+        </button>
       </div>
 
       {/* <div className="h-4 w-full bg-white mt-14">
