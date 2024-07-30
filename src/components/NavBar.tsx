@@ -13,6 +13,10 @@ import Image from "next/image";
 import { PrismicRichText } from "@prismicio/react";
 import { PiCrossBold } from "react-icons/pi";
 import { Russo_One } from "next/font/google";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
 
 const russoOne = Russo_One({
   subsets: ["latin"],
@@ -27,18 +31,72 @@ type NavBarProps = {
 export default function NavBar({ settings }: NavBarProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const container = useRef(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
+  gsap.registerPlugin(useGSAP);
+
+  useGSAP(
+    () => {
+      if (prefersReducedMotion) {
+        gsap.set(
+          ".hero__heading,.hero__body, .hero__button, .hero__image, .hero__glow",
+          { opacity: 1 },
+        );
+        return;
+      }
+      const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+
+      tl.fromTo(
+        ".header__heading",
+        { scale: 0.5 },
+        { scale: 1, opacity: 1, duration: 1.4 },
+      );
+      tl.fromTo(
+        ".header__menu",
+        { y: -20 },
+        { y: 0, opacity: 1, duration: 1.2 },
+        "-=0.6",
+      );
+      // tl.fromTo(
+      //   ".hero__button",
+      //   { scale: 1.5 },
+      //   { scale: 1, opacity: 1, duration: 1.3 },
+      //   "-=0.8",
+      // );
+      // tl.fromTo(
+      //   ".hero__image",
+      //   { y: -100 },
+      //   { y: 0, opacity: 1, duration: 1.3 },
+      //   "+=0.3",
+      // );
+      // tl.fromTo(
+      //   ".hero__imagee",
+      //   { y: 0 },
+      //   { y: 0, opacity: 1, duration: 1.3, display:"block" },
+      //   "+=0.3",
+      // );
+      // tl.fromTo(
+      //   ".hero__glow",
+      //   { scale: 0.5 },
+      //   { scale: 1, opacity: 1, duration: 1.8 },
+      //   "-=1",
+      // );
+    },
+    { scope: container },
+  );
 
   return (
     <nav
-      className="lg-:py-6 fixed z-10 w-full px-4 py-4 lg:px-6"
+      className="lg-:py-6 fixed z-10 w-full px-4 py-4 lg:px-6 "
       aria-label="Main"
+      ref={container}
     >
-      <div className="mx-auto flex flex-col justify-between py-2 font-medium text-white opacity-95 lg:flex-row lg:items-center">
-        <div className="flex items-center justify-between">
+      <div className=" mx-auto flex flex-col justify-between py-2 font-medium text-white opacity-95 lg:flex-row lg:items-center">
+        <div className="flex items-center justify-between header__heading opacity-0" >
           <Link href="/" className="z-50" onClick={() => setOpen(false)}>
             <span className="sr-only">Covenant City Church Home Page</span>
             <div
-              className={`${russoOne.className} flex flex-row text-balance text-center text-2xl font-medium md:text-4xl`}
+              className={`${russoOne.className} header__heading flex flex-row text-balance text-center text-2xl font-medium md:text-4xl`}
             >
               <PiCrossBold className="-ml-2 h-[3.7rem] w-auto md:h-[4.6rem]" />
               <div className="flex-col">
@@ -116,7 +174,7 @@ export default function NavBar({ settings }: NavBarProps) {
         </div>
 
         {/* Desktop Nav */}
-        <ul className="hidden gap-6 lg:flex">
+        <ul className="hidden gap-6 lg:flex header__menu opacity-0 ">
           {settings.data.navigation.map((item) => {
             if (item.cta_button) {
               return (

@@ -53,30 +53,25 @@ export default function AnimatedContent() {
         return;
       }
       const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-
+      tl.fromTo(".hero__video", {}, { opacity: 1, duration: 1.3 }, "+=0.3");
       tl.fromTo(
         ".hero__heading",
-        { scale: 0.5 },
-        { scale: 1, opacity: 1, duration: 1.4 },
+        { x: -1000 },
+        { x: 0, opacity: 1, duration: 1.4 },
       );
-      tl.fromTo(
-        ".hero__body",
-        { y: 20 },
-        { y: 0, opacity: 1, duration: 1.2 },
-        "-=0.6",
-      );
-      tl.fromTo(
-        ".hero__button",
-        { scale: 1.5 },
-        { scale: 1, opacity: 1, duration: 1.3 },
-        "-=0.8",
-      );
-      tl.fromTo(
-        ".hero__image",
-        { y: -100 },
-        { y: 0, opacity: 1, duration: 1.3 },
-        "+=0.3",
-      );
+      // tl.fromTo(
+      //   ".hero__body",
+      //   { y: 20 },
+      //   { y: 0, opacity: 1, duration: 1.2 },
+      //   "-=0.6",
+      // );
+      // tl.fromTo(
+      //   ".hero__button",
+      //   { scale: 1.5 },
+      //   { scale: 1, opacity: 1, duration: 1.3 },
+      //   "-=0.8",
+      // );
+
       // tl.fromTo(
       //   ".hero__imagee",
       //   { y: 0 },
@@ -107,7 +102,7 @@ export default function AnimatedContent() {
           <PrismicRichText field={slice.primary.body} />
         </div>
       )} */}
-      <div className="hero__image opacity-0">
+      <div className="hero__video opacity-0">
         <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
         <video
           className="min-h-[100vh] min-w-[100vw] object-cover"
@@ -122,12 +117,19 @@ export default function AnimatedContent() {
         </video>
       </div>
       <div
-        className={`${dancingScript.className} absolute inset-0 z-10 mt-[45vh] flex h-fit w-[60vw] flex-col items-end text-balance rounded-r-lg bg-black bg-opacity-50 p-4 text-right text-4xl font-bold shadow-lg md:text-6xl lg:text-6xl`}
+        className={`${dancingScript.className} hero__heading absolute inset-0 z-10 mt-[45vh] flex h-fit w-[60vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-4xl font-bold opacity-0 shadow-lg md:flex-row md:justify-end md:text-6xl`}
       >
-        <h1 className="">You`re Welcome</h1>
-        <h1 className="sm:mr-[9rem] md:mr-[15rem] ">Here</h1>
+        <h1 className="mr-0">You`re Welcome</h1>
+        <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1>
+        {/* <button className=" bg-black">text</button> */}
       </div>
-      <button className="hero__button mt-[3.5rem] opacity-0">text</button>
+      {/* <div
+        className={`${dancingScript.className} absolute ml-auto mr-auto inset-0 z-10 mt-[60vh] flex h-fit w-fit flex-col items-end rounded-r-lg  bg-black bg-opacity-50 p-4 text-right text-4xl font-bold shadow-lg md:flex-row md:justify-end md:text-6xl`}
+      >
+       
+      <ButtonLink className=" bg-black ">Watch Stream!</ButtonLink>
+      </div> */}
+
       {/* <div className="h-4 w-full bg-white mt-14">
 
       </div>
