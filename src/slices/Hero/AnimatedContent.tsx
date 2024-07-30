@@ -83,18 +83,18 @@ export default function AnimatedContent({
       //   { y: 0, opacity: 1, duration: 1.3, display:"block" },
       //   "+=0.3",
       // );
-      tl.fromTo(
-        ".hero__glow",
-        { scale: 0.5 },
-        { scale: 1, opacity: 1, duration: 1.8 },
-        "-=1",
-      );
-      tl.fromTo(
-        ".hero__button",
-        { scale: 1.5 },
-        { scale: 1, opacity: 1, duration: 1.3 },
-        "-=0.8",
-      );
+      // tl.fromTo(
+      //   ".hero__glow",
+      //   { scale: 0.5 },
+      //   { scale: 1, opacity: 1, duration: 1.8 },
+      //   "-=1",
+      // );
+      // tl.fromTo(
+      //   ".hero__button",
+      //   { scale: 1.5 },
+      //   { scale: 1, opacity: 1, duration: 1.3 },
+      //   "-=0.8",
+      // );
     },
     { scope: container },
   );
@@ -116,7 +116,7 @@ export default function AnimatedContent({
     
        {isFilled.image(slice.primary.image) && (
         <div className="hero__video min-h-[100vh] min-w-[100vw] opacity-0">
-        <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
+        {/* <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" /> */}
         <video
           className="hero__video filter  saturate-[0.9] brightness-[1] contrast-[1.1] min-h-[100vh] min-w-[100vw] object-cover opacity-0"
           autoPlay
