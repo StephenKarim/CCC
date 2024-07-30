@@ -128,7 +128,7 @@ export default function AnimatedContent() {
         className={`font-lora lg:hidden absolute ml-auto mr-auto inset-0 z-10 mt-[80vh] flex h-fit w-fit flex-col items-end rounded-full bg-transparent bg-opacity-70 p-4 text-right text-xl font-bold shadow-lg md:flex-row md:justify-end md:text-2xl`}
       >
        
-      <ButtonLink className="animate-pulse hover:animate-none text-white">Live Streams!</ButtonLink>
+      <button className="animate-pulse hover:animate-none text-white relative inline-flex h-fit w-fit rounded-full border border-white bg-black bg-opacity-60 px-4 py-2 outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10 after:animate-pulse after:rounded-full after:bg-yellow-100 after:bg-opacity-0 after:blur-md after:transition-all after:duration-500 hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15 focus:ring-2">Live Streams!</button>
       </div>
 
       {/* <div className="h-4 w-full bg-white mt-14">
