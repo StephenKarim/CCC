@@ -52,8 +52,8 @@ export default function NavBar({ settings }: NavBarProps) {
 
       tl.fromTo(
         ".header__heading",
-        {  y: -100 },
-        { y:0, opacity: 1, duration: 1.4, delay:1.5 },
+        { opacity: 0 },
+        {  opacity: 1, duration: 1.5, delay:1 },
       );
       tl.fromTo(
         ".header__menu",
@@ -91,7 +91,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} h-[60px] absolute z-10 w-full md:h-[70px] bg-opacity-0  bg-[#070815] `}
+      className={`${russoOne.className} h-[60px] absolute z-10 w-full md:h-[70px] bg-opacity-90  bg-[#070815] `}
       aria-label="Main"
       ref={container}
     >

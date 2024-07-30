@@ -111,7 +111,7 @@ export default function AnimatedContent() {
       <div className="hero__video min-h-[100vh] min-w-[100vw] opacity-0">
         <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
         <video
-          className="hero__video min-h-[100vh] min-w-[100vw] object-cover opacity-0"
+          className="hero__video filter  saturate-[0.9] brightness-[1] contrast-[1.1] min-h-[100vh] min-w-[100vw] object-cover opacity-0"
           autoPlay
           loop
           muted
@@ -119,15 +119,15 @@ export default function AnimatedContent() {
           playsInline
           poster=""
         >
-          <source src="/videos/video2.mp4"></source>
+          <source src="/videos/video.mp4"></source>
         </video>
       </div>
-      {/* <div
+      <div
         className={`${dancingScript.className} hero__heading absolute inset-0 z-10 mt-[25vh] flex h-fit w-[60vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-4xl font-bold opacity-0 shadow-lg md:flex-row md:justify-end md:text-6xl`}
       >
         <h1 className="mr-0">You`re Welcome</h1>
         <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1>
-      </div> */}
+      </div>
         {/* <button className=" bg-black">text</button> */}
       {/* <div
         className={`hero__button absolute inset-0 z-10 ml-auto mr-[10vw] mt-[25vh] flex h-fit w-fit flex-col items-end rounded-full bg-transparent bg-opacity-70 p-4 text-right font-lora text-xl font-bold opacity-0 md:flex-row md:justify-end md:text-2xl lg:hidden`}
