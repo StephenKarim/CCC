@@ -38,7 +38,6 @@ const bebasNeue = Bebas_Neue({
   display: "swap", // Optional: Adjust font-display property
 });
 
-
 export default function AnimatedContent() {
   const container = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -123,17 +122,10 @@ export default function AnimatedContent() {
         </video>
       </div>
       <div
-        className={`${dancingScript.className} bg-opacity-25 items-center justify-center w-full text-right text-4xl mt-[45vh] absolute inset-0 z-10 flex h-fit bg-black md:bg-opacity-50 md:w-[60vw] flex-col md:items-end text-balance rounded-r-lg p-4 md:text-[3.5rem] lg:text-8xl font-bold shadow-lg `}
-      >       
-
-        <div className="flex flex-col md:flex-row text-center">
-
-        <h1 className="">You`re</h1>
-        <h1> Welcome</h1>
-        <h1> Here</h1>
-        </div>
+        className={`${dancingScript.className} absolute inset-0 z-10 mt-[45vh] flex h-fit w-[60vw] flex-col items-end text-balance rounded-r-lg bg-black bg-opacity-50 p-4 text-right text-4xl font-bold shadow-lg md:text-[3.5rem] lg:text-8xl`}
+      >
+        <h1 className="">You`re Welcome Here</h1>
         {/* <h1 className=" sm:mr-[9rem] md:mr-[15rem] lg:mr-[24rem]">Here</h1> */}
-    
       </div>
       <button className="hero__button mt-[3.5rem] opacity-0">text</button>
       {/* <div className="h-4 w-full bg-white mt-14">
