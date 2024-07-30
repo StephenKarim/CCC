@@ -20,15 +20,15 @@ export default function NavBar({ settings }: NavBarProps) {
   const pathname = usePathname();
 
   return (
-    <nav className="lg-:py-6 px-4 py-4 lg:px-6 fixed w-full z-50" aria-label="Main">
-      <div className="mx-auto flex max-w-6xl flex-col justify-between py-2 font-medium text-white lg:flex-row lg:items-center">
+    <nav className="lg-:py-6 px-4 py-4 lg:px-6 fixed w-full z-10" aria-label="Main">
+      <div className="mx-auto flex max-w-7xl flex-col justify-between py-2 font-medium text-white lg:flex-row lg:items-center">
         <div className="flex items-center justify-between">
           <Link href="/" className="z-50" onClick={() => setOpen(false)}>
-            <Image src="/images/logo.png" alt="Logo" width={60} height={60} />
+            {/* <Image src="/images/logo.png" alt="Logo" width={60} height={60} /> */}
 
-            <span className="sr-only">Glisten.ai Home Page</span>
+            <span className="sr-only">Covenant City Church Home Page</span>
           </Link>
-          <Image src="/images/text2.png" alt="Logo" width={150} height={100} />
+          <Image src="/images/text2.png" alt="Logo" width={150} height={100} className="z-30"/>
           
           <button
             type="button"
@@ -57,7 +57,7 @@ export default function NavBar({ settings }: NavBarProps) {
             <span className="sr-only">Close menu</span>
           </button>
 
-          <div className="grid justify-items-end gap-8">
+          <div className="grid justify-items-end gap-8 z-20">
             {settings.data.navigation.map((item) => {
               if (item.cta_button) {
                 return (
