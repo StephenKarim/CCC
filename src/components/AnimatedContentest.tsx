@@ -116,7 +116,7 @@ export default function AnimatedContent() {
         </video>
       </div>
       <div
-        className={`${dancingScript.className} text-right mt-[27rem] absolute inset-0 z-10 flex h-fit w-full flex-col items-start justify-start text-balance rounded-lg bg-transparent p-4 text-5xl lg:text-8xl font-bold shadow-lg `}
+        className={`${dancingScript.className} text-right mt-[45vh] absolute inset-0 z-10 flex h-fit w-full flex-col items-start justify-start text-balance rounded-lg bg-transparent p-4 text-5xl lg:text-8xl font-bold shadow-lg `}
       >
         <div className="bg-black bg-opacity-25 w-[60vw]"> 
 
