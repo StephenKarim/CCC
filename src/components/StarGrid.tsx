@@ -67,7 +67,8 @@ export default function StarGrid() {
       });
 
       // Loop animation
-      tl.to(".star-grid-item", {
+      tl.to(".star-grid-item", 
+        {
         delay: 8,
         repeat: -1,
         repeatDelay: 8,

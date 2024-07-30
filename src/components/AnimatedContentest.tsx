@@ -59,7 +59,8 @@ export default function AnimatedContent() {
         { x: -1000 },
         { x: 0, opacity: 1, duration: 1.4 },
       );
-      // tl.fromTo(
+      
+      // tl.fromTo(      
       //   ".hero__body",
       //   { y: 20 },
       //   { y: 0, opacity: 1, duration: 1.2 },
@@ -123,12 +124,12 @@ export default function AnimatedContent() {
         <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1>
         {/* <button className=" bg-black">text</button> */}
       </div>
-      {/* <div
-        className={`${dancingScript.className} absolute ml-auto mr-auto inset-0 z-10 mt-[60vh] flex h-fit w-fit flex-col items-end rounded-r-lg  bg-black bg-opacity-50 p-4 text-right text-4xl font-bold shadow-lg md:flex-row md:justify-end md:text-6xl`}
+      <div
+        className={`font-lora lg:hidden absolute ml-auto mr-auto inset-0 z-10 mt-[80vh] flex h-fit w-fit flex-col items-end rounded-full bg-transparent bg-opacity-70 p-4 text-right text-xl font-bold shadow-lg md:flex-row md:justify-end md:text-2xl`}
       >
        
-      <ButtonLink className=" bg-black ">Watch Stream!</ButtonLink>
-      </div> */}
+      <ButtonLink className="animate-pulse hover:animate-none text-white">Live Streams!</ButtonLink>
+      </div>
 
       {/* <div className="h-4 w-full bg-white mt-14">
 
