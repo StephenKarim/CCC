@@ -129,13 +129,13 @@ export default function AnimatedContent() {
         <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1>
         {/* <button className=" bg-black">text</button> */}
       </div>
-      <div
-        className={`hero__button absolute inset-0 z-10 ml-auto mr-auto mt-[80vh] flex h-fit w-fit flex-col items-end rounded-full bg-transparent bg-opacity-70 p-4 text-right font-lora text-xl font-bold opacity-0 shadow-lg md:flex-row md:justify-end md:text-2xl lg:hidden`}
+      {/* <div
+        className={`hero__button absolute inset-0 z-10 ml-auto mr-[10vw] mt-[25vh] flex h-fit w-fit flex-col items-end rounded-full bg-transparent bg-opacity-70 p-4 text-right font-lora text-xl font-bold opacity-0 md:flex-row md:justify-end md:text-2xl lg:hidden`}
       >
-        <button className="relative inline-flex h-fit w-fit animate-pulse rounded-full border border-white bg-black bg-opacity-60 px-4 py-2 text-white outline-none ring-yellow-300 transition-colors after:absolute after:inset-0 after:-z-10 after:animate-pulse after:rounded-full after:bg-yellow-100 after:bg-opacity-0 after:blur-md after:transition-all after:duration-500 hover:animate-none hover:border-yellow-200/40 hover:text-yellow-300 after:hover:bg-opacity-15 focus:ring-2">
-          Live Streams!
-        </button>
-      </div>
+        <button className="bg-black bg-opacity-50  hover:bg-black text-white font-bold py-2 px-4 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+  Live Streams!
+</button>
+      </div> */}
       {/* <div className="h-4 w-full bg-white mt-14">
     </div>
     */}

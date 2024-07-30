@@ -91,7 +91,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} h-[60px] relative z-10 w-full md:h-[70px]   bg-black bg-opacity-10`}
+      className={`${russoOne.className} h-[60px] relative z-10 w-full md:h-[70px]   bg-[#070815] bg-opacity-50`}
       aria-label="Main"
       ref={container}
     >
