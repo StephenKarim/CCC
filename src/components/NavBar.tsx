@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Content, asLink } from "@prismicio/client";
+import { Content, asLink, isFilled } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import ButtonLink from "@/components/ButtonLink";
 import WordMark from "@/components/WordMark";
@@ -10,7 +10,7 @@ import { MdMenu, MdClose } from "react-icons/md";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { PrismicRichText } from "@prismicio/react";
+import { PrismicRichText, PrismicText } from "@prismicio/react";
 import { PiCrossBold } from "react-icons/pi";
 import { FaCross } from "react-icons/fa";
 import { RiCrossFill,RiCrossLine  } from "react-icons/ri";
@@ -21,6 +21,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
+
 
 const russoOne = Russo_One({
   subsets: ["latin"],
@@ -107,11 +108,16 @@ export default function NavBar({ settings }: NavBarProps) {
               <GiGlobe color="white" className="-ml-2 -mt-[1rem]  h-[2.4rem] w-auto md:h-[2.6rem] opacity-60"/>
               {/* <FcGlobe  className="-ml-2 -mt-[2.05rem] md:-mt-[2.3rem]  h-[1.35rem] w-auto md:h-[1.5rem] opacity-95"/> */}
               </div>
+              
               <div className="flex-col ml-[0.5rem]">
-                <h2 className="text-left -mb-[0.8rem]">Covenant</h2>
-                <em className="text-[1.2rem] font-medium not-italic md:text-[1.5rem]">
-                  City Church
-                </em>
+              {isFilled.richText(settings.data.logo_label_top) && (
+                
+                <h2 className="text-left -mb-[0.8rem]"><PrismicText field={settings.data.logo_label_top} /></h2>  
+      )} 
+              {isFilled.richText(settings.data.logo_label_bot) && (
+                
+                <h2 className="text-[1.2rem] font-medium not-italic md:text-[1.5rem]"><PrismicText field={settings.data.logo_label_top} /></h2>  
+      )} 
               </div>
               {/* bg-gradient-to-b from-yellow-100 to-yellow-500 bg-clip-text not-italic text-transparent */}
             </div>

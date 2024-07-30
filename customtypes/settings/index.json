@@ -61,13 +61,22 @@
           }
         }
       },
-      "logo_label": {
+      "logo_label_top": {
         "type": "StructuredText",
         "config": {
-          "label": "Logo Label",
+          "label": "Logo Label Top",
           "placeholder": "Italic for gold text",
           "allowTargetBlank": true,
-          "single": "heading2,em"
+          "single": "heading2"
+        }
+      },
+      "logo_label_bot": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Logo Label Bot",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading2"
         }
       }
     }
