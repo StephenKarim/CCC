@@ -135,19 +135,19 @@ export default function AnimatedContent({
       <div
         className={`${bebasNeue.className} hero__heading absolute inset-0 z-10 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-3xl font-bold opacity-0 shadow-lg sm:w-[60vw]  md:justify-end md:text-5xl lg:text-6xl`}
       >
-        <h1 className="mr-0">Welcome to Our Church</h1>
-        <button className="bg-[#070815] hero__button opacity-0 hover:bg-blue-700 text-white text-lg sm:text-xl py-1 px-4 rounded-lg shadow-lg ">Join Us Live</button>
-        {/* <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1> */}
-      </div>
-
-      {/* {isFilled.link(slice.primary.button_link) && (
+        <h1 className="mr-0">Welcome to Our Church</h1>       
+        {isFilled.link(slice.primary.button_link) && (
         <ButtonLink
-          className="hero__button mt-[3.5rem] opacity-0"
+          className="hero__button opacity-0 bg-[#070815] text-lg sm:text-xl py-1 px-4 rounded-lg"
           field={slice.primary.button_link}
         >
           {slice.primary.button_label}
         </ButtonLink>
-      )} */}
+      )}
+        {/* <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1> */}
+      </div>
+
+      
     </div>
   );
 }
