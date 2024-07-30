@@ -116,10 +116,13 @@ export default function AnimatedContent() {
         </video>
       </div>
       <div
-        className={`${dancingScript.className} mt-[27rem] absolute inset-0 z-10 flex h-fit w-fit flex-col items-center justify-start text-balance rounded-lg bg-black bg-opacity-25 p-4 text-6xl font-bold shadow-lg md:text-8xl`}
+        className={`${dancingScript.className} text-right mt-[27rem] absolute inset-0 z-10 flex h-fit w-full flex-col items-start justify-start text-balance rounded-lg bg-transparent p-4 text-5xl lg:text-8xl font-bold shadow-lg `}
       >
-        <h1 className=" ml-[30vw]">You`re Welcome</h1>
-        <h1 className=" custom-margin">Here</h1>
+        <div className="bg-black bg-opacity-25 w-[60vw]"> 
+
+        <h1 className="">You`re Welcome</h1>
+        <h1 className="mr-[12rem] lg:mr-[24rem]">Here</h1>
+        </div>
       </div>
       <button className="hero__button mt-[3.5rem] opacity-0">text</button>
       {/* <div className="h-4 w-full bg-white mt-14">
