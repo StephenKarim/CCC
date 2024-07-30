@@ -9,7 +9,7 @@ export default async function Header() {
   return (
     <header >
       <NavBar settings={settings} />
-      <AnimatedContentest />
+      {/* <AnimatedContentest /> */}
     </header>
   );
 }

@@ -18,24 +18,25 @@ import Video from "next-video";
 import getStarted from "/videos/get-started.mp4";
 import heroVid from "/videos/video.mp4";
 
-import { Poppins, Roboto } from "next/font/google";
+import { Russo_One, Dancing_Script, Bebas_Neue } from "next/font/google";
 
-
-
-const poppins = Poppins({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
+const russoOne = Russo_One({
   subsets: ["latin"],
+  weight: ["400"],
   display: "swap",
 });
 
-const roboto = Roboto({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
+const dancingScript = Dancing_Script({
   subsets: ["latin"],
-  display: "swap",
+  weight: ["400"], // Choose weights if needed
+  display: "swap", // Optional: Adjust font-display property
 });
 
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: ["400"], // Choose weights if needed
+  display: "swap", // Optional: Adjust font-display property
+});
 
 
 export default function AnimatedContent({
@@ -57,17 +58,36 @@ export default function AnimatedContent({
         return;
       }
       const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-
       tl.fromTo(
-        ".hero__heading",
-        { scale: 0.5 },
-        { scale: 1, opacity: 1, duration: 1.4 },
+        ".hero__video",
+        { opacity: 0 },
+        {  opacity: 1, duration: 1.5 },
+        "+=0.3",
       );
       tl.fromTo(
-        ".hero__body",
-        { y: 20 },
-        { y: 0, opacity: 1, duration: 1.2 },
-        "-=0.6",
+        ".hero__heading",
+        { x: -1000 },
+        { x: 0, opacity: 1, duration: 1.4 },
+      );
+
+      // tl.fromTo(
+      //   ".hero__body",
+      //   { y: 20 },
+      //   { y: 0, opacity: 1, duration: 1.2 },
+      //   "-=0.6",
+      // );
+
+      // tl.fromTo(
+      //   ".hero__imagee",
+      //   { y: 0 },
+      //   { y: 0, opacity: 1, duration: 1.3, display:"block" },
+      //   "+=0.3",
+      // );
+      tl.fromTo(
+        ".hero__glow",
+        { scale: 0.5 },
+        { scale: 1, opacity: 1, duration: 1.8 },
+        "-=1",
       );
       tl.fromTo(
         ".hero__button",
@@ -75,24 +95,12 @@ export default function AnimatedContent({
         { scale: 1, opacity: 1, duration: 1.3 },
         "-=0.8",
       );
-      tl.fromTo(
-        ".hero__image",
-        { y: 100 },
-        { y: 0, opacity: 1, duration: 1.3 },
-        "+=0.3",
-      );
-      tl.fromTo(
-        ".hero__glow",
-        { scale: 0.5 },
-        { scale: 1, opacity: 1, duration: 1.8 },
-        "-=1",
-      );
     },
     { scope: container },
   );
 
   return (
-    <div className="relative" ref={container}>
+    <div className="relative min-h-[100dvh] min-w-[100vw]" ref={container}>
       {/* <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
         <h1 className="hero__heading mt-2 text-balance text-center text-5xl font-medium opacity-0 md:text-7xl">
@@ -105,32 +113,39 @@ export default function AnimatedContent({
           <PrismicRichText field={slice.primary.body} />
         </div>
       )} */}
-      <div className="h-4 w-full bg-white mt-14">
-
-      </div>
+    
        {isFilled.image(slice.primary.image) && (
-        <div className="glass-container hero__image mt-4 w-fit opacity-0">
-          <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
-          <video
-            className="h-auto w-[1200px]"
-            autoPlay
-            loop
-            muted
-            controls={false}
-          >
-            <source src="/videos/video.mp4"></source>
-          </video>
-        </div>
+        <div className="hero__video min-h-[100vh] min-w-[100vw] opacity-0">
+        <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
+        <video
+          className="hero__video filter  saturate-[0.9] brightness-[1] contrast-[1.1] min-h-[100vh] min-w-[100vw] object-cover opacity-0"
+          autoPlay
+          loop
+          muted
+          controls={false}
+          playsInline
+          poster=""
+        >
+          <source src="/videos/video.mp4"></source>
+        </video>
+      </div>
       )}
-      {isFilled.link(slice.primary.button_link) && (
+      <div
+        className={`${dancingScript.className} hero__heading absolute inset-0 z-10 mt-[25vh] flex h-fit w-[60vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-4xl font-bold opacity-0 shadow-lg md:flex-row md:justify-end md:text-6xl`}
+      >
+        <h1 className="mr-0">You`re Welcome</h1>
+        <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1>
+      </div>
+      
+      {/* {isFilled.link(slice.primary.button_link) && (
         <ButtonLink
           className="hero__button mt-[3.5rem] opacity-0"
           field={slice.primary.button_link}
         >
           {slice.primary.button_label}
         </ButtonLink>
-      )}
-     
+      )} */}
     </div>
+     
   );
 }
