@@ -91,7 +91,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} lg-:py-6 fixed z-10 w-full px-4 py-4 lg:px-6 bg-black bg-opacity-10`}
+      className={`${russoOne.className} lg-:py-6 fixed z-10 w-full h-fit px-4 py-4 lg:px-6 bg-black bg-opacity-10`}
       aria-label="Main"
       ref={container}
     >
@@ -103,12 +103,12 @@ export default function NavBar({ settings }: NavBarProps) {
               className={`${russoOne.className} header__heading flex flex-row text-balance text-center text-2xl font-medium md:text-3xl`}
             >
               <div className="flex flex-col -mt-[0.1rem]">
-              <RiCrossLine color="gold" className="-ml-2 h-[1.5rem] w-auto md:h-[1.7rem] opacity-95" />
-              <GiGlobe color="white" className="-ml-2 -mt-[1rem]  h-[3.2rem] w-auto md:h-[3.7rem] opacity-60"/>
-              <FcGlobe  className="-ml-2 -mt-[2.7rem] md:-mt-[3.1rem]  h-[1.8rem] w-auto md:h-[2rem] opacity-95"/>
+              <RiCrossLine color="gold" className="-ml-2 h-[1.5rem] w-auto md:h-[1.8rem] opacity-95 " />
+              <GiGlobe color="white" className="-ml-2 -mt-[1rem]  h-[2.4rem] w-auto md:h-[2.6rem] opacity-60"/>
+              <FcGlobe  className="-ml-2 -mt-[2.05rem] md:-mt-[2.3rem]  h-[1.35rem] w-auto md:h-[1.5rem] opacity-95"/>
               </div>
               <div className="flex-col">
-                <h2 className="text-left">Covenant</h2>
+                <h2 className="text-left -mb-[0.8rem]">Covenant</h2>
                 <em className="text-[1.2rem] font-medium not-italic md:text-[1.5rem]">
                   City Church
                 </em>
