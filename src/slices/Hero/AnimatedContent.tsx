@@ -133,10 +133,10 @@ export default function AnimatedContent({
         </div>
       )}
       <div
-        className={`${bebasNeue.className} hero__heading absolute inset-0 z-10 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-4xl font-bold opacity-0 shadow-lg sm:w-[60vw]  md:justify-end md:text-5xl lg:text-6xl`}
+        className={`${bebasNeue.className} hero__heading absolute inset-0 z-10 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-3xl font-bold opacity-0 shadow-lg sm:w-[60vw]  md:justify-end md:text-5xl lg:text-6xl`}
       >
         <h1 className="mr-0">Welcome to Our Church</h1>
-        <button className="bg-[#070815] hero__button opacity-0 hover:bg-blue-700 text-white text-xl py-2 px-4 rounded-lg shadow-lg ">Join Us Live</button>
+        <button className="bg-[#070815] hero__button opacity-0 hover:bg-blue-700 text-white text-lg sm:text-xl py-1 px-4 rounded-lg shadow-lg ">Join Us Live</button>
         {/* <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1> */}
       </div>
 
