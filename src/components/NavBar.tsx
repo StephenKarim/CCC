@@ -91,7 +91,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} lg-:py-6 fixed z-10 w-full h-fit px-4 py-4 lg:px-6 bg-black bg-opacity-10`}
+      className={`${russoOne.className} h-[60px] fixed z-10 w-full md:h-[70px]   bg-black bg-opacity-10`}
       aria-label="Main"
       ref={container}
     >
@@ -102,7 +102,7 @@ export default function NavBar({ settings }: NavBarProps) {
             <div
               className={`${russoOne.className} header__heading flex flex-row text-balance text-center text-2xl font-medium md:text-3xl`}
             >
-              <div className="flex flex-col -mt-[0.1rem]">
+              <div className="flex flex-col -mt-[0.1rem] ml-[2rem]">
               <RiCrossLine color="gold" className="-ml-2 h-[1.5rem] w-auto md:h-[1.8rem] opacity-95 " />
               <GiGlobe color="white" className="-ml-2 -mt-[1rem]  h-[2.4rem] w-auto md:h-[2.6rem] opacity-60"/>
               <FcGlobe  className="-ml-2 -mt-[2.05rem] md:-mt-[2.3rem]  h-[1.35rem] w-auto md:h-[1.5rem] opacity-95"/>
