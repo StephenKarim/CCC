@@ -55,8 +55,8 @@ export default function AnimatedContent() {
       const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
       tl.fromTo(
         ".hero__video",
-        { y: -1000 },
-        { y: 0, opacity: 1, duration: 1.3 },
+        { y: -200 },
+        { y: 0, opacity: 1, duration: 1.5 },
         "+=0.3",
       );
       tl.fromTo(
