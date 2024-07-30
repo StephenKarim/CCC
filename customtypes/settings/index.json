@@ -60,6 +60,15 @@
             }
           }
         }
+      },
+      "logo_label": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Logo Label",
+          "placeholder": "Italic for gold text",
+          "allowTargetBlank": true,
+          "single": "heading2,em"
+        }
       }
     }
   }

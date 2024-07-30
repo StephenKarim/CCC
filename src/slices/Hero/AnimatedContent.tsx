@@ -18,13 +18,9 @@ import Video from "next-video";
 import getStarted from "/videos/get-started.mp4";
 import heroVid from "/videos/video.mp4";
 
-import { DM_Sans, Poppins, Inter, Roboto } from "next/font/google";
+import { Poppins, Roboto } from "next/font/google";
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-dm-sans",
-});
+
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -40,11 +36,7 @@ const roboto = Roboto({
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-dm-sans",
-});
+
 
 export default function AnimatedContent({
   slice,

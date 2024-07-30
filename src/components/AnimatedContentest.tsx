@@ -18,32 +18,18 @@ import Video from "next-video";
 import getStarted from "/videos/get-started.mp4";
 import heroVid from "/videos/video.mp4";
 
-import { DM_Sans, Poppins, Inter, Roboto } from "next/font/google";
+import { Russo_One, Dancing_Script } from "next/font/google";
 
-const dmSans = DM_Sans({
+const russoOne = Russo_One({
   subsets: ["latin"],
-  display: "swap",
-  variable: "--font-dm-sans",
-});
-
-const poppins = Poppins({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
+  weight: ["400"],
   display: "swap",
 });
 
-const roboto = Roboto({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
+const dancingScript = Dancing_Script({
   subsets: ["latin"],
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-dm-sans",
+  weight: ["400"], // Choose weights if needed
+  display: "swap", // Optional: Adjust font-display property
 });
 
 export default function AnimatedContent() {
@@ -81,10 +67,16 @@ export default function AnimatedContent() {
       );
       tl.fromTo(
         ".hero__image",
-        { y: 100 },
+        { y: -100 },
         { y: 0, opacity: 1, duration: 1.3 },
         "+=0.3",
       );
+      // tl.fromTo(
+      //   ".hero__imagee",
+      //   { y: 0 },
+      //   { y: 0, opacity: 1, duration: 1.3, display:"block" },
+      //   "+=0.3",
+      // );
       tl.fromTo(
         ".hero__glow",
         { scale: 0.5 },
@@ -110,29 +102,30 @@ export default function AnimatedContent() {
         </div>
       )} */}
       <div className="hero__image opacity-0">
-          <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
-          <video
-            className=""
-            autoPlay
-            loop
-            muted
-            controls={false}
-          >
-            <source src="/videos/video.mp4"></source>
-          </video>
-        </div>
-        <button
-          className="hero__button mt-[3.5rem] opacity-0"
-          
+        <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
+        <video
+          className="min-h-[100vh] min-w-[100vw] object-cover"
+          autoPlay
+          loop
+          muted
+          controls={false}
+          playsInline
+          poster=""
         >
-          text
-        </button>
+          <source src="/videos/video.mp4"></source>
+        </video>
+      </div>
+      <div
+        className={`${dancingScript.className} mt-[27rem] absolute inset-0 z-10 flex h-fit w-fit flex-col items-center justify-start text-balance rounded-lg bg-black bg-opacity-25 p-4 text-6xl font-bold shadow-lg md:text-8xl`}
+      >
+        <h1 className=" ml-[30vw]">You`re Welcome</h1>
+        <h1 className=" custom-margin">Here</h1>
+      </div>
+      <button className="hero__button mt-[3.5rem] opacity-0">text</button>
       {/* <div className="h-4 w-full bg-white mt-14">
 
       </div>
         */}
-   
-     
     </div>
   );
 }

@@ -264,6 +264,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   navigation: prismic.GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
+
+  /**
+   * Logo Label field in *Settings*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Italic for gold text
+   * - **API ID Path**: settings.logo_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  logo_label: prismic.RichTextField;
 }
 
 /**

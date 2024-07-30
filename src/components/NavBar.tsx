@@ -10,6 +10,15 @@ import { MdMenu, MdClose } from "react-icons/md";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { PrismicRichText } from "@prismicio/react";
+import { PiCrossBold } from "react-icons/pi";
+import { Russo_One } from "next/font/google";
+
+const russoOne = Russo_One({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
 
 type NavBarProps = {
   settings: Content.SettingsDocument;
@@ -20,16 +29,28 @@ export default function NavBar({ settings }: NavBarProps) {
   const pathname = usePathname();
 
   return (
-    <nav className="lg-:py-6 px-4 py-4 lg:px-6 fixed w-full z-10" aria-label="Main">
-      <div className="mx-auto flex max-w-7xl flex-col justify-between py-2 font-medium text-white lg:flex-row lg:items-center">
+    <nav
+      className="lg-:py-6 fixed z-10 w-full px-4 py-4 lg:px-6"
+      aria-label="Main"
+    >
+      <div className="mx-auto flex flex-col justify-between py-2 font-medium text-white opacity-95 lg:flex-row lg:items-center">
         <div className="flex items-center justify-between">
           <Link href="/" className="z-50" onClick={() => setOpen(false)}>
-            {/* <Image src="/images/logo.png" alt="Logo" width={60} height={60} /> */}
-
             <span className="sr-only">Covenant City Church Home Page</span>
+            <div
+              className={`${russoOne.className} flex flex-row text-balance text-center text-2xl font-medium md:text-4xl`}
+            >
+              <PiCrossBold className="-ml-2 h-[3.7rem] w-auto md:h-[4.6rem]" />
+              <div className="flex-col">
+                <h2 className="text-left">Covenant</h2>
+                <em className="-mt-2 text-[1.2rem] font-medium not-italic md:text-[1.8rem]">
+                  City Church
+                </em>
+              </div>
+              {/* bg-gradient-to-b from-yellow-100 to-yellow-500 bg-clip-text not-italic text-transparent */}
+            </div>
           </Link>
-          <Image src="/images/text2.png" alt="Logo" width={150} height={100} className="z-30"/>
-          
+
           <button
             type="button"
             className="block p-2 text-3xl text-white lg:hidden"
@@ -57,7 +78,7 @@ export default function NavBar({ settings }: NavBarProps) {
             <span className="sr-only">Close menu</span>
           </button>
 
-          <div className="grid justify-items-end gap-8 z-20">
+          <div className="z-20 grid justify-items-end gap-8">
             {settings.data.navigation.map((item) => {
               if (item.cta_button) {
                 return (

@@ -29,3 +29,7 @@
     --rotation: 0deg;
   }
 }
+
+.custom-margin {
+  margin-left: calc(30vw + 23.5rem); /* Use the CSS calc() function */
+}
