@@ -103,9 +103,9 @@ export default function NavBar({ settings }: NavBarProps) {
               className={`${russoOne.className} header__heading flex flex-row text-balance text-center text-2xl font-medium md:text-3xl`}
             >
               <div className="flex flex-col -mt-[0.1rem]">
-              <RiCrossLine color="gold" className="-ml-2 h-[1.5rem] w-auto md:h-[1.7rem]" />
-              <GiGlobe color="#D2B48C" className="-ml-2 -mt-[1rem]  h-[3.2rem] w-auto md:h-[3.7rem]"/>
-              <FcGlobe  className="-ml-2 -mt-[2.7rem] md:-mt-[3.1rem]  h-[1.8rem] w-auto md:h-[2rem]"/>
+              <RiCrossLine color="gold" className="-ml-2 h-[1.5rem] w-auto md:h-[1.7rem] opacity-95" />
+              <GiGlobe color="white" className="-ml-2 -mt-[1rem]  h-[3.2rem] w-auto md:h-[3.7rem] opacity-60"/>
+              <FcGlobe  className="-ml-2 -mt-[2.7rem] md:-mt-[3.1rem]  h-[1.8rem] w-auto md:h-[2rem] opacity-95"/>
               </div>
               <div className="flex-col">
                 <h2 className="text-left">Covenant</h2>
