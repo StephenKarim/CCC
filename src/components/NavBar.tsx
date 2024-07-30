@@ -12,6 +12,10 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { PrismicRichText } from "@prismicio/react";
 import { PiCrossBold } from "react-icons/pi";
+import { FaCross } from "react-icons/fa";
+import { RiCrossFill,RiCrossLine  } from "react-icons/ri";
+import { FcGlobe } from "react-icons/fc";
+import { GiGlobe } from "react-icons/gi";
 import { Russo_One } from "next/font/google";
 import { useRef } from "react";
 import gsap from "gsap";
@@ -54,8 +58,8 @@ export default function NavBar({ settings }: NavBarProps) {
       tl.fromTo(
         ".header__menu",
         { y: -20 },
-        { y: 0, opacity: 1, duration: 1.2, delay:1.5 },
-        "-=0.6",
+        { y: 0, opacity: 1, duration: 1.2,  },
+        "-=1.0",
       );
       // tl.fromTo(
       //   ".hero__button",
@@ -98,7 +102,11 @@ export default function NavBar({ settings }: NavBarProps) {
             <div
               className={`${russoOne.className} header__heading flex flex-row text-balance text-center text-2xl font-medium md:text-3xl`}
             >
-              <PiCrossBold className="-ml-2 h-[3.7rem] w-auto md:h-[4rem]" />
+              <div className="flex flex-col -mt-[0.1rem]">
+              <RiCrossLine color="gold" className="-ml-2 h-[1.5rem] w-auto md:h-[1.7rem]" />
+              <GiGlobe color="#D2B48C" className="-ml-2 -mt-[1rem]  h-[3.2rem] w-auto md:h-[3.7rem]"/>
+              <FcGlobe  className="-ml-2 -mt-[2.7rem] md:-mt-[3.1rem]  h-[1.8rem] w-auto md:h-[2rem]"/>
+              </div>
               <div className="flex-col">
                 <h2 className="text-left">Covenant</h2>
                 <em className="text-[1.2rem] font-medium not-italic md:text-[1.5rem]">
