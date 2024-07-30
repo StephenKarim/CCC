@@ -49,12 +49,12 @@ export default function NavBar({ settings }: NavBarProps) {
       tl.fromTo(
         ".header__heading",
         { scale: 0.5 },
-        { scale: 1, opacity: 1, duration: 1.4 },
+        { scale: 1, opacity: 1, duration: 1.4, delay:1.5 },
       );
       tl.fromTo(
         ".header__menu",
         { y: -20 },
-        { y: 0, opacity: 1, duration: 1.2 },
+        { y: 0, opacity: 1, duration: 1.2, delay:1.5 },
         "-=0.6",
       );
       // tl.fromTo(
