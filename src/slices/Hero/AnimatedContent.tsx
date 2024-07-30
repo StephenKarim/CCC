@@ -100,7 +100,7 @@ export default function AnimatedContent({
   );
 
   return (
-    <div className="relative min-h-[100dvh] min-w-[100vw]" ref={container}>
+    <div className="relative min-h-[100dvh] min-w-[100vw] -mt-[2.4rem]" ref={container}>
       {/* <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
         <h1 className="hero__heading mt-2 text-balance text-center text-5xl font-medium opacity-0 md:text-7xl">
