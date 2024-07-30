@@ -2,8 +2,14 @@ import Bounded from "@/components/Bounded";
 import { asText, Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { Russo_One } from "next/font/google";
 import clsx from "clsx";
 
+const russoOne = Russo_One({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
 /**
  * Props for `Bento`.
  */
@@ -17,18 +23,20 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className=""
+      className="bg-[url('/images/background6.jpg')] bg-fixed bg-cover text-black"
     >
       <PrismicRichText
         field={slice.primary.heading}
         components={{
           heading2: ({ children }) => (
-            <h2 className="text-balance text-center text-5xl font-medium md:text-7xl">
+            <h2
+              className={` ${russoOne.className} text-balance text-center text-opacity-35 text-5xl font-medium md:text-7xl`}
+            >
               {children}
             </h2>
           ),
           em: ({ children }) => (
-            <em className="bg-gradient-to-b from-yellow-100 to-gray-500 bg-clip-text not-italic text-transparent">
+            <em className="bg-gradient-to-b from-black to-gray-500 bg-clip-text not-italic text-transparent">
               {children}
             </em>
           ),
@@ -38,11 +46,11 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
         <PrismicRichText field={slice.primary.body} />
       </div>
 
-      <div className="mac-w-4xl mt-16 grid grid-rows-[auto_auto_auto] gap-8 md:grid-cols-3 md:gap-10">
+      <div className="mt-16 grid max-w-4xl grid-rows-[auto_auto_auto] gap-8 md:grid-cols-3 md:gap-10">
         {slice.primary.bento_box.map((item) => (
           <div
             className={clsx(
-              " row-span-3 grid grid-rows-subgrid gap-4 rounded-lg bg-gradient-to-b from-gray-900 to-gray-950 p-4",
+              "row-span-3 grid grid-rows-subgrid gap-4 rounded-lg bg-gradient-to-b from-gray-900 to-gray-950 p-4 shadow-sm shadow-gray-500",
               item.wide ? "md:col-span-2" : "md:col-span-1",
             )}
             key={asText(item.title)}

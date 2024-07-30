@@ -32,10 +32,13 @@ const CaseStudies = async ({
     })
   );
   return (
+    // <div className="bg-black opacity-80">
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      // className="bg-[url('/images/background6.jpg')] bg-fixed bg-cover"
     >
+
       <h2 className="max-w-2xl text-balance text-center text-5xl font-medium md:text-7xl">
         <PrismicRichText field={slice.primary.heading} />
       </h2>
@@ -49,8 +52,8 @@ const CaseStudies = async ({
           (caseStudy, index) =>
             caseStudy && (
               <div
-                key={caseStudy.id}
-                className="relative grid gap-4 opacity-85 transition-opacity duration-300 hover:cursor-pointer hover:opacity-100 md:grid-cols-2 md:gap-8 lg:grid-cols-3"
+              key={caseStudy.id}
+              className="relative grid gap-4 opacity-85 transition-opacity duration-300 hover:cursor-pointer hover:opacity-100 md:grid-cols-2 md:gap-8 lg:grid-cols-3"
               >
                 <div className="col-span-1 flex flex-col justify-center gap-4">
                   <h3 className="text-4xl">
@@ -61,10 +64,10 @@ const CaseStudies = async ({
                   {/* <PrismicNextLink
                     document={caseStudy}
                     className="after:absolute after:inset-0 hover:underline"
-                  >
+                    >
                     Read <PrismicText field={caseStudy.data.company} /> Case
                     Study
-                  </PrismicNextLink> */}
+                    </PrismicNextLink> */}
                 </div>
                 <PrismicNextImage
                   field={caseStudy.data.logo_image}
@@ -73,12 +76,13 @@ const CaseStudies = async ({
                     "rounded-xl lg:col-span-2",
                     index % 2 && "md:-order-1"
                   )}
-                ></PrismicNextImage>
+                  ></PrismicNextImage>
               </div>
             )
-        )}
+          )}
       </div>
     </Bounded>
+          // </div>
   );
 };
 
