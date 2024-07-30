@@ -13,7 +13,7 @@ import Image from "next/image";
 import { PrismicRichText, PrismicText } from "@prismicio/react";
 import { PiCrossBold } from "react-icons/pi";
 import { FaCross } from "react-icons/fa";
-import { RiCrossFill,RiCrossLine  } from "react-icons/ri";
+import { RiCrossFill, RiCrossLine } from "react-icons/ri";
 import { FcGlobe } from "react-icons/fc";
 import { GiGlobe } from "react-icons/gi";
 import { Russo_One } from "next/font/google";
@@ -21,7 +21,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
-
 
 const russoOne = Russo_One({
   subsets: ["latin"],
@@ -54,12 +53,12 @@ export default function NavBar({ settings }: NavBarProps) {
       tl.fromTo(
         ".header__heading",
         { opacity: 0 },
-        {  opacity: 1, duration: 1.5, delay:1 },
+        { opacity: 1, duration: 1.5, delay: 1 },
       );
       tl.fromTo(
         ".header__menu",
         { x: 100 },
-        { x: 0, opacity: 1, duration: 1.2,  },
+        { x: 0, opacity: 1, duration: 1.2 },
         "-=1.0",
       );
       // tl.fromTo(
@@ -92,32 +91,40 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} h-[60px] absolute z-10 w-full md:h-[70px] bg-opacity-95  bg-[#070815] `}
+      className={`${russoOne.className} absolute z-10 h-[60px] w-full bg-[#070815] bg-opacity-95 md:h-[70px]`}
       aria-label="Main"
       ref={container}
     >
-      <div className=" mx-auto flex flex-col justify-between py-2 font-medium text-white opacity-95 lg:flex-row lg:items-center">
-        <div className="flex items-center justify-between header__heading opacity-0" >
+      <div className="mx-auto flex flex-col justify-between py-2 font-medium text-white opacity-95 lg:flex-row lg:items-center">
+        <div className="header__heading flex items-center justify-between opacity-0">
           <Link href="/" className="z-50" onClick={() => setOpen(false)}>
             <span className="sr-only">Covenant City Church Home Page</span>
             <div
               className={`${russoOne.className} header__heading flex flex-row text-balance text-center text-2xl font-medium md:text-3xl`}
             >
-              <div className="flex flex-col -mt-[0.1rem] ml-[2rem] ">
-              <RiCrossLine color="white" className="-ml-2 h-[1.5rem] w-auto md:h-[1.8rem] opacity-60 " />
-              <GiGlobe color="white" className="-ml-2 -mt-[1rem]  h-[2.4rem] w-auto md:h-[2.6rem] opacity-60"/>
-              {/* <FcGlobe  className="-ml-2 -mt-[2.05rem] md:-mt-[2.3rem]  h-[1.35rem] w-auto md:h-[1.5rem] opacity-95"/> */}
+              <div className="-mt-[0.1rem] ml-[2rem] flex flex-col">
+                <RiCrossLine
+                  color="white"
+                  className="-ml-2 h-[1.5rem] w-auto opacity-60 md:h-[1.8rem]"
+                />
+                <GiGlobe
+                  color="white"
+                  className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-60 md:h-[2.6rem]"
+                />
+                {/* <FcGlobe  className="-ml-2 -mt-[2.05rem] md:-mt-[2.3rem]  h-[1.35rem] w-auto md:h-[1.5rem] opacity-95"/> */}
               </div>
-              
-              <div className="flex-col ml-[0.5rem]">
-              {isFilled.richText(settings.data.logo_label_top) && (
-                
-                <h2 className="text-left -mb-[0.8rem]"><PrismicText field={settings.data.logo_label_top} /></h2>  
-      )} 
-              {isFilled.richText(settings.data.logo_label_bot) && (
-                
-                <h2 className="text-[1.2rem] font-medium not-italic md:text-[1.5rem]"><PrismicText field={settings.data.logo_label_top} /></h2>  
-      )} 
+
+              <div className="ml-[0.5rem] flex-col">
+                {isFilled.richText(settings.data.logo_label_top) && (
+                  <h2 className="-mb-[0.8rem] text-left">
+                    <PrismicText field={settings.data.logo_label_top} />
+                  </h2>
+                )}
+                {isFilled.richText(settings.data.logo_label_bot) && (
+                  <h2 className="text-[1.2rem] font-medium not-italic md:text-[1.5rem]">
+                    <PrismicText field={settings.data.logo_label_bot} />
+                  </h2>
+                )}
               </div>
               {/* bg-gradient-to-b from-yellow-100 to-yellow-500 bg-clip-text not-italic text-transparent */}
             </div>
@@ -125,7 +132,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
           <button
             type="button"
-            className={` block p-2 text-3xl text-white lg:hidden`}
+            className={`block p-2 text-3xl text-white lg:hidden`}
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
@@ -188,13 +195,13 @@ export default function NavBar({ settings }: NavBarProps) {
         </div>
 
         {/* Desktop Nav */}
-        <ul className="hidden gap-6 lg:flex header__menu opacity-0 text-lg">
+        <ul className="header__menu hidden gap-6 text-lg opacity-0 lg:flex">
           {settings.data.navigation.map((item) => {
             if (item.cta_button) {
               return (
                 <li key={item.label}>
                   <ButtonLink
-                  className=""
+                    className=""
                     field={item.link}
                     aria-current={
                       pathname.includes(asLink(item.link) as string)
