@@ -38,7 +38,6 @@ const bebasNeue = Bebas_Neue({
   display: "swap", // Optional: Adjust font-display property
 });
 
-
 export default function AnimatedContent({
   slice,
 }: {
@@ -61,7 +60,7 @@ export default function AnimatedContent({
       tl.fromTo(
         ".hero__video",
         { opacity: 0 },
-        {  opacity: 1, duration: 1.5 },
+        { opacity: 1, duration: 1.5 },
         "+=0.3",
       );
       tl.fromTo(
@@ -100,7 +99,10 @@ export default function AnimatedContent({
   );
 
   return (
-    <div className="relative min-h-[100dvh] min-w-[100vw] -mt-[2.4rem]" ref={container}>
+    <div
+      className="relative -mt-[2.4rem] min-h-[100dvh] min-w-[100vw]"
+      ref={container}
+    >
       {/* <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
         <h1 className="hero__heading mt-2 text-balance text-center text-5xl font-medium opacity-0 md:text-7xl">
@@ -113,30 +115,30 @@ export default function AnimatedContent({
           <PrismicRichText field={slice.primary.body} />
         </div>
       )} */}
-    
-       {isFilled.image(slice.primary.image) && (
+
+      {isFilled.image(slice.primary.image) && (
         <div className="hero__video min-h-[100vh] min-w-[100vw] opacity-0">
-        {/* <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" /> */}
-        <video
-          className="hero__video filter  saturate-[0.9] brightness-[1] contrast-[1.1] min-h-[100vh] min-w-[100vw] object-cover opacity-0"
-          autoPlay
-          loop
-          muted
-          controls={false}
-          playsInline
-          poster=""
-        >
-          <source src="/videos/video.mp4"></source>
-        </video>
-      </div>
+          {/* <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" /> */}
+          <video
+            className="hero__video min-h-[100vh] min-w-[100vw] object-cover opacity-0 brightness-[1] contrast-[1.1] saturate-[0.9] filter"
+            autoPlay
+            loop
+            muted
+            controls={false}
+            playsInline
+            poster=""
+          >
+            <source src="/videos/video.mp4"></source>
+          </video>
+        </div>
       )}
       <div
-        className={`${dancingScript.className} hero__heading absolute inset-0 z-10 mt-[25vh] flex h-fit w-[80vw] sm:w-[60vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-4xl font-bold opacity-0 shadow-lg md:flex-row md:justify-end lg:text-5xl`}
+        className={`${dancingScript.className} hero__heading absolute inset-0 z-10 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-4xl font-bold opacity-0 shadow-lg sm:w-[60vw] md:flex-row md:justify-end md:text-5xl lg:text-6xl`}
       >
         <h1 className="mr-0">You`re Welcome Here</h1>
         {/* <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1> */}
       </div>
-      
+
       {/* {isFilled.link(slice.primary.button_link) && (
         <ButtonLink
           className="hero__button mt-[3.5rem] opacity-0"
@@ -146,6 +148,5 @@ export default function AnimatedContent({
         </ButtonLink>
       )} */}
     </div>
-     
   );
 }
