@@ -104,7 +104,7 @@ export default function AnimatedContent() {
           <PrismicRichText field={slice.primary.body} />
         </div>
       )} */}
-      <div className="hero__video opacity-0">
+      <div className="hero__video opacity-0 min-h-[100vh] min-w-[100vw]">
         <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" />
         <video
           className="min-h-[100vh] min-w-[100vw] object-cover hero__video opacity-0"

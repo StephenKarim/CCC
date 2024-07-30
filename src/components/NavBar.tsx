@@ -87,7 +87,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className="lg-:py-6 fixed z-10 w-full px-4 py-4 lg:px-6 "
+      className={`${russoOne.className} lg-:py-6 fixed z-10 w-full px-4 py-4 lg:px-6 bg-black bg-opacity-10`}
       aria-label="Main"
       ref={container}
     >
@@ -96,12 +96,12 @@ export default function NavBar({ settings }: NavBarProps) {
           <Link href="/" className="z-50" onClick={() => setOpen(false)}>
             <span className="sr-only">Covenant City Church Home Page</span>
             <div
-              className={`${russoOne.className} header__heading flex flex-row text-balance text-center text-2xl font-medium md:text-4xl`}
+              className={`${russoOne.className} header__heading flex flex-row text-balance text-center text-2xl font-medium md:text-3xl`}
             >
-              <PiCrossBold className="-ml-2 h-[3.7rem] w-auto md:h-[4.6rem]" />
+              <PiCrossBold className="-ml-2 h-[3.7rem] w-auto md:h-[4rem]" />
               <div className="flex-col">
                 <h2 className="text-left">Covenant</h2>
-                <em className="-mt-2 text-[1.2rem] font-medium not-italic md:text-[1.8rem]">
+                <em className="text-[1.2rem] font-medium not-italic md:text-[1.5rem]">
                   City Church
                 </em>
               </div>
@@ -111,7 +111,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
           <button
             type="button"
-            className="block p-2 text-3xl text-white lg:hidden"
+            className={` block p-2 text-3xl text-white lg:hidden`}
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
@@ -174,12 +174,13 @@ export default function NavBar({ settings }: NavBarProps) {
         </div>
 
         {/* Desktop Nav */}
-        <ul className="hidden gap-6 lg:flex header__menu opacity-0 ">
+        <ul className="hidden gap-6 lg:flex header__menu opacity-0 text-lg">
           {settings.data.navigation.map((item) => {
             if (item.cta_button) {
               return (
                 <li key={item.label}>
                   <ButtonLink
+                  className=""
                     field={item.link}
                     aria-current={
                       pathname.includes(asLink(item.link) as string)
