@@ -133,7 +133,7 @@ export default function AnimatedContent({
         </div>
       )}
       <div
-        className={`${bebasNeue.className} hero__heading absolute inset-0 z-10 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-3xl font-bold opacity-0 shadow-lg sm:w-[60vw]  md:justify-end md:text-5xl lg:text-6xl`}
+        className={`${bebasNeue.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-3xl font-bold opacity-0 shadow-lg sm:w-[60vw]  md:justify-end md:text-5xl lg:text-6xl`}
       >
        
         {isFilled.richText(slice.primary.heading) && (

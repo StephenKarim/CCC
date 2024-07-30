@@ -31,6 +31,7 @@ export default async function Page({ params }: { params: Params }) {
           field={page.data.logo_image}
           quality={100}
           className="rounded-lg"
+          alt=""
         />
       </div>
       <SliceZone slices={page.data.slices} components={components} />

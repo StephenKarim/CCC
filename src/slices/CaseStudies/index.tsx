@@ -72,6 +72,7 @@ const CaseStudies = async ({
                 <PrismicNextImage
                   field={caseStudy.data.logo_image}
                   quality={100}
+                  alt=""
                   className={clsx(
                     "rounded-xl lg:col-span-2",
                     index % 2 && "md:-order-1"
