@@ -133,8 +133,8 @@ export default function AnimatedContent({
       <div
         className={`${dancingScript.className} hero__heading absolute inset-0 z-10 mt-[25vh] flex h-fit w-[60vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-4xl font-bold opacity-0 shadow-lg md:flex-row md:justify-end md:text-6xl`}
       >
-        <h1 className="mr-0">You`re Welcome</h1>
-        <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1>
+        <h1 className="mr-0">You`re Welcome Here</h1>
+        {/* <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1> */}
       </div>
       
       {/* {isFilled.link(slice.primary.button_link) && (
