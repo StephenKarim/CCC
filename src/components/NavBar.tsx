@@ -54,7 +54,7 @@ export default function NavBar({ settings }: NavBarProps) {
       tl.fromTo(
         ".header__heading",
         { opacity: 0 },
-        { opacity: 1, duration: 1.5, delay: 1 },
+        { opacity: 1, duration: 1, delay: 0.5 },
       );
       tl.fromTo(
         ".header__menu",
@@ -66,37 +66,31 @@ export default function NavBar({ settings }: NavBarProps) {
       tl.fromTo(
         ".header__newss",
         { xPercent: 100 },
-        { xPercent: -100, opacity: 1, duration: 15,repeat: -1, ease: "linear"},
+        {
+          xPercent: -100,
+          opacity: 1,
+          duration: 15,
+          repeat: -1,
+          ease: "linear",
+        },
         "-=1.0",
       );
-
-      // tl.fromTo(
-      //   marqueeRef.current,
-      //   { xPercent: 100 },
-      //   {
-      //     opacity: 1,
-      //     xPercent: -100,
-      //     duration: 15,
-      //     repeat: -1,
-      //     ease: "linear",
-      //   },
-      // );
     },
     { scope: container },
   );
 
   return (
     <nav
-      className={`${russoOne.className} absolute z-10 h-[60px] w-full bg-[#070815e0]  md:h-[70px]`}
+      className={`${russoOne.className} absolute z-10 h-[60px] w-full bg-[#070815e0] md:h-[70px]`}
       aria-label="Main"
       ref={container}
     >
-      <div className="mx-auto flex flex-col justify-between py-2 font-medium text-white opacity-95 lg:flex-row lg:items-center">
-        <div className="header__heading flex items-center justify-between opacity-0">
+      <div className="header__heading mx-auto flex flex-col justify-between py-2 font-medium text-white opacity-95 lg:flex-row lg:items-center">
+        <div className="header__heading flex items-center justify-between opacity-0 ">
           <Link href="/" className="z-50" onClick={() => setOpen(false)}>
             <span className="sr-only">Covenant City Church Home Page</span>
             <div
-              className={`${russoOne.className} header__heading flex flex-row text-balance text-center text-2xl font-medium md:text-3xl`}
+              className={`${russoOne.className} flex flex-row text-balance text-center text-2xl font-medium md:text-3xl`}
             >
               <div className="-mt-[0.1rem] ml-[2rem] flex flex-col">
                 <RiCrossLine
@@ -230,8 +224,8 @@ export default function NavBar({ settings }: NavBarProps) {
         </ul>
       </div>
       {isFilled.richText(settings.data.news) && (
-        <div className="header__news overflow-hidden -mt-[0.5rem] max-h-[1.5rem] bg-black bg-opacity-60 opacity-0 flex items-center justify-end">
-          <div  className="header__newss max-h-[1.5rem] w-[100vw] sm:w-[80vw] md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw] text-nowrap overflow-hidden text-white">
+        <div className="header__news -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden bg-black bg-opacity-60 opacity-0">
+          <div className="header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap text-white sm:w-[80vw] md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]">
             <PrismicText field={settings.data.news} />
           </div>
         </div>

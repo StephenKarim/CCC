@@ -57,40 +57,17 @@ export default function AnimatedContent({
         return;
       }
       const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-      tl.fromTo(
-        ".hero__video",
-        { opacity: 0 },
-        { opacity: 1, duration: 1 },        
-      );
+      tl.fromTo(".hero__video", { opacity: 0 }, { opacity: 1, duration: 0.5 });
       tl.fromTo(
         ".hero__heading",
-        { x: -1000 },
-        { x: 0, opacity: 1, duration: 1 },
+        { x: -100 },
+        { x: 0, opacity: 1, duration: 1 },"-=0.3"
       );
-
-      // tl.fromTo(
-      //   ".hero__body",
-      //   { y: 20 },
-      //   { y: 0, opacity: 1, duration: 1.2 },
-      //   "-=0.6",
-      // );
-
-      // tl.fromTo(
-      //   ".hero__imagee",
-      //   { y: 0 },
-      //   { y: 0, opacity: 1, duration: 1.3, display:"block" },
-      //   "+=0.3",
-      // );
-      // tl.fromTo(
-      //   ".hero__glow",
-      //   { scale: 0.5 },
-      //   { scale: 1, opacity: 1, duration: 1.8 },
-      //   "-=1",
-      // );
       tl.fromTo(
         ".hero__button",
         { scale: 1.5 },
-        { scale: 1, opacity: 1, duration: 1 },        
+        { scale: 1, opacity: 1, duration: 0.5 },
+        "-=0.2",
       );
     },
     { scope: container },
@@ -118,7 +95,7 @@ export default function AnimatedContent({
         <div className="hero__video min-h-[100vh] min-w-[100vw] opacity-0">
           {/* <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" /> */}
           <video
-            className="hero__video min-h-[100vh] min-w-[100vw]  object-cover opacity-0 brightness-[1] contrast-[1.1] saturate-[0.9] filter"
+            className="hero__video min-h-[100vh] min-w-[100vw] object-cover opacity-0 brightness-[1] contrast-[1.1] saturate-[0.9] filter"
             autoPlay
             loop
             muted
@@ -131,25 +108,23 @@ export default function AnimatedContent({
         </div>
       )}
       <div
-        className={`${bebasNeue.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-3xl font-bold opacity-0 shadow-lg sm:w-[60vw]  md:justify-end md:text-5xl lg:text-6xl`}
+        className={`${bebasNeue.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-3xl font-bold opacity-0 shadow-lg sm:w-[60vw] md:justify-end md:text-5xl lg:text-6xl`}
       >
-       
         {isFilled.richText(slice.primary.heading) && (
-           <h1 className="mr-0 md:text-[6.2vh] lg:text-6xl"><PrismicText field={slice.primary.heading} /></h1>  
-        
-      )}     
+          <h1 className="mr-0 md:text-[6.2vh] lg:text-6xl">
+            <PrismicText field={slice.primary.heading} />
+          </h1>
+        )}
         {isFilled.link(slice.primary.button_link) && (
-        <ButtonLink
-          className=" lg:text-3xl hero__button opacity-0 bg-[#070815] text-lg sm:text-xl py-1 px-[0.8rem] rounded-lg"
-          field={slice.primary.button_link}
-        >
-          {slice.primary.button_label}
-        </ButtonLink>
-      )}
+          <ButtonLink
+            className="hero__button rounded-lg bg-[#070815] px-[0.8rem] py-1 text-lg opacity-0 sm:text-xl lg:text-3xl"
+            field={slice.primary.button_link}
+          >
+            {slice.primary.button_label}
+          </ButtonLink>
+        )}
         {/* <h1 className="mr-[9rem] md:ml-3 md:mr-0">Here</h1> */}
       </div>
-
-      
     </div>
   );
 }
