@@ -32,7 +32,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative bg-[#070815] bg-[url('/images/church.jpg')] bg-cover bg-fixed bg-center"
+      className="relative bg-[#070815] bg-[url('/images/church.jpg')] bg-cover bg-fixed bg-center px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24"
     >
       <div className="glow absolute -z-10 aspect-square w-full max-w-xl rounded-full bg-blue-400/20 blur-3xl filter" />
 
@@ -41,7 +41,9 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
           field={slice.primary.heading}
           components={{
             heading2: ({ children }) => (
-              <h2 className={`${russoOne.className} text-balance text-center text-5xl font-medium md:text-7xl`}>
+              <h2
+                className={`${russoOne.className} text-balance text-center text-5xl font-medium md:text-7xl`}
+              >
                 {children}
               </h2>
             ),
@@ -57,7 +59,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
             <PrismicRichText field={slice.primary.subheading} />
           </div>
 
-          <div className="prose prose-invert mt-4 max-w-xl font-bold text-v">
+          <div className="text-v prose prose-invert mt-4 max-w-xl font-bold">
             <PrismicRichText field={slice.primary.body} />
           </div>
 
