@@ -19,7 +19,7 @@ export default async function Footer() {
   const client = createClient();
   const settings = await client.getSingle("settings");
   return (
-    <footer className="flex flex-col items-center justify-between gap-6 border-t border-slate-600 px-8 py-7 md:flex-row bg-[#070815]">
+    <footer className="flex flex-col items-center justify-between gap-6 border-t border-slate-600 px-8 py-7 md:flex-row bg-[#070815] opacity-95">
       <Link href="/" className="z-50 mr-10" >
             <span className="sr-only">Covenant City Church Home Page</span>
             <div

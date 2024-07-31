@@ -87,7 +87,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} absolute z-10 h-[60px] w-full bg-[#070815] bg-opacity-95 md:h-[70px]`}
+      className={`${russoOne.className} absolute z-10 h-[60px] w-full bg-[#070815e0]  md:h-[70px]`}
       aria-label="Main"
       ref={container}
     >
@@ -230,7 +230,7 @@ export default function NavBar({ settings }: NavBarProps) {
         </ul>
       </div>
       {isFilled.richText(settings.data.news) && (
-        <div className="header__news overflow-hidden -mt-[0.5rem] max-h-[1.5rem] bg-black opacity-0 flex items-center justify-end">
+        <div className="header__news overflow-hidden -mt-[0.5rem] max-h-[1.5rem] bg-black bg-opacity-60 opacity-0 flex items-center justify-end">
           <div  className="header__newss max-h-[1.5rem] w-[100vw] sm:w-[80vw] md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw] text-nowrap overflow-hidden text-white">
             <PrismicText field={settings.data.news} />
           </div>
