@@ -142,7 +142,7 @@ export default function AnimatedContent({
       )}     
         {isFilled.link(slice.primary.button_link) && (
         <ButtonLink
-          className="md:text-[2.5vh] lg:text-3xl hero__button opacity-0 bg-[#070815] text-lg sm:text-xl py-1 px-4 rounded-lg"
+          className=" lg:text-3xl hero__button opacity-0 bg-[#070815] text-lg sm:text-xl py-1 px-[0.8rem] rounded-lg"
           field={slice.primary.button_link}
         >
           {slice.primary.button_label}
