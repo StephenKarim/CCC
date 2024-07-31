@@ -174,7 +174,7 @@ export default function NavBar({ settings }: NavBarProps) {
               return (
                 <PrismicNextLink
                   key={item.label}
-                  className="block px-3 text-3xl first:mt-8"
+                  className="block px-3 text-2xl first:mt-8"
                   field={item.link}
                   onClick={() => setOpen(false)}
                   aria-current={

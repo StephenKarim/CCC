@@ -9,6 +9,15 @@ import {
 } from "@prismicio/react";
 import clsx from "clsx";
 
+import { Russo_One, Dancing_Script, Bebas_Neue } from "next/font/google";
+
+const russoOne = Russo_One({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
+
+
 /**
  * Props for `CaseStudies`.
  */
@@ -36,14 +45,17 @@ const CaseStudies = async ({
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      // className="bg-[url('/images/background6.jpg')] bg-fixed bg-cover"
+      className={`${russoOne.className} bg-[url('/images/I3.jpg')] bg-fixed bg-cover text-white`}
     >
+<div className=" bg-black bg-opacity-40 rounded-xl">
+  
+<div className="flex flex-col items-center justify-center z-10">
 
-      <h2 className="max-w-2xl text-balance text-center text-5xl font-medium md:text-7xl">
+      <h2 className="max-w-2xl text-balance text-center text-5xl font-medium md:text-7xl ">
         <PrismicRichText field={slice.primary.heading} />
       </h2>
 
-      <div className="mx-auto mt-6 max-w-md text-balance text-center text-slate-300">
+      <div className="mx-auto mt-6 max-w-md text-balance text-center ">
         <PrismicRichText field={slice.primary.body} />
       </div>
 
@@ -82,6 +94,8 @@ const CaseStudies = async ({
             )
           )}
       </div>
+          </div>
+          </div>
     </Bounded>
           // </div>
   );

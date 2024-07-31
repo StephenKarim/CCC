@@ -23,7 +23,8 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-[url('/images/news.jpg')] bg-fixed bg-cover"
+      className="bg-[#070815]"
+      // className="bg-[url('/images/I1.jpg')] bg-fixed bg-cover"
     >
       <PrismicRichText
         field={slice.primary.heading}
