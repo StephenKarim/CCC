@@ -34,7 +34,7 @@ type NavBarProps = {
 
 export default function NavBar({ settings }: NavBarProps) {
   const [open, setOpen] = useState(false);
-  const marqueeRef = useRef(null);
+  // const marqueeRef = useRef(null);
   const pathname = usePathname();
   const container = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -63,18 +63,24 @@ export default function NavBar({ settings }: NavBarProps) {
         "-=1.0",
       );
       tl.fromTo(".header__news", {}, { opacity: 1, duration: 1.2 }, "-=1.0");
-
       tl.fromTo(
-        marqueeRef.current,
+        ".header__newss",
         { xPercent: 100 },
-        {
-          opacity: 1,
-          xPercent: -100,
-          duration: 15,
-          repeat: -1,
-          ease: "linear",
-        },
+        { xPercent: -100, opacity: 1, duration: 15,repeat: -1, ease: "linear"},
+        "-=1.0",
       );
+
+      // tl.fromTo(
+      //   marqueeRef.current,
+      //   { xPercent: 100 },
+      //   {
+      //     opacity: 1,
+      //     xPercent: -100,
+      //     duration: 15,
+      //     repeat: -1,
+      //     ease: "linear",
+      //   },
+      // );
     },
     { scope: container },
   );
@@ -224,8 +230,8 @@ export default function NavBar({ settings }: NavBarProps) {
         </ul>
       </div>
       {isFilled.richText(settings.data.news) && (
-        <div className="header__news -mt-[0.5rem] max-h-[1.5rem] bg-black opacity-0">
-          <div ref={marqueeRef} className="bg-transparent max-h-[1.5rem] text-nowrap text-white">
+        <div className="header__news overflow-hidden -mt-[0.5rem] max-h-[1.5rem] bg-black opacity-0 flex items-center justify-end">
+          <div  className="header__newss max-h-[1.5rem] w-[100vw] sm:w-[80vw] md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw] text-nowrap overflow-hidden text-white">
             <PrismicText field={settings.data.news} />
           </div>
         </div>
