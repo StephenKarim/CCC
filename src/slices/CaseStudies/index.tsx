@@ -9,7 +9,7 @@ import {
 } from "@prismicio/react";
 import clsx from "clsx";
 
-import { Russo_One, Dancing_Script, Bebas_Neue } from "next/font/google";
+import { Russo_One, Dancing_Script, Bebas_Neue, Roboto} from "next/font/google";
 
 const russoOne = Russo_One({
   subsets: ["latin"],
@@ -17,6 +17,17 @@ const russoOne = Russo_One({
   display: "swap",
 });
 
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: ["400"], // Choose weights if needed
+  display: "swap", // Optional: Adjust font-display property
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400"], // Choose weights if needed
+  display: "swap", // Optional: Adjust font-display property
+});
 
 /**
  * Props for `CaseStudies`.
@@ -45,13 +56,13 @@ const CaseStudies = async ({
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className={`${russoOne.className} bg-[url('/images/I3.jpg')] bg-fixed bg-cover text-white`}
+      className={`${roboto.className} bg-[url('/images/I3.jpg')] bg-fixed bg-cover text-white`}
     >
-<div className=" bg-black bg-opacity-40 rounded-xl">
+<div className=" bg-black bg-opacity-40 rounded-xl p-4">
   
 <div className="flex flex-col items-center justify-center z-10">
 
-      <h2 className="max-w-2xl text-balance text-center text-5xl font-medium md:text-7xl ">
+      <h2 className="max-w-2xl text-balance text-center text-5xl font-medium md:text-7xl p-4">
         <PrismicRichText field={slice.primary.heading} />
       </h2>
 

@@ -100,7 +100,7 @@ export default function AnimatedContent({
 
   return (
     <div
-      className="relative -mt-[2.4rem] min-h-[100dvh] min-w-[100vw] bg-[#070815]"
+      className="relative min-h-[100dvh] min-w-[100vw] bg-[#070815]"
       ref={container}
     >
       {/* <StarGrid />
