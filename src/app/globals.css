@@ -28,12 +28,12 @@
   .signal-line {
     --rotation: 0deg;
   }
+  .text-max-size {
+    font-size: clamp(1.875rem, 10vh, 3.75rem); /* Example maximum size */
+  }
 }
 
 .custom-margin {
   margin-left: calc(30vw + 23.5rem); /* Use the CSS calc() function */
 }
 
-.text-max-size {
-  font-size: clamp(1.875rem, 10dvh, 3.75rem); /* Example maximum size */
-}

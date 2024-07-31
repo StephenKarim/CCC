@@ -137,12 +137,12 @@ export default function AnimatedContent({
       >
        
         {isFilled.richText(slice.primary.heading) && (
-           <h1 className="mr-0 text-max-size"><PrismicText field={slice.primary.heading} /></h1>  
+           <h1 className="mr-0 md:text-[5.5vh] lg:text-6xl"><PrismicText field={slice.primary.heading} /></h1>  
         
       )}     
         {isFilled.link(slice.primary.button_link) && (
         <ButtonLink
-          className="hero__button opacity-0 bg-[#070815] text-lg sm:text-xl py-1 px-4 rounded-lg"
+          className="md:text-[2.5vh] lg:text-3xl hero__button opacity-0 bg-[#070815] text-lg sm:text-xl py-1 px-4 rounded-lg"
           field={slice.primary.button_link}
         >
           {slice.primary.button_label}
