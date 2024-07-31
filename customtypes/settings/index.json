@@ -6,26 +6,31 @@
   "status": true,
   "json": {
     "Main": {
-      "site_title": {
-        "type": "Text",
+      "logo_label_top": {
+        "type": "StructuredText",
         "config": {
-          "label": "Site Title",
-          "placeholder": ""
+          "label": "Logo Label Top",
+          "placeholder": "Italic for gold text",
+          "allowTargetBlank": true,
+          "single": "heading2"
         }
       },
-      "meta_description": {
-        "type": "Text",
+      "logo_label_bot": {
+        "type": "StructuredText",
         "config": {
-          "label": "Meta Description",
-          "placeholder": ""
+          "label": "Logo Label Bot",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading2"
         }
       },
-      "fallback_og_image": {
-        "type": "Image",
+      "news": {
+        "type": "StructuredText",
         "config": {
-          "label": "Fallback OG Image",
-          "constraint": {},
-          "thumbnails": []
+          "label": "News",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph"
         }
       },
       "navigation": {
@@ -61,22 +66,26 @@
           }
         }
       },
-      "logo_label_top": {
-        "type": "StructuredText",
+      "site_title": {
+        "type": "Text",
         "config": {
-          "label": "Logo Label Top",
-          "placeholder": "Italic for gold text",
-          "allowTargetBlank": true,
-          "single": "heading2"
+          "label": "Site Title",
+          "placeholder": ""
         }
       },
-      "logo_label_bot": {
-        "type": "StructuredText",
+      "meta_description": {
+        "type": "Text",
         "config": {
-          "label": "Logo Label Bot",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "heading2"
+          "label": "Meta Description",
+          "placeholder": ""
+        }
+      },
+      "fallback_og_image": {
+        "type": "Image",
+        "config": {
+          "label": "Fallback OG Image",
+          "constraint": {},
+          "thumbnails": []
         }
       }
     }

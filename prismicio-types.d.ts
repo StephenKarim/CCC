@@ -222,6 +222,50 @@ export interface SettingsDocumentDataNavigationItem {
  */
 interface SettingsDocumentData {
   /**
+   * Logo Label Top field in *Settings*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Italic for gold text
+   * - **API ID Path**: settings.logo_label_top
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  logo_label_top: prismic.TitleField;
+
+  /**
+   * Logo Label Bot field in *Settings*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.logo_label_bot
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  logo_label_bot: prismic.TitleField;
+
+  /**
+   * News field in *Settings*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.news
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  news: prismic.RichTextField;
+
+  /**
+   * Navigation field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navigation: prismic.GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
+
+  /**
    * Site Title field in *Settings*
    *
    * - **Field Type**: Text
@@ -253,39 +297,6 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   fallback_og_image: prismic.ImageField<never>;
-
-  /**
-   * Navigation field in *Settings*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.navigation[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  navigation: prismic.GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
-
-  /**
-   * Logo Label Top field in *Settings*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: Italic for gold text
-   * - **API ID Path**: settings.logo_label_top
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  logo_label_top: prismic.TitleField;
-
-  /**
-   * Logo Label Bot field in *Settings*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.logo_label_bot
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  logo_label_bot: prismic.TitleField;
 }
 
 /**

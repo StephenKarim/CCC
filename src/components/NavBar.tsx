@@ -34,6 +34,7 @@ type NavBarProps = {
 
 export default function NavBar({ settings }: NavBarProps) {
   const [open, setOpen] = useState(false);
+  const marqueeRef = useRef(null);
   const pathname = usePathname();
   const container = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -61,30 +62,19 @@ export default function NavBar({ settings }: NavBarProps) {
         { x: 0, opacity: 1, duration: 1.2 },
         "-=1.0",
       );
-      // tl.fromTo(
-      //   ".hero__button",
-      //   { scale: 1.5 },
-      //   { scale: 1, opacity: 1, duration: 1.3 },
-      //   "-=0.8",
-      // );
-      // tl.fromTo(
-      //   ".hero__image",
-      //   { y: -100 },
-      //   { y: 0, opacity: 1, duration: 1.3 },
-      //   "+=0.3",
-      // );
-      // tl.fromTo(
-      //   ".hero__imagee",
-      //   { y: 0 },
-      //   { y: 0, opacity: 1, duration: 1.3, display:"block" },
-      //   "+=0.3",
-      // );
-      // tl.fromTo(
-      //   ".hero__glow",
-      //   { scale: 0.5 },
-      //   { scale: 1, opacity: 1, duration: 1.8 },
-      //   "-=1",
-      // );
+      tl.fromTo(".header__news", {}, { opacity: 1, duration: 1.2 }, "-=1.0");
+
+      tl.fromTo(
+        marqueeRef.current,
+        { xPercent: 100 },
+        {
+          opacity: 1,
+          xPercent: -100,
+          duration: 15,
+          repeat: -1,
+          ease: "linear",
+        },
+      );
     },
     { scope: container },
   );
@@ -233,6 +223,13 @@ export default function NavBar({ settings }: NavBarProps) {
           })}
         </ul>
       </div>
+      {isFilled.richText(settings.data.news) && (
+        <div className="header__news -mt-[0.5rem] h-[1.5rem] w-full bg-black opacity-0">
+          <div ref={marqueeRef} className="bg-transparent text-white">
+            <PrismicText field={settings.data.news} />
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
