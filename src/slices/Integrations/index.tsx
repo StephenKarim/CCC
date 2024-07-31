@@ -25,7 +25,7 @@ const Integrations = ({ slice }: IntegrationsProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative bg-[#070815] overflow-hidden px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24"
+      className="relative overflow-hidden px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24"
     >
       <Image
         src={background}
