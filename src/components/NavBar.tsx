@@ -224,8 +224,8 @@ export default function NavBar({ settings }: NavBarProps) {
         </ul>
       </div>
       {isFilled.richText(settings.data.news) && (
-        <div className="header__news -mt-[0.5rem] h-[1.5rem] w-full bg-black opacity-0">
-          <div ref={marqueeRef} className="bg-transparent text-white w-fit">
+        <div className="header__news -mt-[0.5rem] max-h-[1.5rem] bg-black opacity-0">
+          <div ref={marqueeRef} className="bg-transparent max-h-[1.5rem] text-nowrap text-white">
             <PrismicText field={settings.data.news} />
           </div>
         </div>
