@@ -68,7 +68,7 @@ const CaseStudies = async ({
       </h2>
       <div className="mt-16 grid items-center gap-8 rounded-xl border border-blue-50/20 bg-gradient-to-b from-slate-50/15 to-slate-50/5 px-8 py-8 backdrop-blur-sm  lg:gap-0 lg:py-12">
         <div className="z-10 flex flex-col items-center justify-center">
-          <div className="mx-auto mt-6 max-w-md text-balance text-center">
+          <div className="mx-auto mt-6 max-w-md text-balance text-center text-2xl lg:text-3xl">
             <PrismicRichText field={slice.primary.body} />
           </div>
 
