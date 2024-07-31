@@ -56,7 +56,7 @@ const CaseStudies = async ({
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className={`${roboto.className} bg-[url('/images/I3.jpg')] bg-fixed bg-cover text-white`}
+      className={`${roboto.className} bg-[url('/images/I3.jpg')] bg-fixed bg-cover bg-center text-white`}
     >
 <div className=" bg-black bg-opacity-40 rounded-xl p-4">
   
