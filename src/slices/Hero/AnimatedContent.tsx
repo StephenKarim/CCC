@@ -60,13 +60,12 @@ export default function AnimatedContent({
       tl.fromTo(
         ".hero__video",
         { opacity: 0 },
-        { opacity: 1, duration: 1.5 },
-        "+=0.3",
+        { opacity: 1, duration: 1 },        
       );
       tl.fromTo(
         ".hero__heading",
         { x: -1000 },
-        { x: 0, opacity: 1, duration: 1.4 },
+        { x: 0, opacity: 1, duration: 1 },
       );
 
       // tl.fromTo(
@@ -91,8 +90,7 @@ export default function AnimatedContent({
       tl.fromTo(
         ".hero__button",
         { scale: 1.5 },
-        { scale: 1, opacity: 1, duration: 1.3, delay:1 },
-        "-=0.8",
+        { scale: 1, opacity: 1, duration: 1 },        
       );
     },
     { scope: container },
