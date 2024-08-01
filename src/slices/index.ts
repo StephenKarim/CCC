@@ -10,4 +10,5 @@ export const components = {
   integrations: dynamic(() => import("./Integrations")),
   rich_text: dynamic(() => import("./RichText")),
   showcase: dynamic(() => import("./Showcase")),
+  testimonial: dynamic(() => import("./Testimonial")),
 };
