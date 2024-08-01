@@ -37,3 +37,10 @@
   margin-left: calc(30vw + 23.5rem); /* Use the CSS calc() function */
 }
 
+
+.bg-fixedFix {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: calc(var(--vh, 1vh) * 100);
+}
