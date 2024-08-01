@@ -53,7 +53,7 @@ export default async function Footer() {
             </div>
           </Link>
       <nav aria-label="Footer">
-        <ul className="flex gap-6">
+        <ul className="flex gap-6 text-2xl">
           {settings.data.navigation
             .filter(
               (_, index) =>

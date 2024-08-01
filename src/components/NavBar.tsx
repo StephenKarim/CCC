@@ -128,7 +128,7 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <MdMenu className="fixed right-[1rem] top-[1rem]"/>
+            <MdMenu className="fixed right-[1rem] top-[1rem] rounded-sm bg-black bg-opacity-50" />
             <span className="sr-only">Open menu</span>
           </button>
         </div>
@@ -231,7 +231,7 @@ export default function NavBar({ settings }: NavBarProps) {
           className={`header__news -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden bg-black bg-opacity-60 opacity-0`}
         >
           <div
-            className={`${open ? "fixed z-50 mt-[10rem] italic text-center sm:w-[75vw] text-red-500" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap text-white md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
+            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-red-500 sm:w-[75vw]" : "text-white sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
           >
             <PrismicText field={settings.data.news} />
           </div>
