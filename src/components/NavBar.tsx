@@ -86,8 +86,12 @@ export default function NavBar({ settings }: NavBarProps) {
       ref={container}
     >
       <div className="header__heading mx-auto flex flex-col justify-between py-2 font-medium text-white opacity-95 lg:flex-row lg:items-center">
-        <div className="header__heading flex items-center justify-between opacity-0 ">
-          <Link href="/" className="z-50" onClick={() => setOpen(false)}>
+        <div className="header__heading flex items-center justify-between opacity-0">
+          <Link
+            href="/"
+            className={`z-50 ${open ? "fixed" : ""}`}
+            onClick={() => setOpen(false)}
+          >
             <span className="sr-only">Covenant City Church Home Page</span>
             <div
               className={`${russoOne.className} flex flex-row text-balance text-center text-2xl font-medium md:text-3xl`}
@@ -152,7 +156,7 @@ export default function NavBar({ settings }: NavBarProps) {
               if (item.cta_button) {
                 return (
                   <ButtonLink
-                  className="text-xl"
+                    className="text-xl"
                     key={item.label}
                     field={item.link}
                     onClick={() => setOpen(false)}
@@ -169,7 +173,7 @@ export default function NavBar({ settings }: NavBarProps) {
               return (
                 <PrismicNextLink
                   key={item.label}
-                  className="block px-3 text-xl first:mt-8 "
+                  className="block px-3 text-xl first:mt-8"
                   field={item.link}
                   onClick={() => setOpen(false)}
                   aria-current={
