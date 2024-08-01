@@ -32,7 +32,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative bg-[#070815] bg-fixedFix px-4 py-14  first:pt-10 md:px-6 md:py-20 lg:py-24"
+      className="relative bg-[#070815] bg-[url('/images/i3.jpg')] bg-cover bg-fixed bg-center bg-no-repeat px-4 py-14  first:pt-10 md:px-6 md:py-20 lg:py-24"
     >
       <div className="glow absolute -z-10 aspect-square w-full max-w-xl rounded-full bg-blue-400/20 blur-3xl filter" />
 
