@@ -39,8 +39,23 @@
 
 
 .bg-fixedFix {
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  height: calc(var(--vh, 1vh) * 100);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  transform: scale(1.0); 
+  &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("/public/images/I3.jpg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;}
 }
