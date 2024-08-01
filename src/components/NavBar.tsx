@@ -1,25 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { Content, asLink, isFilled } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import ButtonLink from "@/components/ButtonLink";
-import WordMark from "@/components/WordMark";
 import { MdMenu, MdClose } from "react-icons/md";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { PrismicRichText, PrismicText } from "@prismicio/react";
-import { PiCrossBold } from "react-icons/pi";
-import { FaCross } from "react-icons/fa";
-import { RiCrossFill, RiCrossLine } from "react-icons/ri";
-import { FcGlobe } from "react-icons/fc";
+import { RiCrossLine } from "react-icons/ri";
 import { GiGlobe } from "react-icons/gi";
 import { Russo_One } from "next/font/google";
-import { useRef } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
 
 const russoOne = Russo_One({
@@ -34,50 +27,59 @@ type NavBarProps = {
 
 export default function NavBar({ settings }: NavBarProps) {
   const [open, setOpen] = useState(false);
-  // const marqueeRef = useRef(null);
   const pathname = usePathname();
   const container = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
-  gsap.registerPlugin(useGSAP);
 
-  useGSAP(
-    () => {
-      if (prefersReducedMotion) {
-        gsap.set(
-          ".hero__heading,.hero__body, .hero__button, .hero__image, .hero__glow",
-          { opacity: 1 },
-        );
-        return;
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1024) {
+        setOpen(false);
       }
-      const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+    };
 
-      tl.fromTo(
-        ".header__heading",
-        { opacity: 0 },
-        { opacity: 1, duration: 1, delay: 0.5 },
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
+
+      // Check initial width
+      handleResize();
+
+      // Cleanup the event listener on component unmount
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      gsap.set(
+        ".hero__heading, .hero__body, .hero__button, .hero__image, .hero__glow",
+        { opacity: 1 },
       );
-      tl.fromTo(
-        ".header__menu",
-        { x: 100 },
-        { x: 0, opacity: 1, duration: 1.2 },
-        "-=1.0",
-      );
-      tl.fromTo(".header__news", {}, { opacity: 1, duration: 1.2 }, "-=1.0");
-      tl.fromTo(
-        ".header__newss",
-        { xPercent: 100 },
-        {
-          xPercent: -100,
-          opacity: 1,
-          duration: 15,
-          repeat: -1,
-          ease: "linear",
-        },
-        "-=1.0",
-      );
-    },
-    { scope: container },
-  );
+      return;
+    }
+    const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
+
+    tl.fromTo(
+      ".header__heading",
+      { opacity: 0 },
+      { opacity: 1, duration: 1, delay: 0.5 },
+    );
+    tl.fromTo(
+      ".header__menu",
+      { x: 100 },
+      { x: 0, opacity: 1, duration: 1.2 },
+      "-=1.0",
+    );
+    tl.fromTo(".header__news", {}, { opacity: 1, duration: 1.2 }, "-=1.0");
+    tl.fromTo(
+      ".header__newss",
+      { xPercent: 100 },
+      { xPercent: -100, opacity: 1, duration: 15, repeat: -1, ease: "linear" },
+      "-=1.0",
+    );
+  }, [prefersReducedMotion]);
 
   return (
     <nav
@@ -85,9 +87,11 @@ export default function NavBar({ settings }: NavBarProps) {
       aria-label="Main"
       ref={container}
     >
-      <div className="header__heading mx-auto flex flex-col justify-between py-2 font-medium text-white opacity-95 lg:flex-row lg:items-center">
-        <div className="header__heading flex items-center justify-between opacity-0 ">
-          <Link href="/" className="z-50" onClick={() => setOpen(false)}>
+      <div
+        className={`${open ? "fixed z-50" : ""} header__heading mx-auto flex flex-col justify-between py-2 font-medium text-white opacity-95 lg:flex-row lg:items-center`}
+      >
+        <div className="header__heading flex items-center justify-between opacity-0">
+          <Link href="/" className={`z-50`} onClick={() => setOpen(false)}>
             <span className="sr-only">Covenant City Church Home Page</span>
             <div
               className={`${russoOne.className} flex flex-row text-balance text-center text-2xl font-medium md:text-3xl`}
@@ -101,7 +105,6 @@ export default function NavBar({ settings }: NavBarProps) {
                   color="white"
                   className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-60 md:h-[2.6rem]"
                 />
-                {/* <FcGlobe  className="-ml-2 -mt-[2.05rem] md:-mt-[2.3rem]  h-[1.35rem] w-auto md:h-[1.5rem] opacity-95"/> */}
               </div>
 
               <div className="ml-[0.5rem] flex-col">
@@ -116,13 +119,12 @@ export default function NavBar({ settings }: NavBarProps) {
                   </h2>
                 )}
               </div>
-              {/* bg-gradient-to-b from-yellow-100 to-yellow-500 bg-clip-text not-italic text-transparent */}
             </div>
           </Link>
 
           <button
             type="button"
-            className={`block p-2 text-3xl text-white lg:hidden`}
+            className={`z-50 ${open ? "hidden" : "block p-2 text-3xl text-white lg:hidden"}`}
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
@@ -133,7 +135,7 @@ export default function NavBar({ settings }: NavBarProps) {
         {/* Mobile Nav */}
         <div
           className={clsx(
-            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#070815]  pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
+            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#070815] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
@@ -152,7 +154,7 @@ export default function NavBar({ settings }: NavBarProps) {
               if (item.cta_button) {
                 return (
                   <ButtonLink
-                  className="text-xl"
+                    className="text-xl"
                     key={item.label}
                     field={item.link}
                     onClick={() => setOpen(false)}
@@ -169,7 +171,7 @@ export default function NavBar({ settings }: NavBarProps) {
               return (
                 <PrismicNextLink
                   key={item.label}
-                  className="block px-3 text-xl first:mt-8 "
+                  className="block px-3 text-xl first:mt-8"
                   field={item.link}
                   onClick={() => setOpen(false)}
                   aria-current={
@@ -225,8 +227,12 @@ export default function NavBar({ settings }: NavBarProps) {
         </ul>
       </div>
       {isFilled.richText(settings.data.news) && (
-        <div className="header__news -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden bg-black bg-opacity-60 opacity-0">
-          <div className="header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap text-white sm:w-[80vw] md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]">
+        <div
+          className={`header__news -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden bg-black bg-opacity-60 opacity-0`}
+        >
+          <div
+            className={`${open ? "fixed z-50 mt-[10rem] italic text-center sm:w-[75vw] text-red-500" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap text-white md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
+          >
             <PrismicText field={settings.data.news} />
           </div>
         </div>
