@@ -75,7 +75,7 @@ export default function AnimatedContent({
 
   return (
     <div
-      className="relative min-h-[100dvh] min-w-[100vw] bg-[#070815]"
+      className="relative min-h-full min-w-full bg-[#070815]"
       ref={container}
     >
       {/* <StarGrid />
@@ -92,10 +92,10 @@ export default function AnimatedContent({
       )} */}
 
       {isFilled.image(slice.primary.image) && (
-        <div className="hero__video min-h-[100vh] min-w-[100vw] opacity-0">
+        <div className="hero__video min-h-full min-w-full opacity-0">
           {/* <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" /> */}
           <video
-            className="hero__video min-h-[100vh] min-w-[100vw] object-cover opacity-0 brightness-[1] contrast-[1.1] saturate-[0.9] filter"
+            className="hero__video min-h-[100dvh] min-w-[98vw] object-cover opacity-0 brightness-[1] contrast-[1.1] saturate-[0.9] filter overflow-hidden"
             autoPlay
             loop
             muted
