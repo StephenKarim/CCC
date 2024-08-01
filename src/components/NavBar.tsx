@@ -128,7 +128,7 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <MdMenu />
+            <MdMenu className="fixed right-[1rem] top-[1rem]"/>
             <span className="sr-only">Open menu</span>
           </button>
         </div>
