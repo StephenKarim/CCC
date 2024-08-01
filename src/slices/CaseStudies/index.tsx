@@ -61,12 +61,14 @@ const CaseStudies = async ({
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className={`${roboto.className} bg-[url('/images/I3.jpg')] bg-cover bg-fixed bg-center px-4 py-14 text-white first:pt-10 md:px-6 md:py-20 lg:py-24`}
+      className={`${roboto.className} h-[100vh] bg-[url('/images/I3.jpg')] bg-cover bg-fixed bg-center px-4 py-14 text-white first:pt-10 md:px-6 md:py-20 lg:py-24`}
     >
-      <h2 className={`${russoOne.className} max-w-2xl text-balance p-4 text-center text-5xl font-medium md:text-7xl`}>
+      <h2
+        className={`${russoOne.className} max-w-2xl text-balance p-4 text-center text-5xl font-medium md:text-7xl`}
+      >
         <PrismicRichText field={slice.primary.heading} />
       </h2>
-      <div className="mt-16 grid items-center gap-8 rounded-xl border border-blue-50/20 bg-gradient-to-b from-slate-50/15 to-slate-50/5 px-8 py-8 backdrop-blur-sm  lg:gap-0 lg:py-12">
+      <div className="mt-16 grid items-center gap-8 rounded-xl border border-blue-50/20 bg-gradient-to-b from-slate-50/15 to-slate-50/5 px-8 py-8 backdrop-blur-sm lg:gap-0 lg:py-12">
         <div className="z-10 flex flex-col items-center justify-center">
           <div className="mx-auto mt-6 max-w-md text-balance text-center text-2xl lg:text-3xl">
             <PrismicRichText field={slice.primary.body} />
