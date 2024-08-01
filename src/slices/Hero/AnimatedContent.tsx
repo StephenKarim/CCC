@@ -95,7 +95,7 @@ export default function AnimatedContent({
         <div className="hero__video min-h-full min-w-full opacity-0">
           {/* <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" /> */}
           <video
-            className="hero__video min-h-[100dvh] min-w-[96vw] sm:min-w-[97vw] md:min-w-[97.5vw] lg:min-w-[98.2vw] xl:min-w-[98.6vw] 2xl:min-w-[98.8vw]  object-cover opacity-0 brightness-[1] contrast-[1.1] saturate-[0.9] filter overflow-hidden"
+            className="hero__video min-h-[100vh] min-w-[96vw] sm:min-w-[97vw] md:min-w-[97.5vw] lg:min-w-[98.2vw] xl:min-w-[98.6vw] 2xl:min-w-[98.8vw]  object-cover opacity-0 brightness-[1] contrast-[1.1] saturate-[0.9] filter overflow-hidden"
             autoPlay
             loop
             muted
