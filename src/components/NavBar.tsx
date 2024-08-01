@@ -152,6 +152,7 @@ export default function NavBar({ settings }: NavBarProps) {
               if (item.cta_button) {
                 return (
                   <ButtonLink
+                  className="text-xl"
                     key={item.label}
                     field={item.link}
                     onClick={() => setOpen(false)}
@@ -168,7 +169,7 @@ export default function NavBar({ settings }: NavBarProps) {
               return (
                 <PrismicNextLink
                   key={item.label}
-                  className="block px-3 text-xl first:mt-8"
+                  className="block px-3 text-xl first:mt-8 "
                   field={item.link}
                   onClick={() => setOpen(false)}
                   aria-current={
