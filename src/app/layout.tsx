@@ -11,7 +11,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="font-lora">
-      <body className="h-[100svh] bg-[url('/images/I3.jpg')] bg-cover bg-fixed bg-center text-white">
+      <body className="bg-[url('/images/I3.jpg')] bg-cover bg-fixed bg-center text-white">
         {/* bg-[url('/images/background.png')] bg-fixed bg-cover */}
         <Header />
         <main>{children}</main>
