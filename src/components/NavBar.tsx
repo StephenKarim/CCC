@@ -83,12 +83,12 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} absolute z-10 h-[60px] w-full bg-[#070815e0] md:h-[70px]`}
+      className={`${russoOne.className} absolute z-10 h-[60px] w-full bg-white bg-opacity-95 text-gray-700 md:h-[70px]`}
       aria-label="Main"
       ref={container}
     >
       <div
-        className={`${open ? "fixed z-50" : ""} header__heading mx-auto flex flex-col justify-between py-2 font-medium text-white opacity-95 lg:flex-row lg:items-center`}
+        className={`${open ? "fixed z-50" : ""} header__heading mx-auto flex flex-col justify-between py-2 font-medium opacity-95 lg:flex-row lg:items-center`}
       >
         <div className="header__heading flex items-center justify-between opacity-0">
           <Link href="/" className={`z-50`} onClick={() => setOpen(false)}>
@@ -98,11 +98,11 @@ export default function NavBar({ settings }: NavBarProps) {
             >
               <div className="-mt-[0.1rem] ml-[2rem] flex flex-col">
                 <RiCrossLine
-                  color="white"
+                  color="black"
                   className="-ml-2 h-[1.5rem] w-auto opacity-60 md:h-[1.8rem]"
                 />
                 <GiGlobe
-                  color="white"
+                  color="black"
                   className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-60 md:h-[2.6rem]"
                 />
               </div>
@@ -124,24 +124,24 @@ export default function NavBar({ settings }: NavBarProps) {
 
           <button
             type="button"
-            className={`z-50 ${open ? "hidden" : "block p-2 text-3xl text-white lg:hidden"}`}
+            className={`z-50 ${open ? "hidden" : "block p-2 text-3xl lg:hidden"}`}
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <MdMenu className="fixed right-[1rem] top-[1rem] rounded-sm bg-black bg-opacity-50" />
+            <MdMenu className="fixed right-[1rem] top-[1rem] rounded-sm" />
             <span className="sr-only">Open menu</span>
           </button>
         </div>
         {/* Mobile Nav */}
         <div
           className={clsx(
-            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#070815] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
+            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-white bg-opacity-95 pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
           <button
             type="button"
-            className="fixed right-4 top-4 mb-4 block p-2 text-3xl text-white lg:hidden"
+            className="fixed right-4 top-4 mb-4 block p-2 text-3xl lg:hidden"
             aria-expanded={open}
             onClick={() => setOpen(false)}
           >
@@ -228,10 +228,10 @@ export default function NavBar({ settings }: NavBarProps) {
       </div>
       {isFilled.richText(settings.data.news) && (
         <div
-          className={`header__news -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden bg-black bg-opacity-60 opacity-0`}
+          className={`header__news -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden bg-white bg-opacity-90 opacity-0`}
         >
           <div
-            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-red-500 sm:w-[75vw]" : "text-white sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
+            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-red-500 sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
           >
             <PrismicText field={settings.data.news} />
           </div>

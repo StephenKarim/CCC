@@ -75,7 +75,7 @@ export default function AnimatedContent({
 
   return (
     <div
-      className="relative min-h-full min-w-full bg-[#070815]"
+      className="relative min-h-full min-w-full bg-white"
       ref={container}
     >
       {/* <StarGrid />
@@ -108,16 +108,16 @@ export default function AnimatedContent({
         </div>
       )}
       <div
-        className={`${bebasNeue.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-black bg-opacity-25 p-4 text-right text-3xl font-bold opacity-0 shadow-lg sm:w-[60vw] md:justify-end md:text-5xl lg:text-6xl`}
+        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg  bg-white bg-opacity-95 p-4 text-right font-bold opacity-0 shadow-lg sm:w-[60vw] md:justify-end `}
       >
         {isFilled.richText(slice.primary.heading) && (
-          <h1 className="mr-0 md:text-[6.2vh] lg:text-6xl">
+          <h1 className="mr-0 text-[1.3rem] sm:text-2xl md:text-[3.5vh] pb-2 lg:text-4xl">
             <PrismicText field={slice.primary.heading} />
           </h1>
         )}
         {isFilled.link(slice.primary.button_link) && (
           <ButtonLink
-            className="hero__button rounded-lg bg-[#070815] px-[0.8rem] py-1 text-lg opacity-0 sm:text-xl lg:text-3xl"
+            className="hero__button rounded-lg bg-white border border-black  text-[1rem] opacity-0 sm:text-xl lg:text-2xl"
             field={slice.primary.button_link}
           >
             {slice.primary.button_label}
