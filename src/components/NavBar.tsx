@@ -83,7 +83,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} absolute z-10 h-[60px] w-full bg-[#F8F8FF] bg-opacity-100 text-gray-700 md:h-[70px]`}
+      className={`${russoOne.className} absolute z-10 h-[80px] w-full bg-[#F5F5F5] bg-opacity-100 p-2 text-gray-700 md:h-[90px]`}
       aria-label="Main"
       ref={container}
     >
@@ -128,14 +128,14 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <MdMenu className="fixed right-[1rem] top-[1rem] rounded-sm" />
+            <MdMenu className="fixed right-[1.5rem] top-[1.7rem] rounded-sm md:top-[1.8rem]" />
             <span className="sr-only">Open menu</span>
           </button>
         </div>
         {/* Mobile Nav */}
         <div
           className={clsx(
-            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#F8F8FF] bg-opacity-100 pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
+            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#F5F5F5] bg-opacity-100 pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
@@ -228,7 +228,7 @@ export default function NavBar({ settings }: NavBarProps) {
       </div>
       {isFilled.richText(settings.data.news) && (
         <div
-          className={`header__news -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden bg-[#F8F8FF] bg-opacity-95 opacity-0`}
+          className={`header__news -mt-[0.5rem] left-0 flex max-h-[1.5rem] items-center justify-end overflow-hidden bg-[#F5F5F5] bg-opacity-95 opacity-0`}
         >
           <div
             className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-red-500 sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}

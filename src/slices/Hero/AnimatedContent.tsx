@@ -61,7 +61,8 @@ export default function AnimatedContent({
       tl.fromTo(
         ".hero__heading",
         { x: -100 },
-        { x: 0, opacity: 1, duration: 1 },"-=0.3"
+        { x: 0, opacity: 1, duration: 1 },
+        "-=0.3",
       );
       tl.fromTo(
         ".hero__button",
@@ -74,10 +75,7 @@ export default function AnimatedContent({
   );
 
   return (
-    <div
-      className="relative min-h-full min-w-full bg-[#F8F8FF]"
-      ref={container}
-    >
+    <div className="relative min-h-full min-w-full" ref={container}>
       {/* <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
         <h1 className="hero__heading mt-2 text-balance text-center text-5xl font-medium opacity-0 md:text-7xl">
@@ -95,7 +93,7 @@ export default function AnimatedContent({
         <div className="hero__video min-h-full min-w-full opacity-0">
           {/* <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" /> */}
           <video
-            className="hero__video min-h-[100vh] min-w-[96vw] sm:min-w-[97vw] md:min-w-[97.5vw] lg:min-w-[98.2vw] xl:min-w-[98.6vw] 2xl:min-w-[98.8vw]  object-cover opacity-0 brightness-[1] contrast-[1.1] saturate-[0.9] filter overflow-hidden"
+            className="hero__video min-h-[100vh] min-w-[96vw] overflow-hidden object-cover opacity-0 brightness-[1] contrast-[1.1] saturate-[0.9] filter sm:min-w-[97vw] md:min-w-[97.5vw] lg:min-w-[98.2vw] xl:min-w-[98.6vw] 2xl:min-w-[98.8vw]"
             autoPlay
             loop
             muted
@@ -108,22 +106,21 @@ export default function AnimatedContent({
         </div>
       )}
       <div
-        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg  bg-[#F8F8FF] bg-opacity-100 p-4 text-right font-bold opacity-0 shadow-lg sm:w-[60vw] md:justify-end `}
+        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-[#F5F5F5] bg-opacity-100 p-4 text-right font-bold opacity-0 shadow-lg sm:w-[60vw] md:justify-end`}
       >
         {isFilled.richText(slice.primary.heading) && (
-          <h1 className="mr-0 text-[1.3rem] sm:text-2xl md:text-[3.5vh] pb-2 lg:text-4xl">
+          <h1 className="mr-0 pb-2 text-[1.3rem] sm:text-xl md:text-[2.5vh] lg:text-3xl">
             <PrismicText field={slice.primary.heading} />
           </h1>
         )}
         {isFilled.link(slice.primary.button_link) && (
           <ButtonLink
-            className="hero__button rounded-lg bg-[#F8F8FF] border border-black  text-[1rem] opacity-0 sm:text-xl lg:text-2xl"
+            className="hero__button rounded-lg border border-black bg-[#F5F5F5] md:text-[1.9vh] text-[1rem] opacity-0 sm:text-lg lg:text-xl"
             field={slice.primary.button_link}
           >
             {slice.primary.button_label}
           </ButtonLink>
         )}
-       
       </div>
     </div>
   );
