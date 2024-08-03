@@ -99,24 +99,23 @@ export default function AnimatedContent({
             muted
             controls={false}
             playsInline
-            preload="auto"
-            poster=""
+            preload="metadata"
           >
             <source src="/videos/video.mp4"></source>
           </video>
         </div>
       )}
       <div
-        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] text-shadow-lg flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-[#070815]  bg-opacity-40 backdrop-blur-sm p-4 text-right font-bold opacity-0 shadow-lg sm:w-[60vw] md:justify-end`}
+        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-[#070815] bg-opacity-40 p-4 text-right font-bold opacity-0 shadow-lg backdrop-blur-sm text-shadow-lg sm:w-[60vw] md:justify-end`}
       >
         {isFilled.richText(slice.primary.heading) && (
-          <h1 className="mr-0 pb-2 text-[1.3rem] sm:text-xl md:text-2xl md:max-text-[] lg:text-3xl">
+          <h1 className="md:max-text-[] mr-0 pb-2 text-[1.3rem] sm:text-xl md:text-2xl lg:text-3xl">
             <PrismicText field={slice.primary.heading} />
           </h1>
         )}
         {isFilled.link(slice.primary.button_link) && (
           <ButtonLink
-            className="hero__button rounded-lg border border-black bg-[#070815] bg-opacity-95 text-[1rem] opacity-0   lg:text-xl"
+            className="hero__button rounded-lg border border-black bg-[#070815] bg-opacity-95 text-[1rem] opacity-0 lg:text-xl"
             field={slice.primary.button_link}
           >
             {slice.primary.button_label}
