@@ -83,7 +83,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} header__heading bg-background bg-opacity-95 text-foreground absolute z-10 h-[80px] w-full p-2 opacity-0 md:h-[90px]`}
+      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full bg-[#070815] bg-opacity-95 p-2 text-gray-200 opacity-0 md:h-[90px]`}
       aria-label="Main"
       ref={container}
     >
@@ -98,11 +98,11 @@ export default function NavBar({ settings }: NavBarProps) {
             >
               <div className="-mt-[0.1rem] ml-[2rem] flex flex-col">
                 <RiCrossLine
-                  color="black"
+                  color=""
                   className="-ml-2 h-[1.5rem] w-auto opacity-60 md:h-[1.8rem]"
                 />
                 <GiGlobe
-                  color="black"
+                  color=""
                   className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-60 md:h-[2.6rem]"
                 />
               </div>
@@ -128,14 +128,14 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <MdMenu className="bg-background fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-opacity-90 md:top-[1.8rem]" />
+            <MdMenu className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-[#070815] bg-opacity-90 bg-opacity-95 md:top-[1.8rem]" />
             <span className="sr-only">Open menu</span>
           </button>
         </div>
         {/* Mobile Nav */}
         <div
           className={clsx(
-            "ga-4 bg-background fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-opacity-100 pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
+            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#070815] bg-opacity-100 bg-opacity-95 pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
@@ -228,10 +228,10 @@ export default function NavBar({ settings }: NavBarProps) {
       </div>
       {isFilled.richText(settings.data.news) && (
         <div
-          className={`header__news bg-background left-0 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden bg-opacity-95 opacity-0`}
+          className={`header__news left-0 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden backdrop-blur-sm bg-[#070815] bg-opacity-85 opacity-0`}
         >
           <div
-            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-red-500 sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
+            className={`${open ? "fixed z-50 mt-[10rem] text-center text-shadow-lg italic text-red-500 sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
           >
             <PrismicText field={settings.data.news} />
           </div>

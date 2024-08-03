@@ -27,7 +27,7 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
     className="relative min-h-[60vh] bg-[url('/images/church.jpeg')] bg-cover bg-fixed bg-center px-4 py-32 text-center font-medium text-secondary first:pt-10 md:px-6 md:py-40 lg:py-24"
   >
     <div className="glow absolute -z-10 aspect-square w-full max-w-sm rounded-full bg-blue-500/50 blur-[160px] filter" />
-    <div className="glass-container rounded-lg bg-background bg-opacity-95 p-4 md:rounded-xl">
+    <div className="glass-container rounded-lg bg-[#070815] bg-opacity-95 p-4 md:rounded-xl">
       <div className="ml-[0.5rem] flex flex-col items-center justify-center">
         <RiCrossLine
           color="black"
@@ -47,7 +47,7 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
     </div>
     <ButtonLink
       field={slice.primary.button_link}
-      className="mt-6 text-foreground"
+      className="mt-6 text-gray-200"
     >
       {slice.primary.button_text || "Learn More"}
     </ButtonLink>
