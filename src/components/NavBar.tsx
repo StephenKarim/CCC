@@ -88,9 +88,9 @@ export default function NavBar({ settings }: NavBarProps) {
       ref={container}
     >
       <div
-        className={`${open ? "fixed z-50" : ""} header__heading mx-auto flex flex-col justify-between py-2 font-medium opacity-95 lg:flex-row lg:items-center`}
+        className={`${open ? "fixed z-50" : ""}  mx-auto flex flex-col justify-between py-2 font-medium opacity-95 lg:flex-row lg:items-center`}
       >
-        <div className="header__heading flex items-center justify-between opacity-0">
+        <div className="flex items-center justify-between ">
           <Link href="/" className={`z-50`} onClick={() => setOpen(false)}>
             <span className="sr-only">Covenant City Church Home Page</span>
             <div
