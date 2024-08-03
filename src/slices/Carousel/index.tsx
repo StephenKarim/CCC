@@ -86,12 +86,12 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       >
         <PrismicRichText field={slice.primary.heading} />
       </div>
-      <div ref={imagesRef} className="flex md:h-[40vh] md:w-[74.2vh]">
+      <div ref={imagesRef} className="flex h-[20vh] w-[32.1vh] md:h-[40vh] md:w-[74.2vh]">
         {slice.primary.images.map((item, index) => (
           <PrismicNextImage
             key={index}
             field={item.image}
-            className="h-auto w-auto flex-shrink-0 transform transition-transform duration-700 ease-in-out hover:translate-y-[-10px]"
+            className="h-auto w-auto flex-shrink-0 transform transition-transform duration-700 ease-in-out hover:translate-y-[-10px] px-3"
           />
         ))}
       </div>
