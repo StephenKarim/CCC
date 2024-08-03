@@ -128,14 +128,14 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <MdMenu className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-[#070815] bg-opacity-90 bg-opacity-95 md:top-[1.8rem]" />
+            <MdMenu className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-[#070815] bg-opacity-60 backdrop-blur-3xl md:top-[1.8rem]" />
             <span className="sr-only">Open menu</span>
           </button>
         </div>
         {/* Mobile Nav */}
         <div
           className={clsx(
-            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#070815] bg-opacity-100 bg-opacity-95 pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
+            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#070815]  bg-opacity-95 pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
