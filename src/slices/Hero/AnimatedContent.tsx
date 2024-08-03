@@ -75,7 +75,7 @@ export default function AnimatedContent({
 
   return (
     <div
-      className="relative min-h-full min-w-full bg-white"
+      className="relative min-h-full min-w-full bg-[#F8F8FF]"
       ref={container}
     >
       {/* <StarGrid />
@@ -108,7 +108,7 @@ export default function AnimatedContent({
         </div>
       )}
       <div
-        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg  bg-white bg-opacity-95 p-4 text-right font-bold opacity-0 shadow-lg sm:w-[60vw] md:justify-end `}
+        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg  bg-[#F8F8FF] bg-opacity-100 p-4 text-right font-bold opacity-0 shadow-lg sm:w-[60vw] md:justify-end `}
       >
         {isFilled.richText(slice.primary.heading) && (
           <h1 className="mr-0 text-[1.3rem] sm:text-2xl md:text-[3.5vh] pb-2 lg:text-4xl">
@@ -117,7 +117,7 @@ export default function AnimatedContent({
         )}
         {isFilled.link(slice.primary.button_link) && (
           <ButtonLink
-            className="hero__button rounded-lg bg-white border border-black  text-[1rem] opacity-0 sm:text-xl lg:text-2xl"
+            className="hero__button rounded-lg bg-[#F8F8FF] border border-black  text-[1rem] opacity-0 sm:text-xl lg:text-2xl"
             field={slice.primary.button_link}
           >
             {slice.primary.button_label}
