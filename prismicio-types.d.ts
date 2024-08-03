@@ -1235,16 +1235,6 @@ export interface ShowcaseSliceDefaultPrimary {
   image: prismic.ImageField<never>;
 
   /**
-   * Icon field in *Showcase → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: showcase.default.primary.icon
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  icon: prismic.SelectField<"gear" | "cycle">;
-
-  /**
    * SubHeading field in *Showcase → Default → Primary*
    *
    * - **Field Type**: Title
@@ -1299,97 +1289,9 @@ export type ShowcaseSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *Showcase → Reverse → Primary*
- */
-export interface ShowcaseSliceReversePrimary {
-  /**
-   * Heading field in *Showcase → Reverse → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: showcase.reverse.primary.heading
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  heading: prismic.RichTextField;
-
-  /**
-   * Image field in *Showcase → Reverse → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: showcase.reverse.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * Icon field in *Showcase → Reverse → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: showcase.reverse.primary.icon
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  icon: prismic.SelectField<"gear" | "cycle">;
-
-  /**
-   * SubHeading field in *Showcase → Reverse → Primary*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: showcase.reverse.primary.subheading
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  subheading: prismic.TitleField;
-
-  /**
-   * Body field in *Showcase → Reverse → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: showcase.reverse.primary.body
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  body: prismic.RichTextField;
-
-  /**
-   * Button Text field in *Showcase → Reverse → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: showcase.reverse.primary.button_text
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  button_text: prismic.KeyTextField;
-
-  /**
-   * Button Link field in *Showcase → Reverse → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: showcase.reverse.primary.button_link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  button_link: prismic.LinkField;
-}
-
-/**
- * Reverse variation for Showcase Slice
- *
- * - **API ID**: `reverse`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ShowcaseSliceReverse = prismic.SharedSliceVariation<
-  "reverse",
-  Simplify<ShowcaseSliceReversePrimary>,
-  never
->;
-
-/**
  * Slice variation for *Showcase*
  */
-type ShowcaseSliceVariation = ShowcaseSliceDefault | ShowcaseSliceReverse;
+type ShowcaseSliceVariation = ShowcaseSliceDefault;
 
 /**
  * Showcase Shared Slice
@@ -1580,10 +1482,8 @@ declare module "@prismicio/client" {
       RichTextSliceDefault,
       ShowcaseSlice,
       ShowcaseSliceDefaultPrimary,
-      ShowcaseSliceReversePrimary,
       ShowcaseSliceVariation,
       ShowcaseSliceDefault,
-      ShowcaseSliceReverse,
       TestimonialSlice,
       TestimonialSliceDefaultPrimaryTestimonialsItem,
       TestimonialSliceDefaultPrimary,
