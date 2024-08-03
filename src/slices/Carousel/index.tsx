@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { Russo_One, Dancing_Script, Bebas_Neue } from "next/font/google";
+import { Russo_One } from "next/font/google";
 
 const russoOne = Russo_One({
   subsets: ["latin"],
@@ -25,7 +25,6 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const imagesRef = useRef<HTMLDivElement>(null);
   const gsapTimelineRef = useRef<gsap.core.Timeline | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null); // Timeout reference
 
   useEffect(() => {
     const imagesContainer = imagesRef.current;
@@ -50,37 +49,26 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
       gsapTimelineRef.current = timeline;
 
-      const handleMouseOver = () => {
-        if (timeoutRef.current) {
-          clearTimeout(timeoutRef.current);
-        }
-        gsapTimelineRef.current?.pause();
-      };
-
-      const handleMouseOut = () => {
+      const handleClick = () => {
         if (gsapTimelineRef.current) {
-          // Add delay before resuming the animation
-          timeoutRef.current = setTimeout(() => {
-            gsapTimelineRef.current?.play();
-          }, 500); // Delay of 1\2 second
+          if (gsapTimelineRef.current.paused()) {
+            gsapTimelineRef.current.play();
+          } else {
+            gsapTimelineRef.current.pause();
+          }
         }
       };
 
       if (imagesContainer) {
-        imagesContainer.addEventListener("mouseover", handleMouseOver);
-        imagesContainer.addEventListener("mouseout", handleMouseOut);
+        imagesContainer.addEventListener("click", handleClick);
       }
 
       return () => {
         if (imagesContainer) {
-          imagesContainer.removeEventListener("mouseover", handleMouseOver);
-          imagesContainer.removeEventListener("mouseout", handleMouseOut);
+          imagesContainer.removeEventListener("click", handleClick);
         }
         if (gsapTimelineRef.current) {
           gsapTimelineRef.current.kill();
-        }
-        if (timeoutRef.current) {
-          clearTimeout(timeoutRef.current);
         }
       };
     }
@@ -94,7 +82,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       className="flex flex-col overflow-hidden pb-[3rem]"
     >
       <div
-        className={` ${russoOne.className} flex flex-col items-center justify-center pb-[4rem] pt-2  text-secondary  text-4xl md:text-5xl lg:text-6xl`}
+        className={` ${russoOne.className} flex flex-col items-center justify-center pb-[4rem] pt-2 text-secondary text-4xl md:text-5xl lg:text-6xl`}
       >
         <PrismicRichText field={slice.primary.heading} />
       </div>
