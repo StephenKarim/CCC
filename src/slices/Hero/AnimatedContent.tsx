@@ -99,6 +99,7 @@ export default function AnimatedContent({
             muted
             controls={false}
             playsInline
+            preload="auto"
             poster=""
           >
             <source src="/videos/video.mp4"></source>
