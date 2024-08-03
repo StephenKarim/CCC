@@ -32,7 +32,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="relative bg-[url('/images/I3.jpg')] bg-cover bg-fixed bg-center px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24"
+      className=" text-white relative bg-[url('/images/I3.jpg')] bg-cover bg-fixed bg-center px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24"
     >
       <div className="glow absolute -z-10 aspect-square w-full max-w-xl rounded-full bg-blue-400/20 blur-3xl filter" />
 
@@ -43,7 +43,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
         components={{
           heading2: ({ children }) => (
             <h2
-              className={`${russoOne.className} text-balance text-center text-5xl font-medium md:text-7xl`}
+              className={`${russoOne.className}  text-balance text-center text-5xl font-medium md:text-7xl`}
             >
               {children}
             </h2>
@@ -60,7 +60,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
             <PrismicRichText field={slice.primary.body} />
           </div>
 
-          <ButtonLink field={slice.primary.button_link} className="mt-6">
+          <ButtonLink field={slice.primary.button_link} className={`${russoOne.className}  mt-6`}>
             {slice.primary.button_text || "Learn More"}
           </ButtonLink>
         </div>
