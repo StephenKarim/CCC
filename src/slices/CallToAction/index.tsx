@@ -30,11 +30,11 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
     <div className="glass-container rounded-lg bg-[#070815] bg-opacity-95 p-4 md:rounded-xl">
       <div className="ml-[0.5rem] flex flex-col items-center justify-center">
         <RiCrossLine
-          color="black"
+          color=""
           className="-ml-2 h-[1.5rem] w-auto opacity-90 md:h-[1.8rem]"
         />
         <GiGlobe
-          color="black"
+          color=""
           className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-90 md:h-[2.6rem]"
         />
         {/* <FcGlobe  className="-ml-2 -mt-[2.05rem] md:-mt-[2.3rem]  h-[1.35rem] w-auto md:h-[1.5rem] opacity-95"/> */}
@@ -45,10 +45,7 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
     >
       <PrismicText field={slice.primary.heading} />
     </div>
-    <ButtonLink
-      field={slice.primary.button_link}
-      className="mt-6 text-gray-200"
-    >
+    <ButtonLink field={slice.primary.button_link} className="mt-6">
       {slice.primary.button_text || "Learn More"}
     </ButtonLink>
   </Bounded>

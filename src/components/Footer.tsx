@@ -28,11 +28,11 @@ export default async function Footer() {
         >
           <div className="-mt-[0.1rem] ml-[2rem] flex flex-col">
             <RiCrossLine
-              color="black"
+              color=""
               className="-ml-2 h-[1.5rem] w-auto opacity-60 md:h-[1.8rem]"
             />
             <GiGlobe
-              color="black"
+              color=""
               className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-60 md:h-[2.6rem]"
             />
             {/* <FcGlobe  className="-ml-2 -mt-[2.05rem] md:-mt-[2.3rem]  h-[1.35rem] w-auto md:h-[1.5rem] opacity-95"/> */}
@@ -54,7 +54,7 @@ export default async function Footer() {
         </div>
       </Link>
       <nav aria-label="Footer">
-        <ul className="flex gap-6 text-2xl">
+        <ul className="flex gap-6 text-xl">
           {settings.data.navigation
             .filter(
               (_, index) =>
