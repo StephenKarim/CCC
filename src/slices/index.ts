@@ -9,6 +9,7 @@ export const components = {
   about_us_values: dynamic(() => import("./AboutUsValues")),
   bento: dynamic(() => import("./Bento")),
   call_to_action: dynamic(() => import("./CallToAction")),
+  carousel: dynamic(() => import("./Carousel")),
   case_studies: dynamic(() => import("./CaseStudies")),
   hero: dynamic(() => import("./Hero")),
   integrations: dynamic(() => import("./Integrations")),

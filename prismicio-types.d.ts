@@ -172,6 +172,7 @@ export type CaseStudyDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | CarouselSlice
   | TestimonialSlice
   | CallToActionSlice
   | IntegrationsSlice
@@ -890,6 +891,76 @@ export type CallToActionSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Carousel → Default → Primary → Images*
+ */
+export interface CarouselSliceDefaultPrimaryImagesItem {
+  /**
+   * Image field in *Carousel → Default → Primary → Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Carousel → Default → Primary*
+ */
+export interface CarouselSliceDefaultPrimary {
+  /**
+   * Heading field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Images field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<Simplify<CarouselSliceDefaultPrimaryImagesItem>>;
+}
+
+/**
+ * Default variation for Carousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarouselSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CarouselSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Carousel*
+ */
+type CarouselSliceVariation = CarouselSliceDefault;
+
+/**
+ * Carousel Shared Slice
+ *
+ * - **API ID**: `carousel`
+ * - **Description**: Carousel
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarouselSlice = prismic.SharedSlice<
+  "carousel",
+  CarouselSliceVariation
+>;
+
+/**
  * Item in *CaseStudies → Default → Primary → Case Studies*
  */
 export interface CaseStudiesSliceDefaultPrimaryCaseStudyItem {
@@ -1459,6 +1530,11 @@ declare module "@prismicio/client" {
       CallToActionSliceDefaultPrimary,
       CallToActionSliceVariation,
       CallToActionSliceDefault,
+      CarouselSlice,
+      CarouselSliceDefaultPrimaryImagesItem,
+      CarouselSliceDefaultPrimary,
+      CarouselSliceVariation,
+      CarouselSliceDefault,
       CaseStudiesSlice,
       CaseStudiesSliceDefaultPrimaryCaseStudyItem,
       CaseStudiesSliceDefaultPrimary,
