@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 /** @type {import('tailwindcss').Config} */
 const config: Config = {
@@ -22,8 +23,13 @@ const config: Config = {
       },
     },
     extend: {
+      textShadow: {
+        sm: "0 1px 2px rgba(0, 0, 0, 0.15)",
+        DEFAULT: "0 2px 4px rgba(0, 0, 0, 0.25)",
+        lg: "0 8px 16px rgba(0, 0, 0, 0.35)",
+      },
       fontFamily: {
-        lora: ["Lora", "serif"],       
+        lora: ["Lora", "serif"],
         // Add more fonts here if needed
       },
       colors: {
@@ -82,7 +88,20 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("tailwindcss-animate"),
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "text-shadow": (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme("textShadow") },
+      );
+    }),
+  ],
 };
 
 export default config;

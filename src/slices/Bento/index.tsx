@@ -31,7 +31,7 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
         components={{
           heading2: ({ children }) => (
             <h2
-              className={` ${russoOne.className} text-balance text-center text-5xl font-medium text-opacity-35 md:text-7xl`}
+              className={` ${russoOne.className} text-shadow-lg text-balance text-center text-5xl font-medium text-opacity-35 md:text-7xl`}
             >
               {children}
             </h2>
