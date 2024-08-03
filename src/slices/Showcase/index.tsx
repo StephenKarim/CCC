@@ -43,7 +43,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
         components={{
           heading2: ({ children }) => (
             <h2
-              className={`${russoOne.className} text-balance text-center text-5xl font-medium md:text-7xl`}
+              className={`${russoOne.className} text-balance text-center text-4xl font-medium md:text-5xl lg:text-6xl lg:pb-[3rem]`}
             >
               {children}
             </h2>
