@@ -24,10 +24,10 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
   <Bounded
     data-slice-type={slice.slice_type}
     data-slice-variation={slice.variation}
-    className="relative min-h-[60vh] bg-[url('/images/church.jpeg')] bg-cover bg-fixed bg-center px-4 py-32 text-center font-medium text-white first:pt-10 md:px-6 md:py-40 lg:py-24"
+    className="text-secondary relative min-h-[60vh] bg-[url('/images/church.jpeg')] bg-cover bg-fixed bg-center px-4 py-32 text-center font-medium first:pt-10 md:px-6 md:py-40 lg:py-24"
   >
     <div className="glow absolute -z-10 aspect-square w-full max-w-sm rounded-full bg-blue-500/50 blur-[160px] filter" />
-    <div className="glass-container rounded-lg bg-[#F5F5F5] bg-opacity-95 p-4 md:rounded-xl">
+    <div className="glass-container bg-background rounded-lg bg-opacity-95 p-4 md:rounded-xl">
       <div className="ml-[0.5rem] flex flex-col items-center justify-center">
         <RiCrossLine
           color="black"
@@ -45,7 +45,10 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
     >
       <PrismicText field={slice.primary.heading} />
     </div>
-    <ButtonLink field={slice.primary.button_link} className="mt-6 text-black">
+    <ButtonLink
+      field={slice.primary.button_link}
+      className="text-foreground mt-6"
+    >
       {slice.primary.button_text || "Learn More"}
     </ButtonLink>
   </Bounded>

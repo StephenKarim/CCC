@@ -23,7 +23,7 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-[#070815] px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24 text-white"
+      className="bg-[#070815] px-4 py-14 text-secondary first:pt-10 md:px-6 md:py-20 lg:py-24"
       // className="bg-[url('/images/I1.jpg')] bg-fixed bg-cover"
     >
       <PrismicRichText
@@ -31,7 +31,7 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
         components={{
           heading2: ({ children }) => (
             <h2
-              className={` ${russoOne.className} text-balance text-center text-opacity-35 text-5xl font-medium md:text-7xl`}
+              className={` ${russoOne.className} text-balance text-center text-5xl font-medium text-opacity-35 md:text-7xl`}
             >
               {children}
             </h2>
@@ -63,7 +63,11 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
               <PrismicRichText field={item.body} />
             </div>
 
-            <PrismicNextImage field={item.image} alt="" className="max-h-36 w-auto" />
+            <PrismicNextImage
+              field={item.image}
+              alt=""
+              className="max-h-36 w-auto"
+            />
           </div>
         ))}
       </div>
