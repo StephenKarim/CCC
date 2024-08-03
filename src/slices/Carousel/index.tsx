@@ -91,9 +91,9 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       ref={carouselRef}
-      className="overflow-hidden py-5 flex flex-col"
+      className="overflow-hidden pb-[3rem] flex flex-col"
     >
-      <div className={` ${russoOne.className} text-white pb-4 flex flex-col items-center justify-center`}>
+      <div className={` ${russoOne.className} text-white pb-[4rem] pt-2 flex flex-col items-center justify-center text-[2.5rem]`}>
       <PrismicRichText field={slice.primary.heading} />
       </div>
       <div ref={imagesRef} className="flex md:h-[40vh] md:w-[74.2vh]">
