@@ -1,0 +1,16 @@
+{
+  "id": "about_us_story",
+  "type": "SharedSlice",
+  "name": "AboutUsStory",
+  "description": "AboutUsStory",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}

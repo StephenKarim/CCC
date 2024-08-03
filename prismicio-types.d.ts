@@ -4,6 +4,75 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type AboutusDocumentDataSlicesSlice =
+  | AboutUsValuesSlice
+  | AboutUsLeadershipSlice
+  | AboutUsStorySlice
+  | AboutUsMissionSlice;
+
+/**
+ * Content for AboutUS documents
+ */
+interface AboutusDocumentData {
+  /**
+   * Slice Zone field in *AboutUS*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aboutus.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AboutusDocumentDataSlicesSlice> /**
+   * Meta Title field in *AboutUS*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: aboutus.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *AboutUS*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: aboutus.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *AboutUS*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: aboutus.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * AboutUS document from Prismic
+ *
+ * - **API ID**: `aboutus`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutusDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<AboutusDocumentData>,
+    "aboutus",
+    Lang
+  >;
+
 type CaseStudyDocumentDataSlicesSlice = RichTextSlice;
 
 /**
@@ -182,6 +251,71 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+type ProgramsDocumentDataSlicesSlice = ProgramsBentoSlice;
+
+/**
+ * Content for Programs documents
+ */
+interface ProgramsDocumentData {
+  /**
+   * Slice Zone field in *Programs*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: programs.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ProgramsDocumentDataSlicesSlice> /**
+   * Meta Title field in *Programs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: programs.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Programs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: programs.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Programs*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: programs.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Programs document from Prismic
+ *
+ * - **API ID**: `programs`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProgramsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProgramsDocumentData>,
+    "programs",
+    Lang
+  >;
+
 /**
  * Item in *Settings → Navigation*
  */
@@ -317,9 +451,270 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | AboutusDocument
   | CaseStudyDocument
   | PageDocument
+  | ProgramsDocument
   | SettingsDocument;
+
+/**
+ * Item in *AboutUsLeadership → Default → Primary → Leaders*
+ */
+export interface AboutUsLeadershipSliceDefaultPrimaryLeadersItem {
+  /**
+   * Image field in *AboutUsLeadership → Default → Primary → Leaders*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_leadership.default.primary.leaders[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *AboutUsLeadership → Default → Primary → Leaders*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_leadership.default.primary.leaders[].heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *AboutUsLeadership → Default → Primary → Leaders*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_leadership.default.primary.leaders[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *AboutUsLeadership → Default → Primary*
+ */
+export interface AboutUsLeadershipSliceDefaultPrimary {
+  /**
+   * Leaders field in *AboutUsLeadership → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_leadership.default.primary.leaders[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  leaders: prismic.GroupField<
+    Simplify<AboutUsLeadershipSliceDefaultPrimaryLeadersItem>
+  >;
+}
+
+/**
+ * Default variation for AboutUsLeadership Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsLeadershipSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsLeadershipSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsLeadership*
+ */
+type AboutUsLeadershipSliceVariation = AboutUsLeadershipSliceDefault;
+
+/**
+ * AboutUsLeadership Shared Slice
+ *
+ * - **API ID**: `about_us_leadership`
+ * - **Description**: AboutUsLeadership
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsLeadershipSlice = prismic.SharedSlice<
+  "about_us_leadership",
+  AboutUsLeadershipSliceVariation
+>;
+
+/**
+ * Primary content in *AboutUsMission → Default → Primary*
+ */
+export interface AboutUsMissionSliceDefaultPrimary {
+  /**
+   * Heading field in *AboutUsMission → Default → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_mission.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Body field in *AboutUsMission → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_mission.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Image field in *AboutUsMission → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_mission.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for AboutUsMission Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsMissionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsMissionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsMission*
+ */
+type AboutUsMissionSliceVariation = AboutUsMissionSliceDefault;
+
+/**
+ * AboutUsMission Shared Slice
+ *
+ * - **API ID**: `about_us_mission`
+ * - **Description**: AboutUsMission
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsMissionSlice = prismic.SharedSlice<
+  "about_us_mission",
+  AboutUsMissionSliceVariation
+>;
+
+/**
+ * Default variation for AboutUsStory Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsStorySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsStory*
+ */
+type AboutUsStorySliceVariation = AboutUsStorySliceDefault;
+
+/**
+ * AboutUsStory Shared Slice
+ *
+ * - **API ID**: `about_us_story`
+ * - **Description**: AboutUsStory
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsStorySlice = prismic.SharedSlice<
+  "about_us_story",
+  AboutUsStorySliceVariation
+>;
+
+/**
+ * Item in *AboutUsValues → Default → Primary → Values*
+ */
+export interface AboutUsValuesSliceDefaultPrimaryValuesItem {
+  /**
+   * Heading field in *AboutUsValues → Default → Primary → Values*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_values.default.primary.values[].heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Body field in *AboutUsValues → Default → Primary → Values*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_values.default.primary.values[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *AboutUsValues → Default → Primary*
+ */
+export interface AboutUsValuesSliceDefaultPrimary {
+  /**
+   * Heading field in *AboutUsValues → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_values.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Values field in *AboutUsValues → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_values.default.primary.values[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  values: prismic.GroupField<
+    Simplify<AboutUsValuesSliceDefaultPrimaryValuesItem>
+  >;
+}
+
+/**
+ * Default variation for AboutUsValues Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsValuesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsValuesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsValues*
+ */
+type AboutUsValuesSliceVariation = AboutUsValuesSliceDefault;
+
+/**
+ * AboutUsValues Shared Slice
+ *
+ * - **API ID**: `about_us_values`
+ * - **Description**: AboutUsValues
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsValuesSlice = prismic.SharedSlice<
+  "about_us_values",
+  AboutUsValuesSliceVariation
+>;
 
 /**
  * Item in *Bento → Default → Primary → Bento Boxes*
@@ -741,6 +1136,36 @@ export type IntegrationsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Default variation for ProgramsBento Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProgramsBentoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *ProgramsBento*
+ */
+type ProgramsBentoSliceVariation = ProgramsBentoSliceDefault;
+
+/**
+ * ProgramsBento Shared Slice
+ *
+ * - **API ID**: `programs_bento`
+ * - **Description**: ProgramsBento
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProgramsBentoSlice = prismic.SharedSlice<
+  "programs_bento",
+  ProgramsBentoSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -1090,16 +1515,39 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AboutusDocument,
+      AboutusDocumentData,
+      AboutusDocumentDataSlicesSlice,
       CaseStudyDocument,
       CaseStudyDocumentData,
       CaseStudyDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      ProgramsDocument,
+      ProgramsDocumentData,
+      ProgramsDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
+      AboutUsLeadershipSlice,
+      AboutUsLeadershipSliceDefaultPrimaryLeadersItem,
+      AboutUsLeadershipSliceDefaultPrimary,
+      AboutUsLeadershipSliceVariation,
+      AboutUsLeadershipSliceDefault,
+      AboutUsMissionSlice,
+      AboutUsMissionSliceDefaultPrimary,
+      AboutUsMissionSliceVariation,
+      AboutUsMissionSliceDefault,
+      AboutUsStorySlice,
+      AboutUsStorySliceVariation,
+      AboutUsStorySliceDefault,
+      AboutUsValuesSlice,
+      AboutUsValuesSliceDefaultPrimaryValuesItem,
+      AboutUsValuesSliceDefaultPrimary,
+      AboutUsValuesSliceVariation,
+      AboutUsValuesSliceDefault,
       BentoSlice,
       BentoSliceDefaultPrimaryBentoBoxItem,
       BentoSliceDefaultPrimary,
@@ -1123,6 +1571,9 @@ declare module "@prismicio/client" {
       IntegrationsSliceDefaultPrimary,
       IntegrationsSliceVariation,
       IntegrationsSliceDefault,
+      ProgramsBentoSlice,
+      ProgramsBentoSliceVariation,
+      ProgramsBentoSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
