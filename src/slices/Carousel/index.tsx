@@ -29,6 +29,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
   const isDraggingRef = useRef<boolean>(false);
   const [key, setKey] = useState<number>(0); // State to trigger re-render
   const refreshTimeoutRef = useRef<number | NodeJS.Timeout | null>(null); // Updated type
+  const glideTweenRef = useRef<gsap.core.Tween | null>(null); // Reference to the ongoing glide tween
 
   useEffect(() => {
     gsap.registerPlugin(Draggable);
@@ -55,6 +56,9 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
       gsapTimelineRef.current = timeline;
 
+      let startX = 0;
+      let endX = 0;
+
       // Create Draggable instance on the images container
       Draggable.create(imagesContainer, {
         type: "x",
@@ -62,8 +66,14 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           minX: -imagesContainer.scrollWidth + imagesContainer.clientWidth,
           maxX: 0,
         },
-        inertia: true,
+        inertia: false, // We will handle inertia manually
         resistance: 0.05, // Lower resistance for smoother dragging
+        onPressInit: function () {
+          startX = this.x;
+        },
+        onDrag: function () {
+          endX = this.x;
+        },
         onDragStart: function () {
           if (gsapTimelineRef.current) {
             gsapTimelineRef.current.pause();
@@ -73,14 +83,69 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
             if (refreshTimeoutRef.current) {
               clearTimeout(refreshTimeoutRef.current as number); // Type assertion for number
             }
+
+            // Kill the ongoing glide tween if it exists
+            if (glideTweenRef.current) {
+              glideTweenRef.current.kill();
+              glideTweenRef.current = null; // Reset glide tween reference
+            }
+
+            // Reset velocity by setting start and end to the same position
+            startX = this.x;
+            endX = this.x;
           }
 
           // Prevent default scrolling
-          window.addEventListener("touchmove", preventScroll, { passive: false });
+          window.addEventListener("touchmove", preventScroll, {
+            passive: false,
+          });
           window.addEventListener("wheel", preventScroll, { passive: false });
         },
         onDragEnd: function () {
           isDraggingRef.current = false;
+
+          // Calculate direction based on start and end positions
+          let glideDistance = (endX - startX) * 1.5; // Adjust multiplier as needed for glide effect
+
+          const currentX = endX + glideDistance;
+
+          // Prevent gliding past the first and last images
+          const minX =
+            -imagesContainer.scrollWidth + imagesContainer.clientWidth;
+          const maxX = 0;
+
+          if (currentX > maxX) {
+            glideDistance = maxX - endX;
+          } else if (currentX < minX) {
+            glideDistance = minX - endX;
+          }
+
+          // Create and store the glide tween reference
+          glideTweenRef.current = gsap.to(imagesContainer, {
+            x: `+=${glideDistance}`, // Glide based on calculated distance
+            ease: "power3.out", // Use power3.out for a smooth deceleration
+            duration: 2, // Duration of the glide
+            onComplete: () => {
+              // Adjust bounds if necessary
+              const adjustedX = gsap.getProperty(
+                imagesContainer,
+                "x",
+              ) as number;
+              if (adjustedX > 0) {
+                gsap.to(imagesContainer, {
+                  x: 0,
+                  duration: 0.5,
+                  ease: "power3.out",
+                });
+              } else if (adjustedX < minX) {
+                gsap.to(imagesContainer, {
+                  x: minX,
+                  duration: 0.5,
+                  ease: "power3.out",
+                });
+              }
+            },
+          });
 
           // Set a new timeout for refreshing the carousel 5 seconds after dragging ends
           refreshTimeoutRef.current = window.setTimeout(() => {
@@ -98,6 +163,12 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
       // Event listener for click event when dragging is false
       const handleClick = () => {
+        // Kill the ongoing glide tween if it exists
+        if (glideTweenRef.current) {
+          glideTweenRef.current.kill();
+          glideTweenRef.current = null; // Reset glide tween reference
+        }
+
         if (!isDraggingRef.current) {
           // Clear any existing timeout
           if (refreshTimeoutRef.current) {
