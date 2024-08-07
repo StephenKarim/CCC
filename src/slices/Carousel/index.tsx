@@ -136,7 +136,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           <PrismicNextImage
             key={index}
             field={item.image}
-            className="h-auto w-auto flex-shrink-0 transform px-2 transition-transform duration-700 ease-in-out hover:translate-y-[-10px]"
+            className="h-auto w-auto flex-shrink-0 transform px-2 transition-transform duration-700 ease-in-out hover:scale-105 hover:opacity-80"
           />
         ))}
       </div>
