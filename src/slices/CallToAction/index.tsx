@@ -24,7 +24,7 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
   <Bounded
     data-slice-type={slice.slice_type}
     data-slice-variation={slice.variation}
-    className="bg-fixed-ios relative min-h-[60vh] bg-[url('/images/church.jpeg')] bg-cover bg-fixed bg-center px-4 py-32 text-center font-medium text-secondary first:pt-10 md:px-6 md:py-40 lg:py-24"
+    className="ios:bg-scroll relative min-h-[60vh] bg-[url('/images/church.jpeg')] bg-cover bg-fixed bg-center px-4 py-32 text-center font-medium text-secondary first:pt-10 md:px-6 md:py-40 lg:py-24"
   >
     <div className="glow absolute -z-10 aspect-square w-full max-w-sm rounded-full bg-blue-500/50 blur-[160px] filter" />
     <div className="glass-container rounded-lg bg-[#070815] bg-opacity-95 p-4 md:rounded-xl">
