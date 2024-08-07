@@ -63,6 +63,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           maxX: 0,
         },
         inertia: true,
+        resistance: 0.75, // Lower resistance for smoother dragging
         onDragStart: function () {
           if (gsapTimelineRef.current) {
             gsapTimelineRef.current.pause();
@@ -73,6 +74,10 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
               clearTimeout(refreshTimeoutRef.current as number); // Type assertion for number
             }
           }
+
+          // Prevent default scrolling
+          window.addEventListener("touchmove", preventScroll, { passive: false });
+          window.addEventListener("wheel", preventScroll, { passive: false });
         },
         onDragEnd: function () {
           isDraggingRef.current = false;
@@ -84,6 +89,10 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
             }
             setKey((prevKey) => prevKey + 1); // Trigger a re-render by updating the key
           }, 5000);
+
+          // Re-enable scrolling after dragging ends
+          window.removeEventListener("touchmove", preventScroll);
+          window.removeEventListener("wheel", preventScroll);
         },
       });
 
@@ -111,9 +120,15 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
         }
         Draggable.get(imagesContainer)?.kill();
         imagesContainer.removeEventListener("click", handleClick); // Clean up event listener
+        window.removeEventListener("touchmove", preventScroll);
+        window.removeEventListener("wheel", preventScroll);
       };
     }
   }, [slice.primary.images, key]); // Include `key` in the dependency array to trigger re-render
+
+  const preventScroll = (event: Event) => {
+    event.preventDefault();
+  };
 
   return (
     <section
