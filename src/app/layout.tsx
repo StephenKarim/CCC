@@ -15,6 +15,7 @@ export default function RootLayout({
     <html lang="en" className="font-lora">
       <body className="grid bg-[#070815] text-gray-200">
         <LenisScroll />
+        <SpeedInsights/>
         {/* bg-[url('/images/background.png')] bg-fixed bg-cover */}
         <Header />
         <main>{children}</main>
