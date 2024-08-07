@@ -68,3 +68,9 @@
     @apply bg-[#070815] bg-opacity-95 text-gray-200;
   }
 }
+
+@supports (-webkit-overflow-scrolling: touch) {
+  .bg-fixed-ios {
+    background-attachment: scroll;
+  }
+}
