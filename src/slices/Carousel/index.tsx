@@ -63,7 +63,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           maxX: 0,
         },
         inertia: true,
-        resistance: 0.75, // Lower resistance for smoother dragging
+        resistance: 0.05, // Lower resistance for smoother dragging
         onDragStart: function () {
           if (gsapTimelineRef.current) {
             gsapTimelineRef.current.pause();
