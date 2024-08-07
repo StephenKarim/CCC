@@ -23,12 +23,10 @@ export type CarouselProps = SliceComponentProps<Content.CarouselSlice>;
  * Component for "Carousel" Slices.
  */
 const Carousel = ({ slice }: CarouselProps): JSX.Element => {
-  const carouselRef = useRef<HTMLDivElement>(null);
   const imagesRef = useRef<HTMLDivElement>(null);
   const gsapTimelineRef = useRef<gsap.core.Timeline | null>(null);
   const isDraggingRef = useRef<boolean>(false);
-  const [key, setKey] = useState<number>(0); // State to trigger re-render
-  const refreshTimeoutRef = useRef<number | NodeJS.Timeout | null>(null); // Updated type
+  const refreshTimeoutRef = useRef<number | null>(null); // Simplified typing
 
   useEffect(() => {
     gsap.registerPlugin(Draggable);
@@ -37,6 +35,8 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
     if (imagesContainer) {
       const images = imagesContainer.children;
       const imagesArray = Array.from(images) as HTMLElement[];
+
+      // Check if cloning is necessary based on the purpose of the carousel.
       imagesArray.forEach((image) => {
         const clone = image.cloneNode(true);
         imagesContainer.appendChild(clone);
@@ -64,14 +64,12 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
         },
         inertia: true,
         onDragStart: function () {
-          if (gsapTimelineRef.current) {
-            gsapTimelineRef.current.pause();
-            isDraggingRef.current = true;
+          gsapTimelineRef.current?.pause();
+          isDraggingRef.current = true;
 
-            // Clear existing timeout when dragging starts
-            if (refreshTimeoutRef.current) {
-              clearTimeout(refreshTimeoutRef.current as number); // Type assertion for number
-            }
+          // Clear existing timeout when dragging starts
+          if (refreshTimeoutRef.current) {
+            clearTimeout(refreshTimeoutRef.current);
           }
         },
         onDragEnd: function () {
@@ -79,42 +77,41 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
           // Set a new timeout for refreshing the carousel 5 seconds after dragging ends
           refreshTimeoutRef.current = window.setTimeout(() => {
-            if (gsapTimelineRef.current) {
-              gsapTimelineRef.current.play();
-            }
-            setKey(prevKey => prevKey + 1); // Trigger a re-render by updating the key
+            gsapTimelineRef.current?.play();
           }, 5000);
         },
       });
 
-      // Event listener for click event when pause is true and dragging is false
+      // Event listener for click event when dragging is false
       const handleClick = () => {
-        if (gsapTimelineRef.current?.paused() && !isDraggingRef.current) {
+        if (!isDraggingRef.current) {
+          // Clear any existing timeout
+          if (refreshTimeoutRef.current) {
+            clearTimeout(refreshTimeoutRef.current);
+          }
+
+          // Set a new timeout for re-rendering after 6 seconds
           refreshTimeoutRef.current = window.setTimeout(() => {
-            setKey(prevKey => prevKey + 1);
+            gsapTimelineRef.current?.restart(true);
           }, 6000);
         }
       };
 
       // Add click event listener to the carousel container
-      imagesContainer.addEventListener('click', handleClick);
+      imagesContainer.addEventListener("click", handleClick);
 
       return () => {
-        if (gsapTimelineRef.current) {
-          gsapTimelineRef.current.kill();
-        }
+        gsapTimelineRef.current?.kill();
         Draggable.get(imagesContainer)?.kill();
-        imagesContainer.removeEventListener('click', handleClick); // Clean up event listener
+        imagesContainer.removeEventListener("click", handleClick); // Clean up event listener
       };
     }
-  }, [slice.primary.images, key]); // Include `key` in the dependency array to trigger re-render
+  }, [slice.primary.images]); // Removed `key` to avoid unnecessary re-renders
 
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      ref={carouselRef}
-      key={key} // Set the key here to trigger re-render
       className="relative flex flex-col overflow-hidden pb-[3rem]"
     >
       <div
