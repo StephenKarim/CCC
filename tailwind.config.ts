@@ -22,7 +22,7 @@ const config: Config = {
         "2xl": "1400px",
       },
     },
-    extend: {
+    extend: {      
       textShadow: {
         sm: "0 1px 2px rgba(0, 0, 0, 0.15)",
         DEFAULT: "0 2px 4px rgba(0, 0, 0, 0.25)",

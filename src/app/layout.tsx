@@ -4,7 +4,7 @@ import { repositoryName } from "@/prismicio";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Carousel from "@/components/Carousel";
+import LenisScroll from "@/components/LenisScroll";
 
 export default function RootLayout({
   children,
@@ -14,6 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="font-lora">
       <body className="grid bg-[#070815] text-gray-200">
+        <LenisScroll />
         {/* bg-[url('/images/background.png')] bg-fixed bg-cover */}
         <Header />
         <main>{children}</main>

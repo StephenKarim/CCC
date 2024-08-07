@@ -83,14 +83,14 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full bg-[#070815] bg-opacity-95 p-2 text-gray-200 opacity-0 md:h-[90px]`}
+      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full  bg-[#070815] bg-opacity-95 p-2 text-gray-200 opacity-0 md:h-[90px]`}
       aria-label="Main"
       ref={container}
     >
       <div
         className={`${open ? "fixed z-50" : ""} mx-auto flex flex-col justify-between py-2 font-medium opacity-95 lg:flex-row lg:items-center`}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between ">
           <Link href="/" className={`z-50`} onClick={() => setOpen(false)}>
             <span className="sr-only">Covenant City Church Home Page</span>
             <div
@@ -135,7 +135,7 @@ export default function NavBar({ settings }: NavBarProps) {
         {/* Mobile Nav */}
         <div
           className={clsx(
-            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#070815] bg-opacity-95 pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
+            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#070815] bg-opacity-[1] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >

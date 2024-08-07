@@ -5,7 +5,7 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 import { PiArrowsClockwise, PiGear } from "react-icons/pi";
-import AnimatedContent from "./AnimatedContent";
+
 import { Russo_One, Dancing_Script, Bebas_Neue } from "next/font/google";
 
 const russoOne = Russo_One({
@@ -32,10 +32,8 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="text-secondary text-shadow-lg relative bg-[url('/images/I3.jpg')] bg-cover bg-fixed bg-center px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24"
+      className="relative bg-[url('/images/I3.jpg')] bg-cover bg-fixed bg-scroll bg-center px-4 py-14 text-secondary text-shadow-lg first:pt-10 md:px-6 md:py-20 lg:py-24"
     >
-      <div className="glow absolute -z-10 aspect-square w-full max-w-xl rounded-full bg-blue-400/20 blur-3xl filter" />
-
       {/* <AnimatedContent>
         </AnimatedContent> */}
       <PrismicRichText
@@ -43,7 +41,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
         components={{
           heading2: ({ children }) => (
             <h2
-              className={`${russoOne.className} text-balance text-center text-4xl font-medium md:text-5xl lg:text-6xl lg:pb-[3rem]`}
+              className={`${russoOne.className} text-balance text-center text-4xl font-medium md:text-5xl lg:pb-[3rem] lg:text-6xl`}
             >
               {children}
             </h2>
