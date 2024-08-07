@@ -74,3 +74,24 @@
     background-attachment: scroll;
   }
 }
+
+.carousel-item {
+  position: relative;
+  font-size: 90px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.controls {
+  position: absolute;
+  inset-x: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}

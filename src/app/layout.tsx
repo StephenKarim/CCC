@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import LenisScroll from "@/components/LenisScroll";
+import Carousel from "@/slices/Carousel";
+import CarouselP from "@/components/CarouselP";
 
 export default function RootLayout({
   children,
@@ -15,9 +17,10 @@ export default function RootLayout({
     <html lang="en" className="font-lora">
       <body className="grid bg-[#070815] text-gray-200">
         <LenisScroll />
-        <SpeedInsights/>
+        <SpeedInsights />
         {/* bg-[url('/images/background.png')] bg-fixed bg-cover */}
         <Header />
+       
         <main>{children}</main>
         <Footer />
         <PrismicPreview repositoryName={repositoryName} />
