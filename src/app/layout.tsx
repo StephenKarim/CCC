@@ -14,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="font-lora">
-      <body className="grid bg-[#7ec2dd] text-[#333333]">
+    <html lang="en" className="">
+      <body className="grid bg-[#76b5ce] text-[#333333]">
         <SpeedInsights />
         {/* bg-[url('/images/background.png')] bg-fixed bg-cover */}
         {/* bg-[#F5F5DC] bg-[#7ec2dd] text-[#333333]*/}

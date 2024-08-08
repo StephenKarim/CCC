@@ -210,7 +210,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       className="relative flex flex-col overflow-hidden pb-[3rem]"
     >
       <div
-        className={` ${russoOne.className} flex flex-col items-center justify-center pb-[4rem] pt-2 text-4xl md:text-5xl lg:text-6xl`}
+        className={` ${russoOne.className}  flex flex-col items-center justify-center pb-[4rem] pt-[3rem] text-4xl md:text-5xl lg:text-6xl`}
       >
         <PrismicRichText field={slice.primary.heading} />
       </div>
@@ -222,7 +222,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           <PrismicNextImage
             key={index}
             field={item.image}
-            className="h-auto w-auto flex-shrink-0 transform px-2 transition-transform duration-700 ease-in-out hover:scale-105 hover:opacity-80"
+            className="h-auto w-auto flex-shrink-0 transform px-2 transition-transform duration-700 ease-in-out hover:scale-105 hover:opacity-80 shadow-2xl rounded-3xl"
           />
         ))}
       </div>

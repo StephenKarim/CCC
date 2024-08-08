@@ -8,7 +8,7 @@ import ButtonLink from "@/components/ButtonLink";
 import { MdMenu, MdClose } from "react-icons/md";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
-import { PrismicRichText, PrismicText } from "@prismicio/react";
+import { PrismicText } from "@prismicio/react";
 import { RiCrossLine } from "react-icons/ri";
 import { GiGlobe } from "react-icons/gi";
 import { Russo_One } from "next/font/google";
@@ -41,10 +41,8 @@ export default function NavBar({ settings }: NavBarProps) {
     if (typeof window !== "undefined") {
       window.addEventListener("resize", handleResize);
 
-      // Check initial width
       handleResize();
 
-      // Cleanup the event listener on component unmount
       return () => {
         window.removeEventListener("resize", handleResize);
       };
@@ -55,7 +53,7 @@ export default function NavBar({ settings }: NavBarProps) {
     if (prefersReducedMotion) {
       gsap.set(
         ".hero__heading, .hero__body, .hero__button, .hero__image, .hero__glow",
-        { opacity: 1 },
+        { opacity: 1 }
       );
       return;
     }
@@ -64,20 +62,20 @@ export default function NavBar({ settings }: NavBarProps) {
     tl.fromTo(
       ".header__heading",
       { opacity: 0 },
-      { opacity: 1, duration: 1, delay: 0.5 },
+      { opacity: 1, duration: 1, delay: 0.5 }
     );
     tl.fromTo(
       ".header__menu",
       { x: 100 },
       { x: 0, opacity: 1, duration: 1.2 },
-      "-=1.0",
+      "-=1.0"
     );
     tl.fromTo(".header__news", {}, { opacity: 1, duration: 1.2 }, "-=1.0");
     tl.fromTo(
       ".header__newss",
       { xPercent: 100 },
       { xPercent: -100, opacity: 1, duration: 15, repeat: -1, ease: "linear" },
-      "-=1.0",
+      "-=1.0"
     );
   }, [prefersReducedMotion]);
 
@@ -136,12 +134,12 @@ export default function NavBar({ settings }: NavBarProps) {
         <div
           className={clsx(
             "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#7ec2dd] bg-opacity-[1] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
-            open ? "translate-x-0" : "translate-x-[100%]",
+            open ? "translate-x-0" : "translate-x-[100%]"
           )}
         >
           <button
             type="button"
-            className="fixed right-4 top-4 mb-4 block p-2 text-3xl lg:hidden"
+            className="fixed right-4 top-4 mb-4 block p-2 text-3xl z-50 lg:hidden"
             aria-expanded={open}
             onClick={() => setOpen(false)}
           >
@@ -149,7 +147,7 @@ export default function NavBar({ settings }: NavBarProps) {
             <span className="sr-only">Close menu</span>
           </button>
 
-          <div className="z-20 grid justify-items-end gap-8">
+          <div className="z-50 grid justify-items-end gap-8">
             {settings.data.navigation.map((item) => {
               if (item.cta_button) {
                 return (
@@ -228,7 +226,7 @@ export default function NavBar({ settings }: NavBarProps) {
       </div>
       {isFilled.richText(settings.data.news) && (
         <div
-          className={`header__news left-0 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-white bg-opacity-70 opacity-0 backdrop-blur-sm`}
+          className={`header__news left-0 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-white bg-opacity-70 opacity-0 z-50`}
         >
           <div
             className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-[#800000] sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}

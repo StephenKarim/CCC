@@ -23,7 +23,7 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24"
+      className="px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24 bg-opacity-15"
       // className="bg-[url('/images/I1.jpg')] bg-fixed bg-cover" {/* bg-[#F5F5DC] bg-[#7ec2dd] text-[#333333]*/}
     >
       <PrismicRichText
@@ -31,7 +31,7 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
         components={{
           heading2: ({ children }) => (
             <h2
-              className={` ${russoOne.className} text-balance text-center text-4xl font-medium text-opacity-35 text-shadow-lg md:text-5xl lg:text-6xl`}
+            className={`${russoOne.className} py-2 backdrop-blur-sm text-balance w-full rounded-lg text-center text-4xl text-shadow-sm md:text-4xl lg:text-5xl`}
             >
               {children}
             </h2>
@@ -43,34 +43,37 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
           ),
         }}
       />
+      <div className=" px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24 bg-opacity-15 ">
+
       <div className="mx-auto mt-6 max-w-md text-balance text-center">
         <PrismicRichText field={slice.primary.body} />
       </div>
 
-      <div className="mt-16 grid max-w-4xl grid-rows-[auto_auto_auto] gap-8 md:grid-cols-3 md:gap-10">
+      <div className="mt-8 grid max-w-5xl grid-rows-[auto_auto_auto] gap-8 md:grid-cols-3 md:gap-10">
         {slice.primary.bento_box.map((item) => (
           <div
-            className={clsx(
-              "row-span-3 grid grid-rows-subgrid gap-4 rounded-lg bg-[#F5F5DC] bg-opacity-60 p-4 shadow-sm",
-              item.wide ? "md:col-span-2" : "md:col-span-1",
-            )}
-            key={asText(item.title)}
+          className={clsx(
+            "row-span-3 grid grid-rows-subgrid gap-4 rounded-lg border border-gray-300 p-[0.8rem] shadow-2xl",
+            item.wide ? "md:col-span-2" : "md:col-span-1",
+          )}
+          key={asText(item.title)}
           >
-            <h3 className="text-2xl">
+            <h3 className={`${russoOne.className} text-2xl`}>
               <PrismicRichText field={item.title} />
             </h3>
-            <div className="max-w-md text-balance">
+            <div className="max-w-md text-balance font-medium">
               <PrismicRichText field={item.body} />
             </div>
 
             <PrismicNextImage
               field={item.image}
               alt=""
-              className="max-h-36 w-auto"
-            />
+              className="max-h-36 w-auto justify-center items-center"
+              />
           </div>
         ))}
       </div>
+        </div>
     </Bounded>
   );
 };
