@@ -19,7 +19,7 @@ export default async function Footer() {
   const settings = await client.getSingle("settings");
   return (
     <footer
-      className={`${russoOne.className} flex flex-col items-center justify-between gap-6 border-t border-slate-600 bg-[#070815] bg-opacity-95 px-8 py-7 text-gray-200 opacity-95 md:flex-row`}
+      className={`${russoOne.className} flex flex-col items-center justify-between gap-6 border-t border-gray-200  bg-opacity-80 px-8 py-7 opacity-95 md:flex-row`}
     >
       <Link href="/" className="z-50 mr-10">
         <span className="sr-only">Covenant City Church Home Page</span>
@@ -28,12 +28,12 @@ export default async function Footer() {
         >
           <div className="-mt-[0.1rem] ml-[2rem] flex flex-col">
             <RiCrossLine
-              color=""
-              className="-ml-2 h-[1.5rem] w-auto opacity-60 md:h-[1.8rem]"
+              color="#333333"
+              className="-ml-2 h-[1.5rem] w-auto opacity-90 md:h-[1.8rem]"
             />
             <GiGlobe
-              color=""
-              className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-60 md:h-[2.6rem]"
+              color="#333333"
+              className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-90 md:h-[2.6rem]"
             />
             {/* <FcGlobe  className="-ml-2 -mt-[2.05rem] md:-mt-[2.3rem]  h-[1.35rem] w-auto md:h-[1.5rem] opacity-95"/> */}
           </div>
