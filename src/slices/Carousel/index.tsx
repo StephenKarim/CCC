@@ -210,7 +210,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       className="relative flex flex-col overflow-hidden pb-[3rem]"
     >
       <div
-        className={` ${russoOne.className} flex flex-col items-center justify-center pb-[4rem] pt-2 text-4xl text-secondary md:text-5xl lg:text-6xl`}
+        className={` ${russoOne.className} flex flex-col items-center justify-center pb-[4rem] pt-2 text-4xl md:text-5xl lg:text-6xl`}
       >
         <PrismicRichText field={slice.primary.heading} />
       </div>

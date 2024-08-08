@@ -8,7 +8,7 @@ import ButtonLink from "@/components/ButtonLink";
 import { MdMenu, MdClose } from "react-icons/md";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
-import { PrismicRichText, PrismicText } from "@prismicio/react";
+import { PrismicText } from "@prismicio/react";
 import { RiCrossLine } from "react-icons/ri";
 import { GiGlobe } from "react-icons/gi";
 import { Russo_One } from "next/font/google";
@@ -29,6 +29,7 @@ export default function NavBar({ settings }: NavBarProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const container = useRef(null);
+  const newsRef = useRef<HTMLDivElement>(null); // Ref for the news text
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -59,38 +60,32 @@ export default function NavBar({ settings }: NavBarProps) {
       );
       return;
     }
-    const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
 
-    tl.fromTo(
-      ".header__heading",
-      { opacity: 0 },
-      { opacity: 1, duration: 1, delay: 0.5 },
-    );
-    tl.fromTo(
-      ".header__menu",
-      { x: 100 },
-      { x: 0, opacity: 1, duration: 1.2 },
-      "-=1.0",
-    );
-    tl.fromTo(".header__news", {}, { opacity: 1, duration: 1.2 }, "-=1.0");
-    tl.fromTo(
-      ".header__newss",
-      { xPercent: 100 },
-      { xPercent: -100, opacity: 1, duration: 15, repeat: -1, ease: "linear" },
-      "-=1.0",
-    );
+    // Create a GSAP timeline for the news text
+    if (newsRef.current) {
+      const newsTimeline = gsap.timeline({
+        repeat: -1,
+        defaults: { ease: "none" },
+      });
+
+      newsTimeline.fromTo(
+        newsRef.current,
+        { xPercent: 100 }, // Start off-screen to the right
+        { xPercent: -100, duration: 15, ease: "linear" }, // Move to off-screen to the left
+      );
+    }
   }, [prefersReducedMotion]);
 
   return (
     <nav
-      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full  bg-[#070815] bg-opacity-95 p-2 text-gray-200 opacity-0 md:h-[90px]`}
+      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full bg-[#7ec2dd] bg-opacity-95 p-2 text-[#333333] md:h-[90px]`}
       aria-label="Main"
       ref={container}
     >
       <div
         className={`${open ? "fixed z-50" : ""} mx-auto flex flex-col justify-between py-2 font-medium opacity-95 lg:flex-row lg:items-center`}
       >
-        <div className="flex items-center justify-between ">
+        <div className="flex items-center justify-between">
           <Link href="/" className={`z-50`} onClick={() => setOpen(false)}>
             <span className="sr-only">Covenant City Church Home Page</span>
             <div
@@ -98,12 +93,12 @@ export default function NavBar({ settings }: NavBarProps) {
             >
               <div className="-mt-[0.1rem] ml-[2rem] flex flex-col">
                 <RiCrossLine
-                  color=""
-                  className="-ml-2 h-[1.5rem] w-auto opacity-60 md:h-[1.8rem]"
+                  color="#333333"
+                  className="-ml-2 h-[1.5rem] w-auto opacity-95 md:h-[1.8rem]"
                 />
                 <GiGlobe
-                  color=""
-                  className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-60 md:h-[2.6rem]"
+                  color="#333333"
+                  className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-95 md:h-[2.6rem]"
                 />
               </div>
 
@@ -128,14 +123,14 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <MdMenu className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-[#070815] bg-opacity-60 backdrop-blur-3xl md:top-[1.8rem]" />
+            <MdMenu className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-[#7ec2dd] bg-opacity-60 backdrop-blur-3xl md:top-[1.8rem]" />
             <span className="sr-only">Open menu</span>
           </button>
         </div>
         {/* Mobile Nav */}
         <div
           className={clsx(
-            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#070815] bg-opacity-[1] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
+            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#7ec2dd] bg-opacity-[1] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
@@ -188,7 +183,7 @@ export default function NavBar({ settings }: NavBarProps) {
         </div>
 
         {/* Desktop Nav */}
-        <ul className="header__menu hidden gap-6 text-lg opacity-0 lg:flex">
+        <ul className="header__menu hidden gap-6 text-lg  lg:flex">
           {settings.data.navigation.map((item) => {
             if (item.cta_button) {
               return (
@@ -228,10 +223,11 @@ export default function NavBar({ settings }: NavBarProps) {
       </div>
       {isFilled.richText(settings.data.news) && (
         <div
-          className={`header__news left-0 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden bg-[#070815] bg-opacity-85 opacity-0`}
+          className={`header__news left-0 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-white bg-opacity-70  backdrop-blur-sm`}
         >
           <div
-            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-red-500 sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap text-shadow-lg md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
+            ref={newsRef} // Attach the ref here
+            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-[#800000] sm:w-[75vw]" : "sm:w-[80vw]"} max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap`}
           >
             <PrismicText field={settings.data.news} />
           </div>

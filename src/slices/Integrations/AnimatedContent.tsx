@@ -104,7 +104,7 @@ export default function AnimatedContent({
 
   return (
     <div
-      className="mt-20 flex flex-col items-center text-secondary md:flex-row"
+      className="mt-20 flex flex-col items-center md:flex-row"
       ref={container}
     >
       {slice.primary.icons.map((item, index) => (

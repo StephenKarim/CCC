@@ -32,7 +32,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="ios:bg-scroll relative bg-[url('/images/27.webp')] bg-cover bg-fixed bg-center px-4 py-14 text-secondary text-shadow-lg first:pt-10 md:px-6 md:py-20 lg:py-24"
+      className="ios:bg-scroll relative bg-[url('/images/27.webp')] bg-cover bg-fixed bg-center px-4 py-14 text-white text-shadow-lg first:pt-10 md:px-6 md:py-20 lg:py-24"
     >
       {/* <AnimatedContent>
         </AnimatedContent> */}
