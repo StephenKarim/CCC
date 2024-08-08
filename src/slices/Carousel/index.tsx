@@ -182,7 +182,8 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       // Fade out
       gsap.to(container, {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.3,
+        ease: "power1.out",
         onComplete: () => {
           // Trigger re-render
           setKey((prevKey) => prevKey + 1);
@@ -195,7 +196,11 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
     // Apply a default fade-in animation whenever the component is rendered
     const container = imagesRef.current;
     if (container) {
-      gsap.fromTo(container, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+      gsap.fromTo(
+        container,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5, ease: "power1.in" },
+      );
     }
   }, [key]);
 
