@@ -229,7 +229,7 @@ export default function NavBar({ settings }: NavBarProps) {
           className={`header__news left-0 z-50 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-gray-200 bg-opacity-70 opacity-0`}
         >
           <div
-            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-[#800000] sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
+            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-shadow text-gray-200 sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
           >
             <PrismicText field={settings.data.news} />
           </div>
