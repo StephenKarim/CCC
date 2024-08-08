@@ -152,7 +152,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           // Set a new timeout for refreshing the carousel 5 seconds after dragging ends
           refreshTimeoutRef.current = window.setTimeout(() => {
             fadeOutAndRerender(); // Trigger fade-out before re-render
-          }, 5000);
+          }, 6000);
 
           // Re-enable scrolling after dragging ends
           window.removeEventListener('touchmove', preventScroll);
