@@ -23,7 +23,6 @@ export type CarouselProps = SliceComponentProps<Content.CarouselSlice>;
  * Component for "Carousel" Slices.
  */
 const Carousel = ({ slice }: CarouselProps): JSX.Element => {
-  const carouselRef = useRef<HTMLDivElement>(null);
   const imagesRef = useRef<HTMLDivElement>(null);
   const gsapTimelineRef = useRef<gsap.core.Timeline | null>(null);
   const isDraggingRef = useRef<boolean>(false);
@@ -140,10 +139,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           });
 
           refreshTimeoutRef.current = window.setTimeout(() => {
-            if (gsapTimelineRef.current) {
-              gsapTimelineRef.current.play();
-            }
-            setKey((prevKey) => prevKey + 1);
+            fadeOutAndRerender();
           }, 5000);
 
           window.removeEventListener("touchmove", preventScroll);
@@ -163,11 +159,11 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           }
 
           refreshTimeoutRef.current = window.setTimeout(() => {
-            setKey((prevKey) => prevKey + 1);
+            fadeOutAndRerender();
           }, 6000);
         }
 
-        setFirstInteraction(true); // Mark the first interaction as complete
+        setFirstInteraction(true);
       };
 
       imagesContainer.addEventListener("click", handleClick);
@@ -184,6 +180,29 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
     }
   }, [slice.primary.images, key]);
 
+  const fadeOutAndRerender = () => {
+    const container = imagesRef.current;
+    if (container) {
+      // Fade out
+      gsap.to(container, {
+        opacity: 0,
+        duration: 1,
+        onComplete: () => {
+          // Trigger re-render
+          setKey((prevKey) => prevKey + 1);
+        },
+      });
+    }
+  };
+
+  useEffect(() => {
+    // Apply a default fade-in animation whenever the component is rendered
+    const container = imagesRef.current;
+    if (container) {
+      gsap.fromTo(container, { opacity: 0 }, { opacity: 1, duration: 1 });
+    }
+  }, [key]);
+
   const preventScroll = (event: Event) => {
     event.preventDefault();
   };
@@ -192,8 +211,6 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      ref={carouselRef}
-      key={key}
       className="relative flex flex-col overflow-hidden pb-[3rem]"
     >
       <div
@@ -203,6 +220,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       </div>
       <div
         ref={imagesRef}
+        key={key} // Only this part re-renders
         className="flex h-[25vh] w-[46.4vh] md:h-[40vh] md:w-[74.2vh]"
       >
         {slice.primary.images.map((item, index) => (
