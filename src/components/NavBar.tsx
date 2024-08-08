@@ -8,7 +8,7 @@ import ButtonLink from "@/components/ButtonLink";
 import { MdMenu, MdClose } from "react-icons/md";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
-import { PrismicText } from "@prismicio/react";
+import { PrismicRichText, PrismicText } from "@prismicio/react";
 import { RiCrossLine } from "react-icons/ri";
 import { GiGlobe } from "react-icons/gi";
 import { Russo_One } from "next/font/google";
@@ -29,7 +29,6 @@ export default function NavBar({ settings }: NavBarProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const container = useRef(null);
-  const newsRef = useRef<HTMLDivElement>(null); // Ref for the news text
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -60,25 +59,31 @@ export default function NavBar({ settings }: NavBarProps) {
       );
       return;
     }
+    const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
 
-    // Create a GSAP timeline for the news text
-    if (newsRef.current) {
-      const newsTimeline = gsap.timeline({
-        repeat: -1,
-        defaults: { ease: "none" },
-      });
-
-      newsTimeline.fromTo(
-        newsRef.current,
-        { xPercent: 100 }, // Start off-screen to the right
-        { xPercent: -100, duration: 15, ease: "linear" }, // Move to off-screen to the left
-      );
-    }
+    tl.fromTo(
+      ".header__heading",
+      { opacity: 0 },
+      { opacity: 1, duration: 1, delay: 0.5 },
+    );
+    tl.fromTo(
+      ".header__menu",
+      { x: 100 },
+      { x: 0, opacity: 1, duration: 1.2 },
+      "-=1.0",
+    );
+    tl.fromTo(".header__news", {}, { opacity: 1, duration: 1.2 }, "-=1.0");
+    tl.fromTo(
+      ".header__newss",
+      { xPercent: 100 },
+      { xPercent: -100, opacity: 1, duration: 15, repeat: -1, ease: "linear" },
+      "-=1.0",
+    );
   }, [prefersReducedMotion]);
 
   return (
     <nav
-      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full bg-[#7ec2dd] bg-opacity-95 p-2 text-[#333333] md:h-[90px]`}
+      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full bg-[#7ec2dd] bg-opacity-95 p-2 text-[#333333] opacity-0 md:h-[90px]`}
       aria-label="Main"
       ref={container}
     >
@@ -183,7 +188,7 @@ export default function NavBar({ settings }: NavBarProps) {
         </div>
 
         {/* Desktop Nav */}
-        <ul className="header__menu hidden gap-6 text-lg  lg:flex">
+        <ul className="header__menu hidden gap-6 text-lg opacity-0 lg:flex">
           {settings.data.navigation.map((item) => {
             if (item.cta_button) {
               return (
@@ -223,11 +228,10 @@ export default function NavBar({ settings }: NavBarProps) {
       </div>
       {isFilled.richText(settings.data.news) && (
         <div
-          className={`header__news left-0 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-white bg-opacity-70  backdrop-blur-sm`}
+          className={`header__news left-0 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-white bg-opacity-70 opacity-0 backdrop-blur-sm`}
         >
           <div
-            ref={newsRef} // Attach the ref here
-            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-[#800000] sm:w-[75vw]" : "sm:w-[80vw]"} max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap`}
+            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-[#800000] sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
           >
             <PrismicText field={settings.data.news} />
           </div>
