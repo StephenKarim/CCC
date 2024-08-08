@@ -29,13 +29,19 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
   const [key, setKey] = useState<number>(0);
   const refreshTimeoutRef = useRef<number | NodeJS.Timeout | null>(null);
   const glideTweenRef = useRef<gsap.core.Tween | null>(null);
-  const [firstInteraction, setFirstInteraction] = useState<boolean>(false); // New state for tracking first interaction
 
   useEffect(() => {
-    gsap.registerPlugin(Draggable);
-
     const imagesContainer = imagesRef.current;
-    if (imagesContainer) {
+
+    if (!imagesContainer) {
+      console.error("imagesContainer is not ready.");
+      return;
+    }
+
+    // Add a small delay to ensure the DOM is fully ready
+    const initTimeout = setTimeout(() => {
+      gsap.registerPlugin(Draggable);
+
       const images = imagesContainer.children;
       const imagesArray = Array.from(images) as HTMLElement[];
       imagesArray.forEach((image) => {
@@ -90,11 +96,6 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
             startX = this.x;
             endX = this.x;
           }
-
-          window.addEventListener("touchmove", preventScroll, {
-            passive: false,
-          });
-          window.addEventListener("wheel", preventScroll, { passive: false });
         },
         onDragEnd: function () {
           isDraggingRef.current = false;
@@ -140,10 +141,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
           refreshTimeoutRef.current = window.setTimeout(() => {
             fadeOutAndRerender();
-          }, 4000);
-
-          window.removeEventListener("touchmove", preventScroll);
-          window.removeEventListener("wheel", preventScroll);
+          }, 5000);
         },
       });
 
@@ -153,17 +151,16 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           glideTweenRef.current = null;
         }
 
-        if (!isDraggingRef.current && firstInteraction) {
+        if (!isDraggingRef.current) {
           if (refreshTimeoutRef.current) {
             clearTimeout(refreshTimeoutRef.current as number);
           }
 
+          // Apply a delay before re-rendering
           refreshTimeoutRef.current = window.setTimeout(() => {
             fadeOutAndRerender();
-          }, 4000);
+          }, 6000);
         }
-
-        setFirstInteraction(true);
       };
 
       imagesContainer.addEventListener("click", handleClick);
@@ -174,10 +171,9 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
         }
         Draggable.get(imagesContainer)?.kill();
         imagesContainer.removeEventListener("click", handleClick);
-        window.removeEventListener("touchmove", preventScroll);
-        window.removeEventListener("wheel", preventScroll);
+        clearTimeout(initTimeout);
       };
-    }
+    }, 100); // Small delay to ensure DOM is ready
   }, [slice.primary.images, key]);
 
   const fadeOutAndRerender = () => {
@@ -186,7 +182,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       // Fade out
       gsap.to(container, {
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
         onComplete: () => {
           // Trigger re-render
           setKey((prevKey) => prevKey + 1);
@@ -199,13 +195,9 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
     // Apply a default fade-in animation whenever the component is rendered
     const container = imagesRef.current;
     if (container) {
-      gsap.fromTo(container, { opacity: 0 }, { opacity: 1, duration: 1 });
+      gsap.fromTo(container, { opacity: 0 }, { opacity: 1, duration: 0.5 });
     }
   }, [key]);
-
-  const preventScroll = (event: Event) => {
-    event.preventDefault();
-  };
 
   return (
     <section
