@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { Draggable } from "gsap/dist/Draggable";
-import { Content } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { Russo_One } from "next/font/google";
+import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { Draggable } from 'gsap/dist/Draggable';
+import { Content } from '@prismicio/client';
+import { PrismicNextImage } from '@prismicio/next';
+import { PrismicRichText, SliceComponentProps } from '@prismicio/react';
+import { Russo_One } from 'next/font/google';
 
 const russoOne = Russo_One({
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap',
 });
 
 /**
@@ -37,7 +37,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
       const imagesContainer = imagesRef.current;
       if (!imagesContainer) {
-        console.error("imagesContainer is not ready.");
+        console.error('imagesContainer is not ready.');
         return;
       }
 
@@ -56,7 +56,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       timeline.to(imagesContainer, {
         x: `-${numberOfImages * 100}%`,
         duration: duration,
-        ease: "none",
+        ease: 'none',
       });
 
       gsapTimelineRef.current = timeline;
@@ -66,7 +66,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
       // Create Draggable instance on the images container
       Draggable.create(imagesContainer, {
-        type: "x",
+        type: 'x',
         bounds: {
           minX: -imagesContainer.scrollWidth + imagesContainer.clientWidth,
           maxX: 0,
@@ -101,10 +101,10 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           }
 
           // Prevent default scrolling
-          window.addEventListener("touchmove", preventScroll, {
+          window.addEventListener('touchmove', preventScroll, {
             passive: false,
           });
-          window.addEventListener("wheel", preventScroll, { passive: false });
+          window.addEventListener('wheel', preventScroll, { passive: false });
         },
         onDragEnd: function () {
           isDraggingRef.current = false;
@@ -128,25 +128,22 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           // Create and store the glide tween reference
           glideTweenRef.current = gsap.to(imagesContainer, {
             x: `+=${glideDistance}`, // Glide based on calculated distance
-            ease: "power3.out", // Use power3.out for a smooth deceleration
+            ease: 'power3.out', // Use power3.out for a smooth deceleration
             duration: 2, // Duration of the glide
             onComplete: () => {
               // Adjust bounds if necessary
-              const adjustedX = gsap.getProperty(
-                imagesContainer,
-                "x",
-              ) as number;
+              const adjustedX = gsap.getProperty(imagesContainer, 'x') as number;
               if (adjustedX > 0) {
                 gsap.to(imagesContainer, {
                   x: 0,
                   duration: 0.5,
-                  ease: "power3.out",
+                  ease: 'power3.out',
                 });
               } else if (adjustedX < minX) {
                 gsap.to(imagesContainer, {
                   x: minX,
                   duration: 0.5,
-                  ease: "power3.out",
+                  ease: 'power3.out',
                 });
               }
             },
@@ -154,15 +151,12 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
           // Set a new timeout for refreshing the carousel 5 seconds after dragging ends
           refreshTimeoutRef.current = window.setTimeout(() => {
-            if (gsapTimelineRef.current) {
-              gsapTimelineRef.current.play();
-            }
-            setKey((prevKey) => prevKey + 1); // Trigger a re-render by updating the key
+            fadeOutAndRerender(); // Trigger fade-out before re-render
           }, 5000);
 
           // Re-enable scrolling after dragging ends
-          window.removeEventListener("touchmove", preventScroll);
-          window.removeEventListener("wheel", preventScroll);
+          window.removeEventListener('touchmove', preventScroll);
+          window.removeEventListener('wheel', preventScroll);
         },
       });
 
@@ -182,26 +176,53 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
           // Set a new timeout for re-rendering after 6 seconds
           refreshTimeoutRef.current = window.setTimeout(() => {
-            setKey((prevKey) => prevKey + 1);
+            fadeOutAndRerender(); // Trigger fade-out before re-render
           }, 6000);
         }
       };
 
       // Add click event listener to the carousel container
-      imagesContainer.addEventListener("click", handleClick);
+      imagesContainer.addEventListener('click', handleClick);
 
       return () => {
         if (gsapTimelineRef.current) {
           gsapTimelineRef.current.kill();
         }
         Draggable.get(imagesContainer)?.kill();
-        imagesContainer.removeEventListener("click", handleClick); // Clean up event listener
-        window.removeEventListener("touchmove", preventScroll);
-        window.removeEventListener("wheel", preventScroll);
+        imagesContainer.removeEventListener('click', handleClick); // Clean up event listener
+        window.removeEventListener('touchmove', preventScroll);
+        window.removeEventListener('wheel', preventScroll);
         clearTimeout(initTimeout); // Clear the initialization timeout on cleanup
       };
     }, 100); // Delay initialization by 100ms to ensure DOM readiness
   }, [slice.primary.images, key]); // Include key in the dependency array to trigger re-render
+
+  const fadeOutAndRerender = () => {
+    const container = imagesRef.current;
+    if (container) {
+      // Fade out
+      gsap.to(container, {
+        opacity: 0,
+        duration: 0.5,
+        onComplete: () => {
+          // Trigger re-render
+          setKey((prevKey) => prevKey + 1);
+        },
+      });
+    }
+  };
+
+  useEffect(() => {
+    // Apply a default fade-in animation whenever the component is rendered
+    const container = imagesRef.current;
+    if (container) {
+      gsap.fromTo(
+        container,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5 },
+      );
+    }
+  }, [key]);
 
   const preventScroll = (event: Event) => {
     event.preventDefault();
@@ -228,7 +249,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           <PrismicNextImage
             key={index}
             field={item.image}
-            className="h-auto w-auto flex-shrink-0 transform rounded-3xl px-2 shadow-2xl transition-transform duration-700 ease-in-out hover:scale-105 hover:opacity-80"
+            className="h-auto w-auto flex-shrink-0 transform px-2 transition-transform duration-700 ease-in-out hover:scale-105 hover:opacity-80 shadow-2xl rounded-3xl"
           />
         ))}
       </div>
