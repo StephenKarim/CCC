@@ -114,14 +114,14 @@ export default function AnimatedContent({
             <PrismicText field={slice.primary.heading} />
           </h1>
         )}
-        {isFilled.link(slice.primary.button_link) && (
+        {/* {isFilled.link(slice.primary.button_link) && (
           <ButtonLink
             className="hero__button rounded-lg border border-black bg-[#070815] bg-opacity-95 text-[1rem] opacity-0 lg:text-xl"
             field={slice.primary.button_link}
           >
             {slice.primary.button_label}
           </ButtonLink>
-        )}
+        )} */}
       </div>
     </div>
   );
