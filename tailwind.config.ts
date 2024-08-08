@@ -33,38 +33,38 @@ const config: Config = {
         // Add more fonts here if needed
       },
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+        border: 'hsl(0, 0%, 89.8%)',
+        input: 'hsl(0, 0%, 89.8%)',
+        ring: 'hsl(0, 0%, 3.9%)',
+        background: 'hsl(var(--background) / <alpha-value>)',
+        foreground: 'hsl(var(--foreground) / <alpha-value>)',
+        card: {
+          DEFAULT: 'hsl(var(--card) / <alpha-value>)',
+          foreground: 'hsl(var(--card-foreground) / <alpha-value>)',
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          DEFAULT: 'hsl(var(--popover) / <alpha-value>)',
+          foreground: 'hsl(var(--popover-foreground) / <alpha-value>)',
         },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary) / <alpha-value>)',
+          foreground: 'hsl(var(--primary-foreground) / <alpha-value>)',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
+          foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
+          foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted) / <alpha-value>)',
+          foreground: 'hsl(var(--muted-foreground) / <alpha-value>)',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent) / <alpha-value>)',
+          foreground: 'hsl(var(--accent-foreground) / <alpha-value>)',
         },
       },
       borderRadius: {
@@ -89,21 +89,44 @@ const config: Config = {
     },
   },
   plugins: [
-    plugin(function ({ addVariant }) {
-      addVariant('ios', '@supports (-webkit-overflow-scrolling: touch)');
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        '.bg-opacity-10': {
+          '--tw-bg-opacity': '0.1',
+        },
+        '.bg-opacity-20': {
+          '--tw-bg-opacity': '0.2',
+        },
+        '.bg-opacity-30': {
+          '--tw-bg-opacity': '0.3',
+        },
+        '.bg-opacity-40': {
+          '--tw-bg-opacity': '0.4',
+        },
+        '.bg-opacity-50': {
+          '--tw-bg-opacity': '0.5',
+        },
+        '.bg-opacity-60': {
+          '--tw-bg-opacity': '0.6',
+        },
+        '.bg-opacity-70': {
+          '--tw-bg-opacity': '0.7',
+        },
+        '.bg-opacity-80': {
+          '--tw-bg-opacity': '0.8',
+        },
+        '.bg-opacity-90': {
+          '--tw-bg-opacity': '0.9',
+        },
+        '.bg-opacity-100': {
+          '--tw-bg-opacity': '1',
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
     }),
     require('@tailwindcss/typography'),
     require('tailwindcss-animate'),
-    plugin(function ({ matchUtilities, theme }) {
-      matchUtilities(
-        {
-          'text-shadow': (value) => ({
-            textShadow: value,
-          }),
-        },
-        { values: theme('textShadow') }
-      );
-    }),
   ],
 };
 
