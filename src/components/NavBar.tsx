@@ -83,14 +83,14 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full  bg-[#070815] bg-opacity-95 p-2 text-gray-200 opacity-0 md:h-[90px]`}
+      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full bg-[#070815] bg-opacity-95 p-2 text-gray-200 opacity-0 md:h-[90px]`}
       aria-label="Main"
       ref={container}
     >
       <div
         className={`${open ? "fixed z-50" : ""} mx-auto flex flex-col justify-between py-2 font-medium opacity-95 lg:flex-row lg:items-center`}
       >
-        <div className="flex items-center justify-between ">
+        <div className="flex items-center justify-between">
           <Link href="/" className={`z-50`} onClick={() => setOpen(false)}>
             <span className="sr-only">Covenant City Church Home Page</span>
             <div
@@ -107,7 +107,7 @@ export default function NavBar({ settings }: NavBarProps) {
                 />
               </div>
 
-              <div className="ml-[0.5rem] flex-col">
+              {/* <div className="ml-[0.5rem] flex-col">
                 {isFilled.richText(settings.data.logo_label_top) && (
                   <h2 className="-mb-[0.8rem] text-left">
                     <PrismicText field={settings.data.logo_label_top} />
@@ -118,7 +118,7 @@ export default function NavBar({ settings }: NavBarProps) {
                     <PrismicText field={settings.data.logo_label_bot} />
                   </h2>
                 )}
-              </div>
+              </div> */}
             </div>
           </Link>
 
