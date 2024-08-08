@@ -27,9 +27,10 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
   const imagesRef = useRef<HTMLDivElement>(null);
   const gsapTimelineRef = useRef<gsap.core.Timeline | null>(null);
   const isDraggingRef = useRef<boolean>(false);
-  const [key, setKey] = useState<number>(0); // State to trigger re-render
-  const refreshTimeoutRef = useRef<number | NodeJS.Timeout | null>(null); // Updated type
-  const glideTweenRef = useRef<gsap.core.Tween | null>(null); // Reference to the ongoing glide tween
+  const [key, setKey] = useState<number>(0);
+  const refreshTimeoutRef = useRef<number | NodeJS.Timeout | null>(null);
+  const glideTweenRef = useRef<gsap.core.Tween | null>(null);
+  const [firstInteraction, setFirstInteraction] = useState<boolean>(false); // New state for tracking first interaction
 
   useEffect(() => {
     gsap.registerPlugin(Draggable);
@@ -44,7 +45,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       });
 
       const numberOfImages = imagesArray.length;
-      const duration = numberOfImages * 5; // 5 seconds per image
+      const duration = numberOfImages * 5;
 
       const timeline = gsap.timeline({ repeat: -1, paused: false });
 
@@ -59,15 +60,14 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       let startX = 0;
       let endX = 0;
 
-      // Create Draggable instance on the images container
       Draggable.create(imagesContainer, {
         type: "x",
         bounds: {
           minX: -imagesContainer.scrollWidth + imagesContainer.clientWidth,
           maxX: 0,
         },
-        inertia: false, // We will handle inertia manually
-        resistance: 0.05, // Lower resistance for smoother dragging
+        inertia: false,
+        resistance: 0.05,
         onPressInit: function () {
           startX = this.x;
         },
@@ -79,23 +79,19 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
             gsapTimelineRef.current.pause();
             isDraggingRef.current = true;
 
-            // Clear existing timeout when dragging starts
             if (refreshTimeoutRef.current) {
-              clearTimeout(refreshTimeoutRef.current as number); // Type assertion for number
+              clearTimeout(refreshTimeoutRef.current as number);
             }
 
-            // Kill the ongoing glide tween if it exists
             if (glideTweenRef.current) {
               glideTweenRef.current.kill();
-              glideTweenRef.current = null; // Reset glide tween reference
+              glideTweenRef.current = null;
             }
 
-            // Reset velocity by setting start and end to the same position
             startX = this.x;
             endX = this.x;
           }
 
-          // Prevent default scrolling
           window.addEventListener("touchmove", preventScroll, {
             passive: false,
           });
@@ -104,12 +100,10 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
         onDragEnd: function () {
           isDraggingRef.current = false;
 
-          // Calculate direction based on start and end positions
-          let glideDistance = (endX - startX) * 3; // Adjust multiplier as needed for glide effect
+          let glideDistance = (endX - startX) * 3;
 
           const currentX = endX + glideDistance;
 
-          // Prevent gliding past the first and last images
           const minX =
             -imagesContainer.scrollWidth + imagesContainer.clientWidth;
           const maxX = 0;
@@ -120,13 +114,11 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
             glideDistance = minX - endX;
           }
 
-          // Create and store the glide tween reference
           glideTweenRef.current = gsap.to(imagesContainer, {
-            x: `+=${glideDistance}`, // Glide based on calculated distance
-            ease: "power3.out", // Use power3.out for a smooth deceleration
-            duration: 2, // Duration of the glide
+            x: `+=${glideDistance}`,
+            ease: "power3.out",
+            duration: 2,
             onComplete: () => {
-              // Adjust bounds if necessary
               const adjustedX = gsap.getProperty(
                 imagesContainer,
                 "x",
@@ -147,42 +139,37 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
             },
           });
 
-          // Set a new timeout for refreshing the carousel 5 seconds after dragging ends
           refreshTimeoutRef.current = window.setTimeout(() => {
             if (gsapTimelineRef.current) {
               gsapTimelineRef.current.play();
             }
-            setKey((prevKey) => prevKey + 1); // Trigger a re-render by updating the key
+            setKey((prevKey) => prevKey + 1);
           }, 5000);
 
-          // Re-enable scrolling after dragging ends
           window.removeEventListener("touchmove", preventScroll);
           window.removeEventListener("wheel", preventScroll);
         },
       });
 
-      // Event listener for click event when dragging is false
       const handleClick = () => {
-        // Kill the ongoing glide tween if it exists
         if (glideTweenRef.current) {
           glideTweenRef.current.kill();
-          glideTweenRef.current = null; // Reset glide tween reference
+          glideTweenRef.current = null;
         }
 
-        if (!isDraggingRef.current) {
-          // Clear any existing timeout
+        if (!isDraggingRef.current && firstInteraction) {
           if (refreshTimeoutRef.current) {
             clearTimeout(refreshTimeoutRef.current as number);
           }
 
-          // Set a new timeout for re-rendering after 6 seconds
           refreshTimeoutRef.current = window.setTimeout(() => {
             setKey((prevKey) => prevKey + 1);
           }, 6000);
         }
+
+        setFirstInteraction(true); // Mark the first interaction as complete
       };
 
-      // Add click event listener to the carousel container
       imagesContainer.addEventListener("click", handleClick);
 
       return () => {
@@ -190,12 +177,12 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           gsapTimelineRef.current.kill();
         }
         Draggable.get(imagesContainer)?.kill();
-        imagesContainer.removeEventListener("click", handleClick); // Clean up event listener
+        imagesContainer.removeEventListener("click", handleClick);
         window.removeEventListener("touchmove", preventScroll);
         window.removeEventListener("wheel", preventScroll);
       };
     }
-  }, [slice.primary.images, key]); // Include `key` in the dependency array to trigger re-render
+  }, [slice.primary.images, key]);
 
   const preventScroll = (event: Event) => {
     event.preventDefault();
@@ -206,11 +193,11 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       ref={carouselRef}
-      key={key} // Set the key here to trigger re-render
+      key={key}
       className="relative flex flex-col overflow-hidden pb-[3rem]"
     >
       <div
-        className={` ${russoOne.className}  flex flex-col items-center justify-center pb-[4rem] pt-[3rem] text-4xl md:text-5xl lg:text-6xl`}
+        className={` ${russoOne.className} flex flex-col items-center justify-center pb-[4rem] pt-[3rem] text-4xl md:text-5xl lg:text-6xl`}
       >
         <PrismicRichText field={slice.primary.heading} />
       </div>
@@ -222,7 +209,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           <PrismicNextImage
             key={index}
             field={item.image}
-            className="h-auto w-auto flex-shrink-0 transform px-2 transition-transform duration-700 ease-in-out hover:scale-105 hover:opacity-80 shadow-2xl rounded-3xl"
+            className="h-auto w-auto flex-shrink-0 transform rounded-3xl px-2 shadow-2xl transition-transform duration-700 ease-in-out hover:scale-105 hover:opacity-80"
           />
         ))}
       </div>
