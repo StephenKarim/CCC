@@ -70,7 +70,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
           field={slice.primary.image}
           alt=""
           className={clsx(
-            "opacity-90 shadow-2xl lg:col-span-2 lg:pt-0",
+            "opacity-90 shadow-2xl lg:col-span-2 lg:pt-0 rounded-2xl",
 
             "lg:order-1 lg:translate-x-[15%]",
           )}
