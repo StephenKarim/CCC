@@ -91,7 +91,7 @@ export default function AnimatedContent({
 
       {isFilled.image(slice.primary.image) && (
         <div className="hero__video min-h-full min-w-full opacity-0">
-          {/* <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 blur-2xl filter" /> */}
+          {/* <div className="hero__glow absolute inset-0 -z-10 bg-blue-500/30 opacity-0 filter" /> */}
           <video
             className="hero__video min-h-[100vh] min-w-[96vw] overflow-hidden object-cover opacity-0 brightness-[1] contrast-[1.1] saturate-[0.8] filter sm:min-w-[97vw] md:min-w-[97.5vw] lg:min-w-[98.2vw] xl:min-w-[98.6vw] 2xl:min-w-[98.8vw]"
             autoPlay
@@ -106,7 +106,7 @@ export default function AnimatedContent({
         </div>
       )}
       <div
-        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-white bg-opacity-70 p-4 text-right font-bold opacity-0 backdrop-blur-sm sm:w-[60vw] md:justify-end`}
+        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-white bg-opacity-85 p-4 text-right font-bold opacity-0 sm:w-[60vw] md:justify-end`}
       >
         {/* bg-[#F5F5DC] bg-[#7ec2dd] text-[#333333]*/}
         {isFilled.richText(slice.primary.heading) && (

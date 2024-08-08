@@ -28,9 +28,9 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
   >
     {/* <div className="-mt-[3rem] h-4 w-[99vw] bg-[#76b5ce]"></div> */}
     {/* <div className="glow absolute -z-10 aspect-square w-full max-w-sm rounded-full bg-blue-500/50 blur-[160px] filter" /> */}
-    {/* <div className="bg-[url('/images/33.png')] bg-cover p-10 bg-center"> */}
+    <div className="bg-white bg-opacity-60 rounded-lg p-5 flex flex-col ">
 
-    <div className="rounded-lg bg-[#76b5ce] bg-opacity-90 p-4 md:rounded-xl">
+    <div className="rounded-lg items-center justify-center mx-auto bg-[#76b5ce] bg-opacity-90 p-4 md:rounded-xl max-w-[5rem]">
       <div className="ml-[0.5rem] flex flex-col items-center justify-center">
         <RiCrossLine
           color="#333333"
@@ -44,14 +44,14 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
       </div>
     </div>
     <div
-      className={`${russoOne.className} text-gray-200 mt-8 max-w-xl text-balance text-4xl uppercase text-shadow-lg md:text-4xl lg:text-5xl`}
+      className={`${russoOne.className} mt-8 max-w-xl items-center justify-center mx-auto text-4xl uppercase text-shadow-lg md:text-3xl lg:text-4xl text-[#333] p-2`}
       >
       <PrismicText field={slice.primary.heading} />
     </div>
-    <ButtonLink field={slice.primary.button_link} className="mt-6 bg-opacity-85">
+    <ButtonLink field={slice.primary.button_link} className="mt-6 bg-opacity-85 items-center justify-center mx-auto">
       {slice.primary.button_text || "Learn More"}
     </ButtonLink>
-      {/* </div> */}
+      </div>
   </Bounded>
 );
 

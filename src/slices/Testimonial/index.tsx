@@ -50,14 +50,14 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
       className="ios:bg-scroll relative bg-[url('/images/27.webp')] bg-cover bg-fixed bg-center px-4 py-14 text-shadow-lg first:pt-10 md:px-6 md:py-20 lg:py-24"
     >
       <h2
-        className={`${russoOne.className} w-full text-balance rounded-lg bg-gradient-to-b from-slate-50/35 to-slate-50/25 py-4 text-center text-4xl text-[#eeeeee] shadow-white backdrop-blur-3xl text-shadow-lg md:text-4xl lg:text-5xl`}
+        className={`${russoOne.className} bg-white bg-opacity-90 border-sky-600/20 border w-full rounded-lg py-4 text-center text-4xl text-shadow-lg md:text-4xl lg:text-5xl`}
       >
         <PrismicRichText field={slice.primary.heading} />
       </h2>
-      <div className="mt-16 grid items-center gap-8 rounded-xl border border-blue-50/20 bg-gradient-to-b from-slate-50/15 to-slate-50/5 px-8 py-8 backdrop-blur-3xl lg:gap-0 lg:py-12">
+      <div className="mt-16 grid items-center gap-8 rounded-xl bg-white bg-opacity-90 border border-sky-600/20 px-8 py-8 lg:gap-0 lg:py-12">
         <div className="z-10 flex flex-col items-center justify-center">
           <div
-            className={`${russoOne.className} mt-6 text-2xl font-normal text-[#eeeeee]`}
+            className={`${russoOne.className} mt-6 text-2xl font-normal`}
           >
             <PrismicRichText field={slice.primary.body} />
           </div>
@@ -70,11 +70,11 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
               >
                 <div className="col-span-1 flex flex-col justify-center gap-4">
                   <h3
-                    className={`${russoOne.className} mt-6 text-4xl font-normal text-[#eeeeee]`}
+                    className={`${russoOne.className} mt-6 text-4xl font-normal`}
                   >
                     <PrismicText field={item.title} />
                   </h3>
-                  <div className="prose prose-invert mt-4 max-w-md font-medium text-[#eeeeee]">
+                  <div className="mt-4 font-medium text-xl pb-4 text-balance px-1">
                     <PrismicRichText field={item.body} />
                   </div>
                   {/* <PrismicNextLink

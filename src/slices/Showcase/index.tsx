@@ -32,7 +32,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className=" ios:bg-scroll relative bg-[url('/images/27.webp')] bg-cover bg-fixed bg-center px-4 py-14 text-shadow-lg first:pt-10 md:px-6 md:py-20 lg:py-24"
+      className=" ios:bg-scroll relative bg-[url('/images/27.webp')] bg-cover bg-fixed bg-center px-4 py-14  first:pt-10 md:px-6 md:py-20 lg:py-24"
     >
       {/* <AnimatedContent>
         </AnimatedContent> */}
@@ -41,20 +41,20 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
         components={{
           heading2: ({ children }) => (
             <h2
-              className={`${russoOne.className} text-[#eeeeee] py-4 backdrop-blur-3xl text-balance w-full rounded-lg text-center text-4xl bg-gradient-to-b from-slate-50/35 to-slate-50/25 shadow-white text-shadow-lg md:text-4xl lg:text-5xl`}
+              className={`${russoOne.className}  py-4 w-full rounded-lg text-center text-4xl border-sky-600/20 bg-white bg-opacity-90 text-shadow-sm md:text-4xl lg:text-5xl`}
             >
               {children}
             </h2>
           ),
         }}
       />
-      <div className="mt-16 grid items-center gap-8 rounded-xl border border-blue-50/20 bg-gradient-to-b from-slate-50/15 to-slate-50/5 px-8 py-8 backdrop-blur-3xl lg:grid-cols-3 lg:gap-0 lg:py-12">
+      <div className="mt-16 grid items-center gap-8 rounded-xl border border-sky-600/20 px-8 py-8  lg:grid-cols-3 lg:gap-0 lg:py-12 bg-white bg-opacity-90">
         <div>
-          <div className={`${russoOne.className} mt-6 text-2xl font-normal text-gray-200`}>
+          <div className={`${russoOne.className} mt-6 text-2xl font-normal `}>
             <PrismicRichText field={slice.primary.subheading} />
           </div>
 
-          <div className="prose prose-invert mt-4 max-w-xl font-medium text-[#eeeeee]">
+          <div className="py-4 mt-4 max-w-xl font-medium text-[#333] text-xl ">
             <PrismicRichText field={slice.primary.body} />
           </div>
 
