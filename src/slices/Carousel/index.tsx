@@ -105,7 +105,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           isDraggingRef.current = false;
 
           // Calculate direction based on start and end positions
-          let glideDistance = (endX - startX) * 1.5; // Adjust multiplier as needed for glide effect
+          let glideDistance = (endX - startX) * 3; // Adjust multiplier as needed for glide effect
 
           const currentX = endX + glideDistance;
 
