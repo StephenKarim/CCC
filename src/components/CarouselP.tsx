@@ -186,7 +186,7 @@ const CarouselP = () => {
         </div>
         <div className="carousel-item w-full flex-none">
           <Image
-            src="/images/I3.jpg"
+            src="/images/27.webp"
             alt="Image 3"
             width={200}
             height={200}
