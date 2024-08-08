@@ -68,7 +68,7 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
             <PrismicNextImage
               field={item.image}
               alt=""
-              className="max-h-36 w-auto justify-center items-center"
+              className="max-h-36 w-auto justify-center items-center rounded-xl"
               />
           </div>
         ))}
