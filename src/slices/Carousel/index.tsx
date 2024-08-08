@@ -140,7 +140,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
           refreshTimeoutRef.current = window.setTimeout(() => {
             fadeOutAndRerender();
-          }, 5000);
+          }, 4000);
 
           window.removeEventListener("touchmove", preventScroll);
           window.removeEventListener("wheel", preventScroll);
@@ -160,7 +160,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
           refreshTimeoutRef.current = window.setTimeout(() => {
             fadeOutAndRerender();
-          }, 6000);
+          }, 4000);
         }
 
         setFirstInteraction(true);
