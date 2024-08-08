@@ -75,7 +75,10 @@ export default function AnimatedContent({
   );
 
   return (
-    <div className="relative min-h-full min-w-full" ref={container}>
+    <div
+      className="relative min-h-full min-w-full bg-[url('/images/logo2.PNG')] bg-center bg-no-repeat"
+      ref={container}
+    >
       {/* <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
         <h1 className="hero__heading mt-2 text-balance text-center text-5xl font-medium opacity-0 md:text-7xl">
@@ -98,17 +101,15 @@ export default function AnimatedContent({
             loop
             muted
             controls={false}
-            playsInline
-            preload="metadata"
           >
             <source src="/videos/videoweb.webm" type="video/webm" />
           </video>
         </div>
       )}
-        {/* bg-[#F5F5DC] bg-[#7ec2dd] text-[#333333]*/}
+      {/* bg-[#F5F5DC] bg-[#7ec2dd] text-[#333333]*/}
 
       <div
-        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-white bg-opacity-85 p-4 text-right font-bold opacity-0 sm:w-[60vw] md:justify-end`}
+        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-gray-200 bg-opacity-85 p-4 text-right font-bold opacity-0 sm:w-[60vw] md:justify-end`}
       >
         {isFilled.richText(slice.primary.heading) && (
           <h1 className="md:max-text-[] mr-0 pb-2 text-[1.3rem] sm:text-xl md:text-2xl lg:text-3xl">

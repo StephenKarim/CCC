@@ -53,7 +53,7 @@ export default function NavBar({ settings }: NavBarProps) {
     if (prefersReducedMotion) {
       gsap.set(
         ".hero__heading, .hero__body, .hero__button, .hero__image, .hero__glow",
-        { opacity: 1 }
+        { opacity: 1 },
       );
       return;
     }
@@ -62,20 +62,20 @@ export default function NavBar({ settings }: NavBarProps) {
     tl.fromTo(
       ".header__heading",
       { opacity: 0 },
-      { opacity: 1, duration: 1, delay: 0.5 }
+      { opacity: 1, duration: 1, delay: 0.5 },
     );
     tl.fromTo(
       ".header__menu",
       { x: 100 },
       { x: 0, opacity: 1, duration: 1.2 },
-      "-=1.0"
+      "-=1.0",
     );
     tl.fromTo(".header__news", {}, { opacity: 1, duration: 1.2 }, "-=1.0");
     tl.fromTo(
       ".header__newss",
       { xPercent: 100 },
       { xPercent: -100, opacity: 1, duration: 15, repeat: -1, ease: "linear" },
-      "-=1.0"
+      "-=1.0",
     );
   }, [prefersReducedMotion]);
 
@@ -126,7 +126,7 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <MdMenu className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-[#7ec2dd] bg-opacity-60  md:top-[1.8rem]" />
+            <MdMenu className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-[#7ec2dd] bg-opacity-60 md:top-[1.8rem]" />
             <span className="sr-only">Open menu</span>
           </button>
         </div>
@@ -134,12 +134,12 @@ export default function NavBar({ settings }: NavBarProps) {
         <div
           className={clsx(
             "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#7ec2dd] bg-opacity-[1] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
-            open ? "translate-x-0" : "translate-x-[100%]"
+            open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
           <button
             type="button"
-            className="fixed right-4 top-4 mb-4 block p-2 text-3xl z-50 lg:hidden"
+            className="fixed right-4 top-4 z-50 mb-4 block p-2 text-3xl lg:hidden"
             aria-expanded={open}
             onClick={() => setOpen(false)}
           >
@@ -226,7 +226,7 @@ export default function NavBar({ settings }: NavBarProps) {
       </div>
       {isFilled.richText(settings.data.news) && (
         <div
-          className={`header__news left-0 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-white bg-opacity-70 opacity-0 z-50`}
+          className={`header__news left-0 z-50 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-gray-200 bg-opacity-70 opacity-0`}
         >
           <div
             className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-[#800000] sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
