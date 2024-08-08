@@ -105,24 +105,25 @@ export default function AnimatedContent({
           </video>
         </div>
       )}
-      <div
+      {/* bg-[#F5F5DC] bg-[#7ec2dd] text-[#333333]*/}
+
+      {/* <div
         className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-white bg-opacity-85 p-4 text-right font-bold opacity-0 sm:w-[60vw] md:justify-end`}
       >
-        {/* bg-[#F5F5DC] bg-[#7ec2dd] text-[#333333]*/}
         {isFilled.richText(slice.primary.heading) && (
           <h1 className="md:max-text-[] mr-0 pb-2 text-[1.3rem] sm:text-xl md:text-2xl lg:text-3xl">
             <PrismicText field={slice.primary.heading} />
           </h1>
         )}
-        {/* {isFilled.link(slice.primary.button_link) && (
+        {isFilled.link(slice.primary.button_link) && (
           <ButtonLink
             className="hero__button rounded-lg border border-black bg-[#070815] bg-opacity-95 text-[1rem] opacity-0 lg:text-xl"
             field={slice.primary.button_link}
           >
             {slice.primary.button_label}
           </ButtonLink>
-        )} */}
-      </div>
+        )}
+      </div> */}
     </div>
   );
 }
