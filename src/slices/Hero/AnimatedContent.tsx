@@ -101,7 +101,7 @@ export default function AnimatedContent({
             playsInline
             preload="metadata"
           >
-            <source src="/videos/video.mp4"></source>
+            <source src="/videos/videoweb.webm" type="video/webm" />
           </video>
         </div>
       )}
