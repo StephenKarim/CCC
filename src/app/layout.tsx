@@ -18,7 +18,7 @@ export default function RootLayout({
       <body className="grid bg-[#070815] text-gray-200">
         <SpeedInsights />
         {/* bg-[url('/images/background.png')] bg-fixed bg-cover */}
-        {/* <Header /> */}
+        <Header />
 
         <main>{children}</main>
         <Footer />
