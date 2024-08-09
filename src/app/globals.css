@@ -8,15 +8,15 @@
     --tw-shadow-color: 0 0% 4%; /* Shadow Color - Black (or Onyx) */
 
     /* Light Theme Colors */
-    --background: 197 48% 65%; /* Light Background - Sky Blue */
+    --background: 207 61% 38%; /* Light Background - Sky Blue */
     --foreground: 0 0% 20%; /* Light Foreground - Dark Gray */
-    
+
     --primary: 0 0% 9%; /* Light Primary Color - Eclipse */
     --primary-foreground: 0 0% 98%; /* Light Primary Foreground - Snow */
-    
+
     --secondary: 0 0% 93%; /* Light Secondary Color - Bright Gray */
     --secondary-foreground: 0 0% 9%; /* Light Secondary Foreground - Eclipse */
-    
+
     --card: 0 0% 100%; /* Light Card Background - White */
     --card-foreground: 0 0% 4%; /* Light Card Foreground - Black (or Onyx) */
     --popover: 0 0% 100%; /* Light Popover Background - White */
@@ -47,14 +47,14 @@
 
     --primary: 0 0% 98%; /* Dark Primary Color - Snow */
     --primary-foreground: 0 0% 9%; /* Dark Primary Foreground - Eclipse */
-    
+
     --secondary: 0 0% 15%; /* Dark Secondary Color - Charleston Green */
     --secondary-foreground: 0 0% 98%; /* Dark Secondary Foreground - Snow */
-    
+
     --card: 0 0% 4%; /* Dark Card Background - Black (or Onyx) */
     --card-foreground: 0 0% 98%; /* Dark Card Foreground - Snow */
     --popover: 0 0% 4%; /* Dark Popover Background - Black (or Onyx) */
-    --popover-foreground: 0 0% 98%; /* Dark Popover Foreground - Snow */    
+    --popover-foreground: 0 0% 98%; /* Dark Popover Foreground - Snow */
     --muted: 0 0% 15%; /* Dark Muted Color - Charleston Green */
     --muted-foreground: 0 0% 64%; /* Dark Muted Foreground - Spanish Gray */
     --accent: 0 0% 15%; /* Dark Accent Color - Charleston Green */
