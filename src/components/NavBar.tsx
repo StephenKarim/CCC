@@ -81,7 +81,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full border bg-background p-2 text-foreground opacity-0 md:h-[90px]`}
+      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full bg-background p-2 text-foreground opacity-0 md:h-[90px]`}
       aria-label="Main"
       ref={container}
     >
@@ -224,7 +224,7 @@ export default function NavBar({ settings }: NavBarProps) {
           })}
         </ul>
       </div>
-      {isFilled.richText(settings.data.news) && (
+      {pathname === "/" && isFilled.richText(settings.data.news) && (
         <div
           className={`header__news bg-background-contrast left-0 z-50 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-opacity-70 opacity-0`}
         >
