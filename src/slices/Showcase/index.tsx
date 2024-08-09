@@ -54,7 +54,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
             <PrismicRichText field={slice.primary.subheading} />
           </div>
 
-          <div className="mt-4 max-w-xl py-4 text-xl font-medium text-[#333]">
+          <div className="mt-4 max-w-xl py-4 text-xl font-medium text-foreground">
             <PrismicRichText field={slice.primary.body} />
           </div>
 
@@ -70,7 +70,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
           field={slice.primary.image}
           alt=""
           className={clsx(
-            "opacity-90 shadow-2xl lg:col-span-2 lg:pt-0 rounded-2xl",
+            "rounded-2xl opacity-90 shadow-2xl lg:col-span-2 lg:pt-0",
 
             "lg:order-1 lg:translate-x-[15%]",
           )}

@@ -81,7 +81,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full bg-[#7ec2dd] bg-opacity-95 p-2 text-[#333333] opacity-0 md:h-[90px]`}
+      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full bg-background bg-opacity-95 p-2 text-foreground opacity-0 md:h-[90px]`}
       aria-label="Main"
       ref={container}
     >
@@ -126,14 +126,14 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <MdMenu className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-[#7ec2dd] bg-opacity-60 md:top-[1.8rem]" />
+            <MdMenu className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-background bg-opacity-60 md:top-[1.8rem]" />
             <span className="sr-only">Open menu</span>
           </button>
         </div>
         {/* Mobile Nav */}
         <div
           className={clsx(
-            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-[#7ec2dd] bg-opacity-[1] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
+            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-background bg-opacity-[1] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
@@ -229,7 +229,7 @@ export default function NavBar({ settings }: NavBarProps) {
           className={`header__news left-0 z-50 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-gray-200 bg-opacity-70 opacity-0`}
         >
           <div
-            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-shadow text-gray-200 sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
+            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-gray-200 text-shadow sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
           >
             <PrismicText field={settings.data.news} />
           </div>

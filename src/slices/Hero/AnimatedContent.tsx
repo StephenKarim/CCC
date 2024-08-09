@@ -106,7 +106,6 @@ export default function AnimatedContent({
           </video>
         </div>
       )}
-      {/* bg-[#F5F5DC] bg-[#7ec2dd] text-[#333333]*/}
 
       <div
         className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-gray-200 bg-opacity-85 p-4 text-right font-bold opacity-0 sm:w-[60vw] md:justify-end`}
@@ -118,7 +117,7 @@ export default function AnimatedContent({
         )}
         {/* {isFilled.link(slice.primary.button_link) && (
           <ButtonLink
-            className="hero__button rounded-lg border border-black bg-[#070815] bg-opacity-95 text-[1rem] opacity-0 lg:text-xl"
+            className="hero__button rounded-lg border border-black bg-background bg-opacity-95 text-[1rem] opacity-0 lg:text-xl"
             field={slice.primary.button_link}
           >
             {slice.primary.button_label}

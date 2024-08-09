@@ -24,12 +24,12 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
   <Bounded
     data-slice-type={slice.slice_type}
     data-slice-variation={slice.variation}
-    className="ios:bg-scroll relative min-h-[60vh] border-t-2 border-[#76b5ce] bg-[url('/images/call.webp')] bg-cover bg-fixed bg-center px-4 py-32 text-center font-medium text-secondary first:pt-10 md:px-6 md:py-40 lg:py-24"
+    className="ios:bg-scroll relative min-h-[60vh] border-t-2 border-background bg-[url('/images/call.webp')] bg-cover bg-fixed bg-center px-4 py-32 text-center font-medium text-secondary first:pt-10 md:px-6 md:py-40 lg:py-24"
   >
-    {/* <div className="-mt-[3rem] h-4 w-[99vw] bg-[#76b5ce]"></div> */}
+    {/* <div className="-mt-[3rem] h-4 w-[99vw] bg-background"></div> */}
     {/* <div className="glow absolute -z-10 aspect-square w-full max-w-sm rounded-full bg-blue-500/50 blur-[160px] filter" /> */}
     <div className="flex flex-col rounded-lg bg-gray-200 bg-opacity-60 p-5">
-      <div className="mx-auto max-w-[5rem] items-center justify-center rounded-lg bg-[#76b5ce] bg-opacity-90 p-4 md:rounded-xl">
+      <div className="mx-auto max-w-[5rem] items-center justify-center rounded-lg bg-background bg-opacity-90 p-4 md:rounded-xl">
         <div className="ml-[0.5rem] flex flex-col items-center justify-center">
           <RiCrossLine
             color="#333333"
@@ -43,7 +43,7 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
         </div>
       </div>
       <div
-        className={`${russoOne.className} mx-auto mt-8 max-w-xl items-center justify-center p-2 text-4xl uppercase text-[#333] text-shadow-lg md:text-3xl lg:text-4xl`}
+        className={`${russoOne.className} mx-auto mt-8 max-w-xl items-center justify-center p-2 text-4xl uppercase text-foreground text-shadow-lg md:text-3xl lg:text-4xl`}
       >
         <PrismicText field={slice.primary.heading} />
       </div>
