@@ -136,7 +136,7 @@ export default function AnimatedContent() {
   Live Streams!
 </button>
       </div> */}
-      {/* <div className="h-4 w-full bg-gray-200 mt-14">
+      {/* <div className="h-4 w-full bg-background-contrast mt-14">
     </div>
     */}
     </div>

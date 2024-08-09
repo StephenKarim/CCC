@@ -28,7 +28,7 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => (
   >
     {/* <div className="-mt-[3rem] h-4 w-[99vw] bg-background"></div> */}
     {/* <div className="glow absolute -z-10 aspect-square w-full max-w-sm rounded-full bg-blue-500/50 blur-[160px] filter" /> */}
-    <div className="flex flex-col rounded-lg bg-gray-200 bg-opacity-60 p-5">
+    <div className="bg-background-contrast flex flex-col rounded-lg bg-opacity-60 p-5">
       <div className="mx-auto max-w-[5rem] items-center justify-center rounded-lg bg-background bg-opacity-90 p-4 md:rounded-xl">
         <div className="ml-[0.5rem] flex flex-col items-center justify-center">
           <RiCrossLine

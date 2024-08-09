@@ -108,7 +108,7 @@ export default function AnimatedContent({
       )}
 
       <div
-        className={`${russoOne.className} hero__heading absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-gray-200 bg-opacity-85 p-4 text-right font-bold opacity-0 sm:w-[60vw] md:justify-end`}
+        className={`${russoOne.className} hero__heading bg-background-contrast absolute inset-0 mt-[25vh] flex h-fit w-[80vw] flex-col items-end rounded-r-lg bg-opacity-85 p-4 text-right font-bold opacity-0 sm:w-[60vw] md:justify-end`}
       >
         {isFilled.richText(slice.primary.heading) && (
           <h1 className="md:max-text-[] mr-0 pb-2 text-[1.3rem] sm:text-xl md:text-2xl lg:text-3xl">

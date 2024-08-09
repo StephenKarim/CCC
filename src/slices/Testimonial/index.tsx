@@ -50,11 +50,11 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
       className="ios:bg-scroll relative bg-[url('/images/27.webp')] bg-cover bg-fixed bg-center px-4 py-14 text-shadow-lg first:pt-10 md:px-6 md:py-20 lg:py-24"
     >
       <h2
-        className={`${russoOne.className} w-full rounded-lg border border-sky-600/20 bg-gray-200 bg-opacity-90 py-4 text-center text-4xl text-shadow-lg md:text-4xl lg:text-5xl`}
+        className={`${russoOne.className} bg-background-contrast w-full rounded-lg border border-sky-600/20 bg-opacity-90 py-4 text-center text-4xl text-shadow-lg md:text-4xl lg:text-5xl`}
       >
         <PrismicRichText field={slice.primary.heading} />
       </h2>
-      <div className="mt-16 grid items-center gap-8 rounded-xl border border-sky-600/20 bg-gray-200 bg-opacity-90 px-8 py-8 lg:gap-0 lg:py-12">
+      <div className="bg-background-contrast mt-16 grid items-center gap-8 rounded-xl border border-sky-600/20 bg-opacity-90 px-8 py-8 lg:gap-0 lg:py-12">
         <div className="flex flex-col items-center justify-center">
           <div className={`${russoOne.className} mt-6 text-2xl font-normal`}>
             <PrismicRichText field={slice.primary.body} />

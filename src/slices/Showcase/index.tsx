@@ -41,14 +41,14 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
         components={{
           heading2: ({ children }) => (
             <h2
-              className={`${russoOne.className} w-full rounded-lg border-sky-600/20 bg-gray-200 bg-opacity-90 py-4 text-center text-4xl text-shadow-sm md:text-4xl lg:text-5xl`}
+              className={`${russoOne.className} bg-background-contrast w-full rounded-lg border-sky-600/20 bg-opacity-90 py-4 text-center text-4xl text-shadow-sm md:text-4xl lg:text-5xl`}
             >
               {children}
             </h2>
           ),
         }}
       />
-      <div className="mt-16 grid items-center gap-8 rounded-xl border border-sky-600/20 bg-gray-200 bg-opacity-90 px-8 py-8 lg:grid-cols-3 lg:gap-0 lg:py-12">
+      <div className="bg-background-contrast mt-16 grid items-center gap-8 rounded-xl border border-sky-600/20 bg-opacity-90 px-8 py-8 lg:grid-cols-3 lg:gap-0 lg:py-12">
         <div>
           <div className={`${russoOne.className} mt-6 text-2xl font-normal`}>
             <PrismicRichText field={slice.primary.subheading} />
@@ -70,9 +70,9 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
           field={slice.primary.image}
           alt=""
           className={clsx(
-            "rounded-2xl opacity-90 shadow-2xl lg:col-span-2 lg:pt-0 overflow-hidden",
+            "overflow-hidden rounded-2xl opacity-90 shadow-2xl lg:col-span-2 lg:pt-0",
 
-            "lg:order-1 lg:translate-x-[8%] overflow-hidden",
+            "overflow-hidden lg:order-1 lg:translate-x-[8%]",
           )}
           sizes="(max-width: 768px) 100vw, 50vw"
         />

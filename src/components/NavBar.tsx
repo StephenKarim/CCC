@@ -81,7 +81,7 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className} border header__heading absolute z-10 h-[80px] w-full bg-background p-2 text-foreground opacity-0 md:h-[90px]`}
+      className={`${russoOne.className} header__heading absolute z-10 h-[80px] w-full border bg-background p-2 text-foreground opacity-0 md:h-[90px]`}
       aria-label="Main"
       ref={container}
     >
@@ -226,10 +226,10 @@ export default function NavBar({ settings }: NavBarProps) {
       </div>
       {isFilled.richText(settings.data.news) && (
         <div
-          className={`header__news left-0 z-50 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-gray-200 bg-opacity-70 opacity-0`}
+          className={`header__news bg-background-contrast left-0 z-50 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-opacity-70 opacity-0`}
         >
           <div
-            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-gray-200 text-shadow sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
+            className={`${open ? "text-background-contrast fixed z-50 mt-[10rem] text-center italic text-shadow sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
           >
             <PrismicText field={settings.data.news} />
           </div>
