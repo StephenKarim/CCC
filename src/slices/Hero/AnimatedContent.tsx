@@ -76,7 +76,7 @@ export default function AnimatedContent({
 
   return (
     <div
-      className="relative min-h-full min-w-full bg-[url('/images/logo3.PNG')] bg-center bg-no-repeat"
+      className="relative min-h-full min-w-full bg-[url('/images/logo2.PNG')] bg-center bg-no-repeat"
       ref={container}
     >
       {/* <StarGrid />
