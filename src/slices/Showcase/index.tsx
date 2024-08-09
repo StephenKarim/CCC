@@ -78,7 +78,7 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
             alt=""
             className={clsx(
               "overflow-hidden rounded-2xl opacity-90 shadow-2xl lg:col-span-2 lg:pt-0",
-              "overflow-hidden lg:order-1 lg:translate-x-[8%]",
+              "overflow-hidden lg:order-1 xl:translate-x-[15%]",
             )}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
