@@ -70,9 +70,9 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
           field={slice.primary.image}
           alt=""
           className={clsx(
-            "rounded-2xl opacity-90 shadow-2xl lg:col-span-2 lg:pt-0",
+            "rounded-2xl opacity-90 shadow-2xl lg:col-span-2 lg:pt-0 overflow-hidden",
 
-            "lg:order-1 lg:translate-x-[15%]",
+            "lg:order-1 lg:translate-x-[8%] overflow-hidden",
           )}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
