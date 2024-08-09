@@ -19,7 +19,7 @@ export default async function Footer() {
   const settings = await client.getSingle("settings");
   return (
     <footer
-      className={`${russoOne.className} flex flex-col items-center justify-between gap-6 border-t bg-[#26619C] border-gray-200  bg-opacity-80 px-8 py-7 opacity-95 md:flex-row`}
+      className={`${russoOne.className} flex flex-col items-center justify-between gap-6 border-t bg-background border-gray-200  bg-opacity-80 px-8 py-7 opacity-95 md:flex-row`}
     >
       <Link href="/" className="z-50 mr-10">
         <span className="sr-only">Covenant City Church Home Page</span>
