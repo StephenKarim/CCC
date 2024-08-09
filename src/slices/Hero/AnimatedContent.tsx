@@ -9,7 +9,7 @@ import {
   PrismicText,
   SliceComponentProps,
 } from "@prismicio/react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
@@ -57,7 +57,23 @@ export default function AnimatedContent({
         return;
       }
       const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
-      tl.fromTo(".hero__video", { opacity: 0 }, { opacity: 1, duration: 0.5 });
+      tl.fromTo(
+        ".hero__video",
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.5,
+          onComplete: () => {
+            // Ensure the video plays after the fade-in animation
+            const videoElement = document.querySelector(
+              ".hero__video video",
+            ) as HTMLVideoElement;
+            if (videoElement) {
+              videoElement.play();
+            }
+          },
+        },
+      );
       tl.fromTo(
         ".hero__heading",
         { x: -100 },
