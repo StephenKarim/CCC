@@ -1,8 +1,8 @@
 {
-  "id": "about_us_mission",
+  "id": "page_hero",
   "type": "SharedSlice",
-  "name": "AboutUsMission",
-  "description": "AboutUsMission",
+  "name": "PageHero",
+  "description": "PageHero",
   "variations": [
     {
       "id": "default",
@@ -12,13 +12,21 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "heading": {
           "type": "StructuredText",
           "config": {
             "label": "Heading",
             "placeholder": "",
             "allowTargetBlank": true,
-            "single": "heading2"
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
         "body": {
@@ -27,15 +35,7 @@
             "label": "Body",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph"
-          }
-        },
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "Image",
-            "constraint": {},
-            "thumbnails": []
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },

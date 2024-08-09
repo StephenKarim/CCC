@@ -55,7 +55,7 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
         <PrismicRichText field={slice.primary.heading} />
       </h2>
       <div className="mt-16 grid items-center gap-8 rounded-xl border border-sky-600/20 bg-gray-200 bg-opacity-90 px-8 py-8 lg:gap-0 lg:py-12">
-        <div className="z-10 flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
           <div className={`${russoOne.className} mt-6 text-2xl font-normal`}>
             <PrismicRichText field={slice.primary.body} />
           </div>
