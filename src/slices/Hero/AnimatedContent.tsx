@@ -103,6 +103,7 @@ export default function AnimatedContent({
             controls={false}
           >
             <source src="/videos/videoweb.webm" type="video/webm" />
+            <source src="/videos/videomp.mp4" type="video/mp4" />
           </video>
         </div>
       )}
