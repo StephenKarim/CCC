@@ -100,6 +100,7 @@ export default function AnimatedContent({
             autoPlay
             loop
             muted
+            playsInline
             controls={false}
           >
             <source src="/videos/videoweb.webm" type="video/webm" />
