@@ -70,7 +70,12 @@ export default function NavBar({ settings }: NavBarProps) {
       { x: 0, opacity: 1, duration: 1.2 },
       "-=1.0",
     );
-    tl.fromTo(".header__news", {}, { opacity: 1, duration: 1.2 }, "-=1.0");
+    tl.fromTo(
+      ".header__news",
+      { opacity: 0 },
+      { opacity: 1, duration: 1.2 },
+      "-=1.0",
+    );
     tl.fromTo(
       ".header__newss",
       { xPercent: 100 },
@@ -224,9 +229,9 @@ export default function NavBar({ settings }: NavBarProps) {
           })}
         </ul>
       </div>
-      {pathname === "/" && isFilled.richText(settings.data.news) && (
+      {isFilled.richText(settings.data.news) && (
         <div
-          className={`header__news bg-background-contrast left-0 z-50 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-opacity-70 opacity-0`}
+          className={`header__news bg-background-contrast left-0 z-50 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-opacity-70 ${pathname !== "/" ? "invisible" : "visible"}`}
         >
           <div
             className={`${open ? "text-background-contrast fixed z-50 mt-[10rem] text-center italic text-shadow sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
