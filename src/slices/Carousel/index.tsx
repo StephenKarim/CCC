@@ -8,6 +8,8 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Russo_One } from "next/font/google";
 import Bounded from "@/components/Bounded";
+import { usePathname } from "next/navigation";
+import ButtonLink from "@/components/ButtonLink";
 
 const russoOne = Russo_One({
   subsets: ["latin"],
@@ -24,6 +26,7 @@ export type CarouselProps = SliceComponentProps<Content.CarouselSlice>;
  * Component for "Carousel" Slices.
  */
 const Carousel = ({ slice }: CarouselProps): JSX.Element => {
+  const pathname = usePathname();
   const carouselRef = useRef<HTMLDivElement>(null);
   const imagesRef = useRef<HTMLDivElement>(null);
   const gsapTimelineRef = useRef<gsap.core.Timeline | null>(null);
@@ -230,12 +233,12 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       data-slice-variation={slice.variation}
       ref={carouselRef}
       key={key}
-      className="relative flex flex-col overflow-hidden mt-10 pb-[3rem]"
+      className={`${pathname === "/aboutus" ? " bg-[url('/images/49.webp')] bg-fixed bg-cover bg-center ios:bg-scroll" : "bg-none"} relative flex flex-col overflow-hidden mt-10 pb-[6rem]`}
     >
       <div
-        className={`${russoOne.className} flex flex-col items-center justify-center pb-[4rem] pt-[3rem] text-4xl md:text-5xl lg:text-6xl`}
+        className={`${russoOne.className} flex flex-col items-center justify-center text-shadow pb-[4rem] pt-[3rem] text-4xl md:text-5xl lg:text-6xl`}
       >
-        <PrismicRichText field={slice.primary.heading} />
+        <PrismicRichText field={slice.primary.heading || "Programs"} />
       </div>
       <div
         ref={imagesRef}
@@ -249,6 +252,12 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           />
         ))}
       </div>
+      <ButtonLink
+        field={slice.primary.button_link}
+        className={`${pathname === "/aboutus" ? "block" : "hidden"} mx-auto mt-14 items-center justify-center bg-opacity-85`}
+      >
+        {slice.primary.button_label || "Learn More"}
+      </ButtonLink>
     </Bounded>
   );
 };

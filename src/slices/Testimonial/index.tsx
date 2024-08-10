@@ -52,7 +52,7 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
       className="ios:bg-scroll relative bg-[url('/images/27.webp')] bg-cover bg-fixed bg-center px-4 py-14 text-shadow-lg first:pt-10 md:px-6 md:py-20 lg:py-24"
     >
       <h2
-        className={`${russoOne.className} bg-background-contrast w-full rounded-lg border border-sky-600/20 bg-opacity-90 py-4 text-center text-4xl text-shadow-lg md:text-4xl lg:text-5xl`}
+        className={`${russoOne.className} ${pathname === "/aboutus" ? "max-w-[55rem]" : ""} grid bg-background-contrast w-full rounded-lg border border-sky-600/20 bg-opacity-90 py-4 text-center text-4xl text-shadow-lg md:text-4xl lg:text-5xl`}
       >
         <PrismicRichText field={slice.primary.heading} />
       </h2>
@@ -61,12 +61,12 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
           className={`${pathname === "/aboutus" ? "p-10" : ""} flex flex-col items-center justify-center`}
         >
           <div
-            className={`${russoOne.className} mx-[3rem] my-[2rem] text-balance text-2xl justify-center items-center text-center font-light text-shadow-sm`}
+            className={`${russoOne.className} my-[2rem] text-balance text-2xl justify-center items-center text-center font-light text-shadow-sm`}
           >
             <PrismicText field={slice.primary.body} />
           </div>
 
-          <div className="mt-20 grid gap-16">
+          <div className="md:mt-12 grid gap-16">
             {slice.primary.testimonials.map((item, index) => (
               <div
                 key={asText(item.title)}
@@ -94,7 +94,7 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
                   quality={100}
                   alt=""
                   className={clsx(
-                    "m-auto max-h-[20rem] w-auto lg:col-span-2",
+                    "m-auto max-h-[20rem]  w-auto lg:col-span-2",
                     `${pathname === "/aboutus" ? "rounded-full" : "rounded-xl"}`,
                     index % 2 && "md:-order-1",
                   )}
