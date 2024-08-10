@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Content, asLink, isFilled } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import ButtonLink from "@/components/ButtonLink";
-import { MdMenu, MdClose } from "react-icons/md";
-import { FaBookBible } from "react-icons/fa6";
+import { MdMenu, MdClose,MdOutlineArrowBackIos } from "react-icons/md";
+import { FaBookBible, FaArrowRightToBracket  } from "react-icons/fa6";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { PrismicText } from "@prismicio/react";
@@ -149,7 +149,7 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(false)}
           >
-            <MdClose />
+            <FaArrowRightToBracket />
             <span className="sr-only">Close menu</span>
           </button>
 
