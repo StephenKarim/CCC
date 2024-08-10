@@ -49,24 +49,23 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="ios:bg-scroll relative bg-[url('/images/27.webp')] bg-cover bg-fixed bg-center px-4 py-14 text-shadow-lg first:pt-10 md:px-6 md:py-20 lg:py-24"
+      className={` relative bg-[url('/images/27.webp')] bg-cover bg-fixed bg-center px-4 py-14 text-shadow-lg first:pt-10 ios:bg-scroll md:px-6 md:py-20 lg:py-24`}
     >
       <h2
-        className={`${russoOne.className} ${pathname === "/aboutus" ? "max-w-[55rem]" : ""} pt-7 grid bg-background-contrast w-full rounded-lg border border-sky-600/20 bg-opacity-90 py-4 text-center text-4xl text-shadow md:text-4xl lg:text-5xl`}
+        className={`${russoOne.className} ${pathname === "/aboutus" ? "max-w-[55rem]" : ""} ${pathname === "/programs" ? "hidden" : "block"} grid w-full rounded-lg border border-sky-600/20 bg-background-contrast bg-opacity-90 py-4 pt-7 text-center text-4xl text-shadow md:text-4xl lg:text-5xl`}
       >
         <PrismicRichText field={slice.primary.heading} />
         <div
-            className={`${russoOne.className} my-[2rem] text-balance text-2xl justify-center items-center text-center font-light text-shadow-sm`}
-          >
-            <PrismicText field={slice.primary.body} />
-          </div>
+          className={`${russoOne.className} my-[2rem] items-center justify-center text-balance text-center text-2xl font-light text-shadow-sm`}
+        >
+          <PrismicText field={slice.primary.body} />
+        </div>
       </h2>
-      
-      <div className="bg-background-contrast mt-16 grid items-center gap-8 rounded-xl border border-sky-600/20 bg-opacity-90 px-8 py-8 lg:gap-0 lg:py-12">
+
+      <div className="mt-16 grid items-center gap-8 rounded-xl border border-sky-600/20 bg-background-contrast bg-opacity-90 px-8 py-8 lg:gap-0 lg:py-12">
         <div
           className={`${pathname === "/aboutus" ? "p-10" : ""} flex flex-col items-center justify-center`}
-        >        
-
+        >
           <div className="grid gap-16">
             {slice.primary.testimonials.map((item, index) => (
               <div
@@ -95,7 +94,7 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
                   quality={100}
                   alt=""
                   className={clsx(
-                    "m-auto max-h-[20rem]  w-auto lg:col-span-2",
+                    "m-auto max-h-[20rem] w-auto lg:col-span-2",
                     `${pathname === "/aboutus" ? "rounded-full" : "rounded-xl"}`,
                     index % 2 && "md:-order-1",
                   )}

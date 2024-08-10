@@ -1,3 +1,4 @@
+"use client";
 import Bounded from "@/components/Bounded";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
@@ -5,6 +6,7 @@ import { Russo_One } from "next/font/google";
 import { Merriweather } from "next/font/google";
 import { PrismicNextLink } from "@prismicio/next";
 import { FaHome } from "react-icons/fa"; // Using FaHome from react-icons
+import { usePathname } from "next/navigation";
 
 const russoOne = Russo_One({
   subsets: ["latin"],
@@ -27,11 +29,12 @@ export type PageHeroProps = SliceComponentProps<Content.PageHeroSlice>;
  * Component for "PageHero" Slices.
  */
 const PageHero = ({ slice }: PageHeroProps): JSX.Element => {
+  const pathname = usePathname();
   return (
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className={`ios:bg-scroll bg-background-contrast relative mt-[80px] w-full border-b-2 border-background bg-opacity-95 bg-cover bg-fixed bg-top shadow-2xl md:text-4xl lg:text-5xl`}
+      className={` ${pathname === "/programs" ? "" : ""} relative mt-[80px] w-full border-b-2 border-background bg-background-contrast bg-opacity-95 bg-cover bg-fixed bg-top shadow-2xl ios:bg-scroll md:text-4xl lg:text-5xl`}
     >
       <div className="relative flex flex-col items-center justify-center p-8 text-center">
         {isFilled.richText(slice.primary.heading) && (
