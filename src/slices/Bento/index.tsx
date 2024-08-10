@@ -26,14 +26,14 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-opacity-15 px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24"
+      className="bg-opacity-15 px-4 pt-14 first:pt-10 md:px-6 md:pt-16 lg:pt-24"
     >
       <PrismicRichText
         field={slice.primary.heading}
         components={{
           heading2: ({ children }) => (
             <h2
-              className={`${russoOne.className} w-full text-balance rounded-lg py-2 items-center text-center text-4xl backdrop-blur-sm text-shadow-sm md:text-4xl lg:text-5xl`}
+              className={`${russoOne.className} w-full items-center text-balance rounded-lg py-2 text-center text-4xl backdrop-blur-sm text-shadow-sm md:text-4xl lg:text-5xl`}
             >
               {children}
             </h2>
@@ -46,17 +46,19 @@ const Bento = ({ slice }: BentoProps): JSX.Element => {
         }}
       />
       <div className="bg-opacity-15 px-4 py-14 first:pt-10 md:px-6 md:py-20 lg:py-24">
-        <div className="text-balance text-center text-2xl">
+        <div
+          className={`${pathname === "/aboutus" ? "-mt-[3rem]" : ""} text-balance text-center text-2xl`}
+        >
           <PrismicRichText field={slice.primary.body} />
         </div>
 
         <div
-          className={`${pathname === "/aboutus" ? "mt-[8rem]" : "mt-8"}  grid max-w-5xl grid-rows-[auto_auto_auto] gap-8 md:grid-cols-3 md:gap-10`}
+          className={`${pathname === "/aboutus" ? "mt-[8rem]" : "mt-8"} grid max-w-5xl grid-rows-[auto_auto_auto] gap-8 md:grid-cols-3 md:gap-10`}
         >
           {slice.primary.bento_box.map((item) => (
             <div
               className={clsx(
-                "row-span-3 grid grid-rows-subgrid gap-4 rounded-lg border items-center border-gray-300 p-[1rem] shadow-2xl",
+                "row-span-3 grid grid-rows-subgrid items-center gap-4 rounded-lg border border-gray-300 p-[1rem] shadow-2xl",
                 item.wide ? "md:col-span-2" : "md:col-span-1",
               )}
               key={asText(item.title)}

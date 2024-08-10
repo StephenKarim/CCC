@@ -53,7 +53,7 @@ const Mission = ({ slice }: MissionProps): JSX.Element => {
       <div className="flex flex-col items-center justify-between p-5 lg:flex-row">
         {isFilled.richText(slice.primary.body) && (
           <div
-            className={`mb-[3rem] mt-[2rem] max-w-[95vw] text-justify text-balance text-xl font-medium text-foreground md:max-w-[85vw] lg:max-w-[50vw] lg:mr-[4rem]`}
+            className={`mb-[3rem] mt-[2rem] max-w-[95vw] sm:text-xl text-balance font-medium text-center text-foreground md:max-w-[70vw] lg:text-justify  md:text-2xl lg:mr-[4rem] lg:max-w-[50vw]`}
           >
             <PrismicRichText field={slice.primary.body} />
           </div>
