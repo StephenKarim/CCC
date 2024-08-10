@@ -233,10 +233,10 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       data-slice-variation={slice.variation}
       ref={carouselRef}
       key={key}
-      className={`${pathname === "/aboutus" ? " bg-[url('/images/49.webp')] bg-fixed bg-cover bg-center ios:bg-scroll" : "bg-none"} relative flex flex-col overflow-hidden mt-10 pb-[6rem]`}
+      className={`${pathname === "/aboutus" ? "bg-[url('/images/49.webp')] bg-cover bg-fixed bg-center ios:bg-scroll" : "bg-none"} relative mt-10 flex flex-col overflow-hidden pb-[6rem]`}
     >
       <div
-        className={`${russoOne.className} flex flex-col items-center justify-center text-shadow pb-[4rem] pt-[3rem] text-4xl md:text-5xl lg:text-6xl`}
+        className={`${russoOne.className} flex flex-col items-center justify-center pb-[4rem] pt-[3rem] text-4xl text-shadow md:text-5xl lg:text-6xl`}
       >
         <PrismicRichText field={slice.primary.heading || "Programs"} />
       </div>
@@ -248,7 +248,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           <PrismicNextImage
             key={index}
             field={item.image}
-            className="h-auto w-auto mx-1 flex-shrink-0 transform rounded-3xl px-2  transition-transform shadow-b duration-700 ease-in-out hover:scale-105 hover:opacity-80"
+            className="shadow-b mx-1 h-auto w-auto flex-shrink-0 transform rounded-3xl px-2 transition-transform duration-700 ease-in-out hover:scale-105 hover:opacity-80"
           />
         ))}
       </div>
