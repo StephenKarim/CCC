@@ -6,6 +6,7 @@ import { Content, asLink, isFilled } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import ButtonLink from "@/components/ButtonLink";
 import { MdMenu, MdClose } from "react-icons/md";
+import { FaBookBible } from "react-icons/fa6";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { PrismicText } from "@prismicio/react";
@@ -131,7 +132,7 @@ export default function NavBar({ settings }: NavBarProps) {
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <MdMenu className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-background bg-opacity-60 md:top-[1.8rem]" />
+            <FaBookBible className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-background bg-opacity-0 md:top-[1.8rem]  animate-bounce " />
             <span className="sr-only">Open menu</span>
           </button>
         </div>
