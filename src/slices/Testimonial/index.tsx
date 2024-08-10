@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Bounded from "@/components/Bounded";
 import { createClient } from "@/prismicio";
 import { Content, isFilled, asText } from "@prismicio/client";
@@ -57,9 +57,13 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
         <PrismicRichText field={slice.primary.heading} />
       </h2>
       <div className="bg-background-contrast mt-16 grid items-center gap-8 rounded-xl border border-sky-600/20 bg-opacity-90 px-8 py-8 lg:gap-0 lg:py-12">
-        <div className="flex flex-col items-center justify-center">
-          <div className={`${russoOne.className} mt-6 text-2xl font-normal`}>
-            <PrismicRichText field={slice.primary.body} />
+        <div
+          className={`${pathname === "/aboutus" ? "p-10" : ""} flex flex-col items-center justify-center`}
+        >
+          <div
+            className={`${russoOne.className} mx-[3rem] my-[2rem] text-balance text-2xl justify-center items-center text-center font-light text-shadow-sm`}
+          >
+            <PrismicText field={slice.primary.body} />
           </div>
 
           <div className="mt-20 grid gap-16">
@@ -68,7 +72,7 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
                 key={asText(item.title)}
                 className="relative grid gap-4 opacity-85 transition-opacity duration-300 hover:cursor-pointer hover:opacity-100 md:grid-cols-2 md:gap-8 lg:grid-cols-3"
               >
-                <div className="col-span-1 flex flex-col justify-center gap-4">
+                <div className="col-span-1 flex flex-col items-center justify-center gap-4">
                   <h3
                     className={`${russoOne.className} mt-6 text-4xl font-normal`}
                   >
@@ -90,7 +94,7 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
                   quality={100}
                   alt=""
                   className={clsx(
-                    "mx-auto max-h-[20rem] w-auto lg:col-span-2",
+                    "m-auto max-h-[20rem] w-auto lg:col-span-2",
                     `${pathname === "/aboutus" ? "rounded-full" : "rounded-xl"}`,
                     index % 2 && "md:-order-1",
                   )}

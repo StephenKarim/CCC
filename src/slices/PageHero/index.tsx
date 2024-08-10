@@ -64,7 +64,10 @@ const PageHero = ({ slice }: PageHeroProps): JSX.Element => {
             </span>
           </PrismicNextLink>
           <span>/</span>
-          <span>About Us</span>
+          <span>
+            {" "}
+            <PrismicRichText field={slice.primary.heading} />
+          </span>
         </div>
       </div>
     </Bounded>

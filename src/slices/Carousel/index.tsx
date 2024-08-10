@@ -7,6 +7,7 @@ import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Russo_One } from "next/font/google";
+import Bounded from "@/components/Bounded";
 
 const russoOne = Russo_One({
   subsets: ["latin"],
@@ -27,16 +28,11 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
   const imagesRef = useRef<HTMLDivElement>(null);
   const gsapTimelineRef = useRef<gsap.core.Timeline | null>(null);
   const isDraggingRef = useRef<boolean>(false);
-  const [key, setKey] = useState<number>(0); // State to trigger re-render
-  const refreshTimeoutRef = useRef<number | NodeJS.Timeout | null>(null); // Updated type
-  const glideTweenRef = useRef<gsap.core.Tween | null>(null); // Reference to the ongoing glide tween
-  useEffect(() => {
-    const reRenderTimeout = setTimeout(() => {
-      setKey((prevKey) => prevKey + 1);
-    }, 1000);
+  const [key, setKey] = useState<number>(0);
+  const refreshTimeoutRef = useRef<number | NodeJS.Timeout | null>(null);
+  const glideTweenRef = useRef<gsap.core.Tween | null>(null);
+  const onClickReadyRef = useRef<boolean>(false); // Reference to track onClick readiness
 
-    return () => clearTimeout(reRenderTimeout);
-  }, []); // Empty dependency array ensures this runs only once
   useEffect(() => {
     const initTimeout = setTimeout(() => {
       gsap.registerPlugin(Draggable);
@@ -55,7 +51,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       });
 
       const numberOfImages = imagesArray.length;
-      const duration = numberOfImages * 5; // 5 seconds per image
+      const duration = numberOfImages * 5;
 
       const timeline = gsap.timeline({ repeat: -1, paused: false });
 
@@ -70,15 +66,14 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       let startX = 0;
       let endX = 0;
 
-      // Create Draggable instance on the images container
       Draggable.create(imagesContainer, {
         type: "x",
         bounds: {
           minX: -imagesContainer.scrollWidth + imagesContainer.clientWidth,
           maxX: 0,
         },
-        inertia: false, // We will handle inertia manually
-        resistance: 0.05, // Lower resistance for smoother dragging
+        inertia: true,
+        resistance: 0.5,
         onPressInit: function () {
           startX = this.x;
         },
@@ -92,13 +87,13 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
             // Clear existing timeout when dragging starts
             if (refreshTimeoutRef.current) {
-              clearTimeout(refreshTimeoutRef.current as number); // Type assertion for number
+              clearTimeout(refreshTimeoutRef.current as number);
             }
 
             // Kill the ongoing glide tween if it exists
             if (glideTweenRef.current) {
               glideTweenRef.current.kill();
-              glideTweenRef.current = null; // Reset glide tween reference
+              glideTweenRef.current = null;
             }
 
             // Reset velocity by setting start and end to the same position
@@ -116,11 +111,10 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           isDraggingRef.current = false;
 
           // Calculate direction based on start and end positions
-          let glideDistance = (endX - startX) * 3; // Adjust multiplier as needed for glide effect
+          let glideDistance = (endX - startX) * 3;
 
           const currentX = endX + glideDistance;
 
-          // Prevent gliding past the first and last images
           const minX =
             -imagesContainer.scrollWidth + imagesContainer.clientWidth;
           const maxX = 0;
@@ -133,11 +127,10 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
           // Create and store the glide tween reference
           glideTweenRef.current = gsap.to(imagesContainer, {
-            x: `+=${glideDistance}`, // Glide based on calculated distance
-            ease: "power3.out", // Use power3.out for a smooth deceleration
-            duration: 2, // Duration of the glide
+            x: `+=${glideDistance}`,
+            ease: "power3.out",
+            duration: 2,
             onComplete: () => {
-              // Adjust bounds if necessary
               const adjustedX = gsap.getProperty(
                 imagesContainer,
                 "x",
@@ -160,7 +153,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
 
           // Set a new timeout for refreshing the carousel 5 seconds after dragging ends
           refreshTimeoutRef.current = window.setTimeout(() => {
-            fadeOutAndRerender(); // Trigger fade-out before re-render
+            fadeOutAndRerender();
           }, 6000);
 
           // Re-enable scrolling after dragging ends
@@ -169,28 +162,29 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
         },
       });
 
+      // Set timeout for onClick readiness 500ms after drag is initialized
+      setTimeout(() => {
+        onClickReadyRef.current = true;
+      }, 100);
+
       // Event listener for click event when dragging is false
       const handleClick = () => {
-        // Kill the ongoing glide tween if it exists
-        if (glideTweenRef.current) {
-          glideTweenRef.current.kill();
-          glideTweenRef.current = null; // Reset glide tween reference
-        }
+        if (!isDraggingRef.current && onClickReadyRef.current) {
+          if (glideTweenRef.current) {
+            glideTweenRef.current.kill();
+            glideTweenRef.current = null;
+          }
 
-        if (!isDraggingRef.current) {
-          // Clear any existing timeout
           if (refreshTimeoutRef.current) {
             clearTimeout(refreshTimeoutRef.current as number);
           }
 
-          // Set a new timeout for re-rendering after 6 seconds
           refreshTimeoutRef.current = window.setTimeout(() => {
-            fadeOutAndRerender(); // Trigger fade-out before re-render
+            fadeOutAndRerender();
           }, 6000);
         }
       };
 
-      // Add click event listener to the carousel container
       imagesContainer.addEventListener("click", handleClick);
 
       return () => {
@@ -198,23 +192,21 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           gsapTimelineRef.current.kill();
         }
         Draggable.get(imagesContainer)?.kill();
-        imagesContainer.removeEventListener("click", handleClick); // Clean up event listener
+        imagesContainer.removeEventListener("click", handleClick);
         window.removeEventListener("touchmove", preventScroll);
         window.removeEventListener("wheel", preventScroll);
-        clearTimeout(initTimeout); // Clear the initialization timeout on cleanup
+        clearTimeout(initTimeout);
       };
-    }, 100); // Delay initialization by 100ms to ensure DOM readiness
-  }, [slice.primary.images, key]); // Include key in the dependency array to trigger re-render
+    }, 100);
+  }, [slice.primary.images, key]);
 
   const fadeOutAndRerender = () => {
     const container = imagesRef.current;
     if (container) {
-      // Fade out
       gsap.to(container, {
         opacity: 0,
         duration: 0.5,
         onComplete: () => {
-          // Trigger re-render
           setKey((prevKey) => prevKey + 1);
         },
       });
@@ -222,7 +214,6 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
   };
 
   useEffect(() => {
-    // Apply a default fade-in animation whenever the component is rendered
     const container = imagesRef.current;
     if (container) {
       gsap.fromTo(container, { opacity: 0 }, { opacity: 1, duration: 0.5 });
@@ -234,14 +225,13 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
   };
 
   return (
-    <section
+    <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       ref={carouselRef}
-      key={key} // Set the key here to trigger re-render
-      className="relative flex flex-col overflow-hidden pb-[3rem]"
+      key={key}
+      className="relative flex flex-col overflow-hidden mt-10 pb-[3rem]"
     >
-      
       <div
         className={`${russoOne.className} flex flex-col items-center justify-center pb-[4rem] pt-[3rem] text-4xl md:text-5xl lg:text-6xl`}
       >
@@ -255,11 +245,11 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           <PrismicNextImage
             key={index}
             field={item.image}
-            className="h-auto w-auto flex-shrink-0 transform rounded-3xl px-2 shadow-2xl transition-transform duration-700 ease-in-out hover:scale-105 hover:opacity-80"
+            className="h-auto w-auto mx-1 flex-shrink-0 transform rounded-3xl px-2  transition-transform shadow-b duration-700 ease-in-out hover:scale-105 hover:opacity-80"
           />
         ))}
       </div>
-    </section>
+    </Bounded>
   );
 };
 

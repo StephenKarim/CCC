@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import LenisScroll from "@/components/LenisScroll";
 import Carousel from "@/slices/Carousel";
 import CarouselP from "@/components/CarouselP";
+import CustomCursor from "@/components/CustomCursor";
 
 export default function RootLayout({
   children,
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="">
       <body className="grid bg-background text-foreground">
+      {/* <CustomCursor /> */}
         <SpeedInsights />        
         <Header />
 

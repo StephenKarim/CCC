@@ -1,23 +1,22 @@
+import React, { forwardRef } from "react";
 import clsx from "clsx";
 
 type BoundedProps = {
   as?: React.ElementType;
   className?: string;
   children: React.ReactNode;
-  style?: React.CSSProperties; // Add style prop
+  style?: React.CSSProperties;
 };
 
-export default function Bounded({
-  as: Comp = "section",
-  className,
-  children,
-  style, // Add style to the destructured props
-  ...restProps
-}: BoundedProps) {
+const Bounded = forwardRef<HTMLElement, BoundedProps>(function Bounded(
+  { as: Comp = "section", className, children, style, ...restProps },
+  ref,
+) {
   return (
     <Comp
+      ref={ref}
       className={clsx("", className)}
-      style={style} // Pass the style prop to the Comp element
+      style={style}
       {...restProps}
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center">
@@ -25,4 +24,6 @@ export default function Bounded({
       </div>
     </Comp>
   );
-}
+});
+
+export default Bounded;

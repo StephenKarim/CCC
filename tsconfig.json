@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/NavBar.tsx"
-  ],
+, "src/components/CustomCursor.tsx"  ],
   "exclude": ["node_modules"]
 }
