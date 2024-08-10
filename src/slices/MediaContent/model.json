@@ -25,27 +25,12 @@
                   "placeholder": "ONLY CHOOSE ONE OUT OF EACH GROUP"
                 }
               },
-              "medialink": {
-                "type": "Link",
-                "config": {
-                  "label": "MediaLink",
-                  "placeholder": "",
-                  "select": "media"
-                }
-              },
               "image": {
                 "type": "Image",
                 "config": {
                   "label": "image",
                   "constraint": {},
                   "thumbnails": []
-                }
-              },
-              "video": {
-                "type": "Embed",
-                "config": {
-                  "label": "Video",
-                  "placeholder": ""
                 }
               },
               "anylink": {

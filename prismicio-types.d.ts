@@ -1063,16 +1063,6 @@ export interface MediaContentSliceDefaultPrimaryMedialinksItem {
   title: prismic.KeyTextField;
 
   /**
-   * MediaLink field in *MediaContent → Default → Primary → MediaLinks*
-   *
-   * - **Field Type**: Link to Media
-   * - **Placeholder**: *None*
-   * - **API ID Path**: media_content.default.primary.medialinks[].medialink
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  medialink: prismic.LinkToMediaField;
-
-  /**
    * image field in *MediaContent → Default → Primary → MediaLinks*
    *
    * - **Field Type**: Image
@@ -1081,16 +1071,6 @@ export interface MediaContentSliceDefaultPrimaryMedialinksItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
-
-  /**
-   * Video field in *MediaContent → Default → Primary → MediaLinks*
-   *
-   * - **Field Type**: Embed
-   * - **Placeholder**: *None*
-   * - **API ID Path**: media_content.default.primary.medialinks[].video
-   * - **Documentation**: https://prismic.io/docs/field#embed
-   */
-  video: prismic.EmbedField;
 
   /**
    * AnyLink field in *MediaContent → Default → Primary → MediaLinks*
