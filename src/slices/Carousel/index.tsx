@@ -241,6 +241,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       key={key} // Set the key here to trigger re-render
       className="relative flex flex-col overflow-hidden pb-[3rem]"
     >
+      
       <div
         className={`${russoOne.className} flex flex-col items-center justify-center pb-[4rem] pt-[3rem] text-4xl md:text-5xl lg:text-6xl`}
       >

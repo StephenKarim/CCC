@@ -1,0 +1,49 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"location": {
+				"position": {
+					"lat": 48.8606111,
+					"lng": 2.337644
+				},
+				"__TYPE__": "GeoPointContent"
+			},
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Quis amet deserunt et aute deserunt esse nulla adipisicing officia proident. Quis fugiat voluptate ullamco do dolore reprehenderit nisi eiusmod veniam velit qui."
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Excepteur amet duis eiusmod elit ea enim reprehenderit irure. Deserunt nisi deserunt sint labore tempor nulla enim laboris do nostrud. Qui ea dolore sint occaecat nulla elit est."
+						}
+					}
+				]
+			},
+			"locationtext": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Est do aliquip ut magna cillum veniam sunt tempor et."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

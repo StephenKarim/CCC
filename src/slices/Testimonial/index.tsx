@@ -1,3 +1,4 @@
+'use client'
 import Bounded from "@/components/Bounded";
 import { createClient } from "@/prismicio";
 import { Content, isFilled, asText } from "@prismicio/client";
@@ -8,7 +9,7 @@ import {
   SliceComponentProps,
 } from "@prismicio/react";
 import clsx from "clsx";
-
+import { usePathname } from "next/navigation";
 import {
   Russo_One,
   Dancing_Script,
@@ -43,6 +44,7 @@ export type TestimonialProps = SliceComponentProps<Content.TestimonialSlice>;
  * Component for "Testimonial" Slices.
  */
 const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
+  const pathname = usePathname();
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -88,10 +90,11 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
                   quality={100}
                   alt=""
                   className={clsx(
-                    "rounded-xl lg:col-span-2",
+                    "mx-auto max-h-[20rem] w-auto lg:col-span-2",
+                    `${pathname === "/aboutus" ? "rounded-full" : "rounded-xl"}`,
                     index % 2 && "md:-order-1",
                   )}
-                ></PrismicNextImage>
+                />
               </div>
             ))}
           </div>

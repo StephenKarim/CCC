@@ -1,0 +1,65 @@
+{
+  "id": "media_content",
+  "type": "SharedSlice",
+  "name": "MediaContent",
+  "description": "MediaContent",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "medialinks": {
+          "type": "Group",
+          "config": {
+            "label": "MediaLinks",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "ONLY CHOOSE ONE OUT OF EACH GROUP"
+                }
+              },
+              "medialink": {
+                "type": "Link",
+                "config": {
+                  "label": "MediaLink",
+                  "placeholder": "",
+                  "select": "media"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "video": {
+                "type": "Embed",
+                "config": {
+                  "label": "Video",
+                  "placeholder": ""
+                }
+              },
+              "anylink": {
+                "type": "Text",
+                "config": {
+                  "label": "AnyLink",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

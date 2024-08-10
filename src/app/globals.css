@@ -10,7 +10,7 @@
     /* Light Theme Colors */
     --background: 207 50% 60%; /* Light Background - Sky Blue */
     --foreground: 0 0% 20%; /* Light Foreground - Dark Gray */
-    --background-contrast:0 0% 95%;
+    --background-contrast: 0 0% 95%;
 
     --primary: 0 0% 95%; /* Light Primary Color - Eclipse */
     --primary-foreground: 0 0% 98%; /* Light Primary Foreground - Snow */

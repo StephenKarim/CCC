@@ -4,11 +4,17 @@ import dynamic from "next/dynamic";
 
 export const components = {
   bento: dynamic(() => import("./Bento")),
+  calender: dynamic(() => import("./Calender")),
   call_to_action: dynamic(() => import("./CallToAction")),
   carousel: dynamic(() => import("./Carousel")),
   case_studies: dynamic(() => import("./CaseStudies")),
+  founder: dynamic(() => import("./Founder")),
   hero: dynamic(() => import("./Hero")),
   integrations: dynamic(() => import("./Integrations")),
+  location: dynamic(() => import("./Location")),
+  many_text: dynamic(() => import("./ManyText")),
+  media_content: dynamic(() => import("./MediaContent")),
+  mission: dynamic(() => import("./Mission")),
   page_hero: dynamic(() => import("./PageHero")),
   rich_text: dynamic(() => import("./RichText")),
   showcase: dynamic(() => import("./Showcase")),

@@ -103,6 +103,12 @@ export type CaseStudyDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | LocationSlice
+  | ManyTextSlice
+  | MediaContentSlice
+  | CalenderSlice
+  | FounderSlice
+  | MissionSlice
   | PageHeroSlice
   | CarouselSlice
   | TestimonialSlice
@@ -432,6 +438,36 @@ type BentoSliceVariation = BentoSliceDefault;
 export type BentoSlice = prismic.SharedSlice<"bento", BentoSliceVariation>;
 
 /**
+ * Default variation for Calender Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CalenderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Calender*
+ */
+type CalenderSliceVariation = CalenderSliceDefault;
+
+/**
+ * Calender Shared Slice
+ *
+ * - **API ID**: `calender`
+ * - **Description**: Calender
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CalenderSlice = prismic.SharedSlice<
+  "calender",
+  CalenderSliceVariation
+>;
+
+/**
  * Primary content in *CallToAction → Default → Primary*
  */
 export interface CallToActionSliceDefaultPrimary {
@@ -534,6 +570,26 @@ export interface CarouselSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   images: prismic.GroupField<Simplify<CarouselSliceDefaultPrimaryImagesItem>>;
+
+  /**
+   * Button Label field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.button_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_label: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
 }
 
 /**
@@ -646,6 +702,51 @@ type CaseStudiesSliceVariation = CaseStudiesSliceDefault;
 export type CaseStudiesSlice = prismic.SharedSlice<
   "case_studies",
   CaseStudiesSliceVariation
+>;
+
+/**
+ * Primary content in *Founder → Default → Primary*
+ */
+export interface FounderSliceDefaultPrimary {
+  /**
+   * heading field in *Founder → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: founder.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Founder Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FounderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FounderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Founder*
+ */
+type FounderSliceVariation = FounderSliceDefault;
+
+/**
+ * Founder Shared Slice
+ *
+ * - **API ID**: `founder`
+ * - **Description**: Founder
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FounderSlice = prismic.SharedSlice<
+  "founder",
+  FounderSliceVariation
 >;
 
 /**
@@ -810,6 +911,308 @@ type IntegrationsSliceVariation = IntegrationsSliceDefault;
 export type IntegrationsSlice = prismic.SharedSlice<
   "integrations",
   IntegrationsSliceVariation
+>;
+
+/**
+ * Primary content in *Location → Default → Primary*
+ */
+export interface LocationSliceDefaultPrimary {
+  /**
+   * Location field in *Location → Default → Primary*
+   *
+   * - **Field Type**: GeoPoint
+   * - **Placeholder**: *None*
+   * - **API ID Path**: location.default.primary.location
+   * - **Documentation**: https://prismic.io/docs/field#geopoint
+   */
+  location: prismic.GeoPointField;
+
+  /**
+   * Heading field in *Location → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: location.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *Location → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: location.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * LocationText field in *Location → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: location.default.primary.locationtext
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  locationtext: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Location Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LocationSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LocationSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Location*
+ */
+type LocationSliceVariation = LocationSliceDefault;
+
+/**
+ * Location Shared Slice
+ *
+ * - **API ID**: `location`
+ * - **Description**: Location
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LocationSlice = prismic.SharedSlice<
+  "location",
+  LocationSliceVariation
+>;
+
+/**
+ * Item in *ManyText → Default → Primary → Texts*
+ */
+export interface ManyTextSliceDefaultPrimaryTextsItem {
+  /**
+   * Text field in *ManyText → Default → Primary → Texts*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: many_text.default.primary.texts[].text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ManyText → Default → Primary*
+ */
+export interface ManyTextSliceDefaultPrimary {
+  /**
+   * Texts field in *ManyText → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: many_text.default.primary.texts[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  texts: prismic.GroupField<Simplify<ManyTextSliceDefaultPrimaryTextsItem>>;
+}
+
+/**
+ * Default variation for ManyText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ManyTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ManyTextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ManyText*
+ */
+type ManyTextSliceVariation = ManyTextSliceDefault;
+
+/**
+ * ManyText Shared Slice
+ *
+ * - **API ID**: `many_text`
+ * - **Description**: ManyText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ManyTextSlice = prismic.SharedSlice<
+  "many_text",
+  ManyTextSliceVariation
+>;
+
+/**
+ * Item in *MediaContent → Default → Primary → MediaLinks*
+ */
+export interface MediaContentSliceDefaultPrimaryMedialinksItem {
+  /**
+   * Title field in *MediaContent → Default → Primary → MediaLinks*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: ONLY CHOOSE ONE OUT OF EACH GROUP
+   * - **API ID Path**: media_content.default.primary.medialinks[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * MediaLink field in *MediaContent → Default → Primary → MediaLinks*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_content.default.primary.medialinks[].medialink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  medialink: prismic.LinkToMediaField;
+
+  /**
+   * image field in *MediaContent → Default → Primary → MediaLinks*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_content.default.primary.medialinks[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Video field in *MediaContent → Default → Primary → MediaLinks*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_content.default.primary.medialinks[].video
+   * - **Documentation**: https://prismic.io/docs/field#embed
+   */
+  video: prismic.EmbedField;
+
+  /**
+   * AnyLink field in *MediaContent → Default → Primary → MediaLinks*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_content.default.primary.medialinks[].anylink
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  anylink: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *MediaContent → Default → Primary*
+ */
+export interface MediaContentSliceDefaultPrimary {
+  /**
+   * MediaLinks field in *MediaContent → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_content.default.primary.medialinks[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  medialinks: prismic.GroupField<
+    Simplify<MediaContentSliceDefaultPrimaryMedialinksItem>
+  >;
+}
+
+/**
+ * Default variation for MediaContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MediaContentSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MediaContentSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *MediaContent*
+ */
+type MediaContentSliceVariation = MediaContentSliceDefault;
+
+/**
+ * MediaContent Shared Slice
+ *
+ * - **API ID**: `media_content`
+ * - **Description**: MediaContent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MediaContentSlice = prismic.SharedSlice<
+  "media_content",
+  MediaContentSliceVariation
+>;
+
+/**
+ * Primary content in *Mission → Default → Primary*
+ */
+export interface MissionSliceDefaultPrimary {
+  /**
+   * Heading field in *Mission → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mission.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *Mission → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mission.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Image field in *Mission → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: mission.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Mission Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MissionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MissionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Mission*
+ */
+type MissionSliceVariation = MissionSliceDefault;
+
+/**
+ * Mission Shared Slice
+ *
+ * - **API ID**: `mission`
+ * - **Description**: Mission
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MissionSlice = prismic.SharedSlice<
+  "mission",
+  MissionSliceVariation
 >;
 
 /**
@@ -1144,6 +1547,9 @@ declare module "@prismicio/client" {
       BentoSliceDefaultPrimary,
       BentoSliceVariation,
       BentoSliceDefault,
+      CalenderSlice,
+      CalenderSliceVariation,
+      CalenderSliceDefault,
       CallToActionSlice,
       CallToActionSliceDefaultPrimary,
       CallToActionSliceVariation,
@@ -1158,6 +1564,10 @@ declare module "@prismicio/client" {
       CaseStudiesSliceDefaultPrimary,
       CaseStudiesSliceVariation,
       CaseStudiesSliceDefault,
+      FounderSlice,
+      FounderSliceDefaultPrimary,
+      FounderSliceVariation,
+      FounderSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
@@ -1167,6 +1577,24 @@ declare module "@prismicio/client" {
       IntegrationsSliceDefaultPrimary,
       IntegrationsSliceVariation,
       IntegrationsSliceDefault,
+      LocationSlice,
+      LocationSliceDefaultPrimary,
+      LocationSliceVariation,
+      LocationSliceDefault,
+      ManyTextSlice,
+      ManyTextSliceDefaultPrimaryTextsItem,
+      ManyTextSliceDefaultPrimary,
+      ManyTextSliceVariation,
+      ManyTextSliceDefault,
+      MediaContentSlice,
+      MediaContentSliceDefaultPrimaryMedialinksItem,
+      MediaContentSliceDefaultPrimary,
+      MediaContentSliceVariation,
+      MediaContentSliceDefault,
+      MissionSlice,
+      MissionSliceDefaultPrimary,
+      MissionSliceVariation,
+      MissionSliceDefault,
       PageHeroSlice,
       PageHeroSliceDefaultPrimary,
       PageHeroSliceVariation,

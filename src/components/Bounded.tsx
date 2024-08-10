@@ -16,10 +16,7 @@ export default function Bounded({
 }: BoundedProps) {
   return (
     <Comp
-      className={clsx(
-        "",
-        className,
-      )}
+      className={clsx("", className)}
       style={style} // Pass the style prop to the Comp element
       {...restProps}
     >
