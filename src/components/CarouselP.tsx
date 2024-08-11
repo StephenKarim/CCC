@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { Draggable, InertiaPlugin } from "gsap/all";
@@ -16,6 +15,7 @@ const CarouselP = () => {
   const [items, setItems] = useState<HTMLElement[] | null>(null);
   const [slideWidth, setSlideWidth] = useState<number>(0);
   const [animation, setAnimation] = useState<GSAPTween | null>(null);
+  const [firstClick, setFirstClick] = useState<boolean>(true);
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -73,12 +73,19 @@ const CarouselP = () => {
           },
         });
 
-        const timer = gsap.delayedCall(1.5, autoPlay);
+        let initialTimeout = setTimeout(autoPlay, 100); // First auto play trigger
+
+        const timer = gsap.delayedCall(6, autoPlay);
 
         if (prevButtonRef.current) {
           prevButtonRef.current.addEventListener("click", () => {
             if (items && animation) {
               animateSlides(1, items, slideWidth, animation);
+              if (firstClick) {
+                setTimeout(() => setFirstClick(false), 100);
+              } else {
+                timer.restart(true);
+              }
             }
           });
         }
@@ -87,6 +94,11 @@ const CarouselP = () => {
           nextButtonRef.current.addEventListener("click", () => {
             if (items && animation) {
               animateSlides(-1, items, slideWidth, animation);
+              if (firstClick) {
+                setTimeout(() => setFirstClick(false), 100);
+              } else {
+                timer.restart(true);
+              }
             }
           });
         }
@@ -95,6 +107,7 @@ const CarouselP = () => {
 
         return () => {
           window.removeEventListener("resize", resize);
+          clearTimeout(initialTimeout);
         };
       }
     }
@@ -171,7 +184,6 @@ const CarouselP = () => {
             width={200}
             height={200}
             layout="responsive"
-            aspect-video
           />
         </div>
         <div className="carousel-item w-full flex-none">
@@ -181,7 +193,6 @@ const CarouselP = () => {
             width={200}
             height={200}
             layout="responsive"
-            aspect-video
           />
         </div>
         <div className="carousel-item w-full flex-none">
@@ -191,7 +202,6 @@ const CarouselP = () => {
             width={200}
             height={200}
             layout="responsive"
-            aspect-video
           />
         </div>
         {/* Add more items as needed */}
