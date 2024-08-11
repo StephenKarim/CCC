@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Bounded from "@/components/Bounded";
 import { Content } from "@prismicio/client";
@@ -28,45 +28,41 @@ const MediaContent = ({ slice }: MediaContentProps): JSX.Element => {
 
   return (
     <>
-      <Bounded
+      <section
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
         className="py-12"
       >
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {slice.primary.medialinks.map((item, index) => (
-            <div key={index} className="group">
-              {/* Render the image */}
+            <div
+              key={index}
+              className="group relative cursor-pointer overflow-hidden rounded-lg shadow-lg"
+              onClick={() => handleImageClick(index)}
+            >
               {item.image && item.image.url && (
-                <div
-                  className="relative cursor-pointer overflow-hidden rounded-lg shadow-lg"
-                  onClick={() => handleImageClick(index)}
-                >
-                  <PrismicNextImage
-                    field={item.image}
-                    className="transform transition-transform duration-300 ease-in-out group-hover:scale-105"
-                  />
-                </div>
+                <PrismicNextImage
+                  field={item.image}
+                  className="h-auto w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                />
               )}
 
-              {/* Render the title */}
               {item.title && (
-                <div className="mt-4 text-center text-lg font-semibold">
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 py-2 text-center text-lg font-semibold text-white">
                   {item.title}
                 </div>
               )}
             </div>
           ))}
         </div>
-      </Bounded>
+      </section>
 
-      {/* Modal for displaying the larger image */}
       {selectedImageIndex !== null && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
           onClick={handleCloseModal}
         >
-          <div className="relative">
+          <div className="relative w-full max-w-3xl">
             <PrismicNextImage
               field={slice.primary.medialinks[selectedImageIndex].image}
               className="max-h-screen max-w-full rounded-lg"
@@ -74,8 +70,7 @@ const MediaContent = ({ slice }: MediaContentProps): JSX.Element => {
             <button
               className="absolute right-2 top-2 rounded-full bg-black bg-opacity-50 p-1 text-3xl text-white"
               onClick={handleCloseModal}
-            >
-              &times;
+            >              
             </button>
           </div>
         </div>

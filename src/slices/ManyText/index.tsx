@@ -22,7 +22,7 @@ const ManyText = ({ slice }: ManyTextProps): JSX.Element => {
         <div className="mb-8 text-center">
           <h2 className="text-3xl font-bold text-gray-800">Contact</h2>
           <p className="mt-2 text-gray-600">
-            We're here to help and answer any questions you might have.
+            Were here to help and answer any questions you might have.
           </p>
         </div>
 
