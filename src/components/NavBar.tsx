@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Content, asLink, isFilled } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import ButtonLink from "@/components/ButtonLink";
-import { MdMenu, MdClose,MdOutlineArrowBackIos } from "react-icons/md";
-import { FaBookBible, FaArrowRightToBracket  } from "react-icons/fa6";
+import { MdMenu, MdClose, MdOutlineArrowBackIos } from "react-icons/md";
+import { FaBookBible, FaArrowRightToBracket } from "react-icons/fa6";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { PrismicText } from "@prismicio/react";
@@ -87,27 +87,27 @@ export default function NavBar({ settings }: NavBarProps) {
 
   return (
     <nav
-      className={`${russoOne.className}   absolute z-10 h-[80px] w-full bg-background p-2 text-foreground  md:h-[90px]`}
+      className={`${russoOne.className} absolute z-10 h-[80px] w-full bg-background p-2 text-foreground md:h-[90px]`}
       aria-label="Main"
       ref={container}
     >
       <div
-        className={`${open ? "fixed z-50" : ""} ${pathname == "/" ? "header__heading opacity-0 " : "opacity-100"}  mx-auto flex flex-col justify-between py-2 font-medium lg:flex-row lg:items-center`}
+        className={`${open ? "fixed z-50" : ""} ${pathname == "/" ? "header__heading opacity-0" : "opacity-100"} mx-auto flex flex-col justify-between py-2 font-medium md:flex-row md:items-center`}
       >
         <div className="flex items-center justify-between">
           <Link href="/" className={`z-50`} onClick={() => setOpen(false)}>
             <span className="sr-only">Covenant City Church Home Page</span>
             <div
-              className={`${russoOne.className} flex flex-row text-balance text-center text-2xl font-medium md:text-3xl`}
+              className={`${russoOne.className} flex flex-row text-balance text-center text-2xl font-medium lg:text-3xl`}
             >
               <div className="-mt-[0.1rem] ml-[2rem] flex flex-col">
                 <RiCrossLine
                   color="#333333"
-                  className="-ml-2 h-[1.5rem] w-auto opacity-95 md:h-[1.8rem]"
+                  className="-ml-2 h-[1.5rem] w-auto opacity-95 lg:h-[1.8rem]"
                 />
                 <GiGlobe
                   color="#333333"
-                  className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-95 md:h-[2.6rem]"
+                  className="-ml-2 -mt-[1rem] h-[2.4rem] w-auto opacity-95 lg:h-[2.6rem]"
                 />
               </div>
 
@@ -118,7 +118,7 @@ export default function NavBar({ settings }: NavBarProps) {
                   </h2>
                 )}
                 {isFilled.richText(settings.data.logo_label_bot) && (
-                  <h2 className="text-[1.2rem] font-medium not-italic md:text-[1.5rem]">
+                  <h2 className="text-[1.2rem] font-medium not-italic lg:text-[1.5rem]">
                     <PrismicText field={settings.data.logo_label_bot} />
                   </h2>
                 )}
@@ -128,24 +128,24 @@ export default function NavBar({ settings }: NavBarProps) {
 
           <button
             type="button"
-            className={`z-50 ${open ? "hidden" : "block p-2 text-3xl lg:hidden"}`}
+            className={`z-50 ${open ? "hidden" : "block p-2 text-3xl md:hidden"}`}
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <FaBookBible className="fixed right-[1.5rem] top-[1.7rem] rounded-sm bg-background bg-opacity-0 md:top-[1.8rem]  animate-bounce " />
+            <FaBookBible className="fixed right-[1.5rem] top-[1.7rem] animate-bounce rounded-sm bg-background bg-opacity-0 md:top-[1.8rem]" />
             <span className="sr-only">Open menu</span>
           </button>
         </div>
         {/* Mobile Nav */}
         <div
           className={clsx(
-            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-background bg-opacity-[1] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none lg:hidden",
+            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-background bg-opacity-[1] pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none md:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
           <button
             type="button"
-            className="fixed right-4 top-4 z-50 mb-4 block p-2 text-3xl lg:hidden"
+            className="fixed right-4 top-4 z-50 mb-4 block p-2 text-3xl md:hidden"
             aria-expanded={open}
             onClick={() => setOpen(false)}
           >
@@ -192,7 +192,7 @@ export default function NavBar({ settings }: NavBarProps) {
         </div>
 
         {/* Desktop Nav */}
-        <ul className="header__menu hidden gap-6 text-lg opacity-0 lg:flex">
+        <ul className="header__menu hidden items-center gap-3 text-[0.9rem] opacity-0 md:flex lg:gap-6 lg:text-lg">
           {settings.data.navigation.map((item) => {
             if (item.cta_button) {
               return (
@@ -232,10 +232,10 @@ export default function NavBar({ settings }: NavBarProps) {
       </div>
       {isFilled.richText(settings.data.news) && (
         <div
-          className={`header__news opacity-0 bg-background-contrast left-0 z-50 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-opacity-70 ${pathname !== "/" ? "invisible" : "visible"}`}
+          className={`header__news left-0 z-50 -mt-[0.5rem] flex max-h-[1.5rem] items-center justify-end overflow-hidden rounded-sm bg-background-contrast bg-opacity-70 opacity-0 ${pathname !== "/" ? "invisible" : "visible"}`}
         >
           <div
-            className={`${open ? "text-background-contrast fixed z-50 mt-[10rem] text-center italic text-shadow sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
+            className={`${open ? "fixed z-50 mt-[10rem] text-center italic text-background-contrast text-shadow sm:w-[75vw]" : "sm:w-[80vw]"} header__newss max-h-[1.5rem] w-[100vw] overflow-hidden text-nowrap md:w-[75vw] lg:w-[70vw] xl:w-[65w] 2xl:w-[60vw]`}
           >
             <PrismicText field={settings.data.news} />
           </div>
